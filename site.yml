@@ -1,0 +1,14 @@
+title : NLJB
+tagline: NLJB
+author :
+  name : nljb
+  email : nljb@nljb.net
+  github : https://github.com/nulijiabei
+
+navigation :
+  - archive.html
+  - tags.html
+  - categories.html
+  - pages.html
+  - about.md
+  
