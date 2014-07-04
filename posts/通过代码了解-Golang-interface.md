@@ -31,4 +31,42 @@ tags:golang
 	}
 	ok
 
+---------------------
+
+	package main
+
+	import ("fmt")
+
+	type Animal interface {
+		Run()
+	}
+
+	type Cat struct {
+	}
+
+	func (cat *Cat) Run() {
+		fmt.Println("Cat Run")
+	}
+
+	type Dog struct {
+	}
+
+	func (dog *Dog) Run() {
+		fmt.Println("Dog Run")
+	}
+
+	func main() {
+
+		var animal Animal
+
+		animal = &Cat{}
+
+		animal.Run()
+
+		animal = &Dog{}
+
+		animal.Run()
+
+	}
+
 
