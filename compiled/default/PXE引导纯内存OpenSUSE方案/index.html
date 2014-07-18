@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PXE引导纯内存OpenSUSE方案</title>
+  
+    <meta name="author" content="nljb">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/twitter/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/twitter/stylesheets/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/twitter/widgets/google_prettify/stylesheets/twitter-bootstrap.css" type="text/css" rel="stylesheet" media="all">
+ 
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">NLJB</a>
+          <ul class="nav">
+            
+              
+
+
+  <li><a href="/archive">Archive</a></li>
+
+
+            
+              
+
+
+  <li><a href="/tags">Tags</a></li>
+
+
+            
+              
+
+
+  <li><a href="/categories">Categories</a></li>
+
+
+            
+              
+
+
+  <li><a href="/pages">Pages</a></li>
+
+
+            
+              
+
+
+  <li><a href="/about">About Me</a></li>
+
+
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+  <h1>PXE引导纯内存OpenSUSE方案 </h1>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <pre><code>// git@github.com:nulijiabei/boot.git
+
+// 注：image为根目录打包镜像,不要超过2G,需要LOOP驱动
+
+echo &quot;#################################&quot;
+
+root=/dev/loop0
+rootdev=/dev/loop0
+
+echo &quot; &quot;
+echo &quot;NEW ROOT IS root=&quot;$root&quot;&quot;
+echo &quot;NEW ROOTDEV IS rootdev=&quot;$rootdev&quot;&quot;
+
+echo &quot;depmod&quot;
+/sbin/depmod -a
+
+echo &quot;modprobe&quot;
+/sbin/modprobe loop
+
+echo &quot;ls&quot;
+ls -l /dev/loop0
+
+echo &quot;mount&quot;
+/bin/mount /dev/sda1 /disk
+sleep 5
+
+echo &quot;CP&quot;
+/bin/cp -av /disk/image /image &amp;&amp; ls -l /image
+sleep 5
+
+echo &quot;umount&quot;
+/bin/umount /disk
+sleep 5
+
+echo &quot;losetup&quot;
+/sbin/losetup /dev/loop0 /image
+sleep 5
+
+echo &quot;mount&quot;
+/bin/mount /dev/loop0 /root
+sleep 5
+
+echo &quot;ls&quot;
+ls -l /root
+
+echo &quot;#################################&quot;
+
+
+// 配置项
+
+// --------------------------------------------- //
+
+保证工作目录(777)权限
+
+// --------------------------------------------- //
+
+安装 vsftpd
+安装 tftp
+安装 dhcp
+安装 dhcp-server
+安装 yast2-tftp-server
+
+// --------------------------------------------- //
+
+// --------------------------------------------- //
+
+在 /etc/vsftpd.conf 增加
+
+write_enable=NO
+dirmessage_enable=YES
+nopriv_user=ftpsecure
+local_enable=YES
+anonymous_enable=YES
+anon_world_readable_only=YES
+syslog_enable=NO
+connect_from_port_20=YES
+ascii_upload_enable=YES
+pam_service_name=vsftpd
+ssl_enable=NO
+pasv_min_port=30000
+pasv_max_port=30100
+listen=YES
+anon_mkdir_write_enable=NO
+anon_root=/srv/tftpboot
+anon_upload_enable=NO
+chroot_local_user=NO
+ftpd_banner=Welcome message
+idle_session_timeout=900
+local_root=/srv/tftpboot
+log_ftp_protocol=NO
+max_clients=10
+max_per_ip=3
+pasv_enable=YES
+ssl_sslv2=NO
+ssl_sslv3=NO
+ssl_tlsv1=YES
+
+// --------------------------------------------- //
+
+// --------------------------------------------- //
+
+配置 /etc/dhcpd.conf
+
+# dhcpd.conf
+option domain-name-servers 202.106.0.20;
+
+ddns-update-style interim;
+
+ignore client-updates;
+
+allow booting;
+allow bootp;
+filename &quot;pxelinux.0&quot;;
+
+default-lease-time 1800;
+max-lease-time 7200;
+
+subnet 192.168.0.0 netmask 255.255.255.0 {
+    option broadcast-address 192.168.0.255;
+    server-name &quot;install-server&quot;;
+    range 192.168.0.10 192.168.0.224;
+    option routers 192.168.0.1;
+}
+
+// --------------------------------------------- //
+
+// --------------------------------------------- //
+
+配置 /etc/sysconfig/dhcpd
+
+DHCPD_INTERFACE=&quot;eth0&quot;
+DHCPD6_INTERFACE=&quot;eth0&quot;
+DHCPD_IFUP_RESTART=&quot;&quot;
+DHCPD6_IFUP_RESTART=&quot;&quot;
+DHCPD_RUN_CHROOTED=&quot;yes&quot;
+DHCPD6_RUN_CHROOTED=&quot;yes&quot;
+DHCPD_CONF_INCLUDE_FILES=&quot;&quot;
+DHCPD6_CONF_INCLUDE_FILES=&quot;&quot;
+DHCPD_RUN_AS=&quot;dhcpd&quot;
+DHCPD6_RUN_AS=&quot;dhcpd&quot;
+DHCPD_OTHER_ARGS=&quot;&quot;
+DHCPD6_OTHER_ARGS=&quot;&quot;
+DHCPD_BINARY=&quot;&quot;
+DHCPD6_BINARY=&quot;&quot;
+
+// --------------------------------------------- //
+
+配置 /etc/xinetd.d/tftp
+
+service tftp
+{
+    socket_type     = dgram
+    protocol        = udp
+    wait            = yes
+    flags           = IPv4
+    user            = root
+    server          = /usr/sbin/in.tftpd
+    server_args     =  -s /srv/tftpboot
+    disable         = no
+}
+
+// --------------------------------------------- //
+
+配置 Yast 中 TFTP
+
+Enable
+/srv/tftpboot
+
+// --------------------------------------------- //
+
+配置 /srv/tftpboot 及镜像
+
+目录:
+pxelinux.0
+pxelinux.cfg/default
+danoo/vmlinuz
+danoo/tinycore.gz
+
+文件 pxelinux.cfg/default
+
+default linux
+prompt 1
+timeout 60
+
+label linux
+kernel danoo/vmlinuz
+append ip=dhcp initrd=danoo/tinycore.gz
+
+
+// --------------------------------------------- //
+</code></pre>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+        <ul>
+          
+            <li class="prev"><a href="/default/SDL-%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E8%BE%93%E5%87%BA%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87/" title="SDL-在屏幕上输出一张图片">&larr; Previous</a></li>
+          
+          
+
+            <li><a href="/archive">Archive</a></li>
+
+          
+            <li class="next"><a href="/default/Linux-%E5%90%AF%E5%8A%A8%E6%97%B6%E6%98%BE%E7%A4%BA%E8%AF%A6%E7%BB%86%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/" title="Linux-启动时显示详细启动过程">Next &rarr;</a></li>
+          
+          
+        </ul>
+      </ul>
+    </div>
+    <hr>
+   <!-- 
+<div id="disqus_thread"></div>
+<script>
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+ -->
+  </div>
+  
+  <div class="span2">
+    <h4>Published</h4>
+    <div class="date"><span>2014-07-03</span></div>
+    <br>
+    <h4>Categories</h4>
+    <ul class="tag_box">
+    
+      <li>
+  <a href="/categories/#default-ref">default <span>96</span></a>
+</li>
+    
+    </ul>
+    <br>
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+      <li>
+  <a href="/tags/#system-ref">system <span>37</span></a>
+</li>
+    
+    </ul>
+  </div>
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy; nljb 2014
+          with help from <a href="http://github.com/wendal/gor" target="_blank" title="Gor -- Fast Blog">Gor</a>
+	  and Idea from <a href="http://ruhoh.com" target="_blank" title="The Definitive Technical Blogging Framework">ruhoh</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+<script>
+  var pres = document.getElementsByTagName("pre");
+  for (var i=0; i < pres.length; ++i) {
+    pres[i].className = "prettyprint linenums";
+  }
+  prettyPrint();
+</script>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-123-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>

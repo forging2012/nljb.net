@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Python-danoo_3g_dog.py-and-danoo_3g_dial.py</title>
+  
+    <meta name="author" content="nljb">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/twitter/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/twitter/stylesheets/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/twitter/widgets/google_prettify/stylesheets/twitter-bootstrap.css" type="text/css" rel="stylesheet" media="all">
+ 
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">NLJB</a>
+          <ul class="nav">
+            
+              
+
+
+  <li><a href="/archive">Archive</a></li>
+
+
+            
+              
+
+
+  <li><a href="/tags">Tags</a></li>
+
+
+            
+              
+
+
+  <li><a href="/categories">Categories</a></li>
+
+
+            
+              
+
+
+  <li><a href="/pages">Pages</a></li>
+
+
+            
+              
+
+
+  <li><a href="/about">About Me</a></li>
+
+
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+  <h1>Python-danoo_3g_dog.py-and-danoo_3g_dial.py </h1>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <pre><code>#!/usr/bin/env python
+import time,os
+def get_link():
+    f = open(&quot;/etc/wvdial.conf&quot;,&quot;r&quot;)
+    str_end = []
+    for str in f:
+    try:
+        str = str.strip()
+        str.index('Modem')
+        str_member = str[str.index('=')+1:].strip()
+        str_end.append(str_member)
+    except ValueError:
+        continue
+    f.close()
+    return str_end[:]
+def get_dialer_list():
+    af = open(&quot;/etc/wvdial.conf&quot;,&quot;r&quot;)
+    str_end = []
+    for str in af:
+    try:
+        str = str.strip()
+        str.index('Dialer')
+        str_member = str[str.index('[Dialer')+7:-1].strip()
+        str_end.append(str_member)
+    except ValueError:
+        continue
+    af.close()
+    return str_end[:]
+DANOO_USB = get_link()
+DANOO_APN = get_dialer_list()
+print '&gt;&gt;&gt;',DANOO_APN
+print '&gt;&gt;&gt;',DANOO_USB
+if not len(DANOO_APN) == len(DANOO_USB):
+    print '&gt;&gt;&gt;','wvdial.conf Config Error'
+    exit(0)
+while True:
+    WV_MEMBER = len(DANOO_APN)
+    print '&gt;&gt;&gt; Dial Device Number',WV_MEMBER
+    for x in range(WV_MEMBER):
+    try:
+        f = file(DANOO_USB[x])
+        f.close()
+    except IOError:
+        print '&gt;&gt;&gt; No such file or directory',DANOO_USB[x]
+        continue
+    ST_WV = 'wvdial'+' '+DANOO_APN[x]
+    ST_WVDIAL = os.system(ST_WV)
+    print '&gt;&gt;&gt;','Connect',DANOO_APN[x],'Error Sleep 10s'
+    time.sleep(10)
+    print '&gt;&gt;&gt;','Connect ALL Failure Sleep 30s Reconnect'
+    time.sleep(30)
+-----------------------------------------------  ↓ OLD  ↓ --------------------------------------------------------------------------
+#!/usr/bin/env python
+import time,os
+def get_link():
+    f = open(&quot;/etc/wvdial.conf&quot;,&quot;r&quot;)
+    str_end = []
+    for str in f:
+    try:
+        str = str.strip()
+        str.index('Modem')
+        str_member = str[str.index('=')+1:].strip()
+        str_end.append(str_member)
+    except ValueError:
+        continue
+    f.close()
+    return str_end[:]
+def get_dialer_list():
+    af = open(&quot;/etc/wvdial.conf&quot;,&quot;r&quot;)
+    str_end = []
+    for str in af:
+    try:
+        str = str.strip()
+        str.index('Dialer')
+        str_member = str[str.index('[Dialer')+7:-1].strip()
+        str_end.append(str_member)
+    except ValueError:
+        continue
+    af.close()
+    return str_end[:]
+DANOO_USB = get_link()
+DANOO_APN = get_dialer_list()
+print '&gt;&gt;&gt;',DANOO_APN
+print '&gt;&gt;&gt;',DANOO_USB
+if not len(DANOO_APN) == len(DANOO_USB):
+    print '&gt;&gt;&gt;','wvdial.conf Config Error'
+    exit(0)
+while True:
+    WV_MEMBER = len(DANOO_APN)
+    print '&gt;&gt;&gt; Dial Device Number',WV_MEMBER
+    for x in range(WV_MEMBER):
+    try:
+        f = file(DANOO_USB[x])
+        f.close()
+    except IOError:
+        print '&gt;&gt;&gt; No such file or directory',DANOO_USB[x]
+        continue
+    ST_WV = 'wvdial'+' '+DANOO_APN[x]
+    ST_WVDIAL = os.system(ST_WV)
+    print '&gt;&gt;&gt;','Connect',DANOO_APN[x],'Error Sleep 10s'
+    time.sleep(10)
+    print '&gt;&gt;&gt;','Connect ALL Failure Reload drive'
+    os.system('pkill wvdial')
+    os.system('pkill pppd')
+    time.sleep(10)
+    MOD_R = os.system('modprobe -r option usbserial')
+    MOD_A = os.system('modprobe option')
+    if MOD_R != 0:
+    print '&gt;&gt;&gt; Remove drive Error'
+    if MOD_A != 0:
+    print '&gt;&gt;&gt; Load drive Error'
+    print '&gt;&gt;&gt;','Connect ALL Failure Sleep 30s Reconnect'
+    time.sleep(30)
+
+----------------------------------------------- ↓ DOG ↓ --------------------------------------------------------------------------
+#def CHECK_WGET(w_addr,f_addr):
+# messaget = 0
+# try:
+# file = urllib.urlopen(w_addr)
+# messaget = file.read()
+# except IOError:
+# print '&gt;&gt;&gt; urlopen %s error' % w_addr
+# file.close()
+# if messaget != 0:
+# messaget.index(f_addr)
+# messaget = 1
+# return messaget
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#!/usr/bin/env python
+import os,time,subprocess
+CHECK_NET = ['www.baidu.com','www.google.cn','www.qq.com','www.msn.com']
+print '&gt;&gt;&gt; Check Netwrok Address -&gt;',CHECK_NET
+def shell_command(command):
+    command_info = subprocess.call(command,shell=True)
+    if command_info != 0:
+    print '&gt;&gt;&gt; command error -&gt; ',command
+    return command_info
+def CHECK_PING(ping_add):
+    PING_ADD = 'ping -c 5'+' '+ping_add+' '+'&gt;/dev/null'
+    PING_INFO = shell_command(PING_ADD)
+    return not PING_INFO
+def CHECK_TTYUSB(tty_usb):
+    TTY_INFO = 1
+    try:
+    file(tty_usb)
+    except IOError:
+    TTY_INFO = 0
+    return TTY_INFO
+def CHECK_TTYUSB_INFO():
+    global dial_pid
+    if CHECK_TTYUSB('/dev/ttyUSB0'):
+    print '&gt;&gt;&gt; Check /dev/ttyUSB0 OK'
+    elif CHECK_TTYUSB('/dev/ttyUSB2'):
+    print '&gt;&gt;&gt; Check /dev/ttyUSB2 OK'
+    else:
+    print '&gt;&gt;&gt; Check ttyUSB0 and ttyUSB2 Error -&gt; No such file'
+    print '&gt;&gt;&gt; kill ',dial_pid.pid
+    subprocess.Popen.kill(dial_pid)
+    print '&gt;&gt;&gt; Network Check False -&gt; Recheck Start Reload Driver'
+    print '&gt;&gt;&gt; Network Check False -&gt; Recheck Reload Danoo 3G Dial'
+    if shell_command('pkill wvdial'):
+        print '&gt;&gt;&gt; Recheck pkill wvdial Error'
+    if shell_command('pkill pppd'):
+        print '&gt;&gt;&gt; Recheck pkill pppd Error'
+    if shell_command('modprobe -r option usbserial'):
+        print '&gt;&gt;&gt; Recheck modprobe -r option usbserial Error'
+    if shell_command('modprobe option'):
+        print '&gt;&gt;&gt; Recheck modprobe option Error'
+    print '&gt;&gt;&gt; Network Check False -&gt; Reload End'
+    print '&gt;&gt;&gt; Check ttyUSB0 and ttyUSB2 -&gt; Sleep 3600s Out Reboot -&gt; Start'
+    time.sleep(3600)
+    print '&gt;&gt;&gt; Check ttyUSB0 and ttyUSB2 -&gt; Sleep 3600s Out Reboot -&gt; End , Recheck Start'
+    NET_TTYS_RE = 0
+    if CHECK_TTYUSB('/dev/ttyUSB0'):
+        print '&gt;&gt;&gt; Recheck /dev/ttyUSB0 OK'
+    elif CHECK_TTYUSB('/dev/ttyUSB2'):
+        print '&gt;&gt;&gt; Recheck /dev/ttyUSB2 OK'
+    else:
+        print '&gt;&gt;&gt; Recheck ttyUSB0 and ttyUSB2 -&gt; No such file'
+        NET_TTYS_RE = 0
+        print '&gt;&gt;&gt; Recheck ttyUSB0 and ttyUSB2 -&gt; Sleep 3600s Out Reboot -&gt; End , Recheck End -&gt; Reboot'
+        shell_command('reboot')
+    if NET_TTYS_RE != 0:
+        print '&gt;&gt;&gt; Recheck ttyUSB0 and ttyUSB2 -&gt; Sleep 3600s Out Reboot -&gt; End , Recheck End -&gt; Find ttyUSB or Network Not Reboot'
+def START_DIAL():
+    global dial_pid
+    try:
+    dial_pid = subprocess.Popen('/danoo/bin/danoo_3g_dial.py')
+    except IOSError:
+    print '&gt;&gt;&gt; /danoo/bin/danoo_3g_dial.py -&gt; No such file'
+    exit(1)
+    print '&gt;&gt;&gt; /danoo/bin/danoo_3g_dial.py PID -&gt;',dial_pid.pid
+#####################################################################
+START_DIAL()
+CHECK_TTYUSB_INFO()
+START_DIAL()
+print '&gt;&gt;&gt; Danoo 3G DOG -&gt; Time Sleep 1800s'
+time.sleep(1800)
+while True:
+    NET_INFO = 0
+    for x in range(len(CHECK_NET)):
+    if CHECK_PING(CHECK_NET[x]):
+        NET_INFO = NET_INFO + 1
+        break
+    if not NET_INFO:
+    CHECK_TTYUSB_INFO()
+    print '&gt;&gt;&gt; Network Check False -&gt; Start Reload Driver'
+    print '&gt;&gt;&gt; Network Check False -&gt; Start Reload Danoo 3G Dial'
+    print '&gt;&gt;&gt; kill ',dial_pid.pid
+    subprocess.Popen.kill(dial_pid)
+    if shell_command('pkill wvdial'):
+        print '&gt;&gt;&gt; pkill wvdial Error'
+    if shell_command('pkill pppd'):
+        print '&gt;&gt;&gt; pkill pppd Error'
+    if shell_command('modprobe -r option usbserial'):
+        print '&gt;&gt;&gt; modprobe -r option usbserial Error'
+    if shell_command('modprobe option'):
+        print '&gt;&gt;&gt; modprobe option Error'
+    START_DIAL()
+    print '&gt;&gt;&gt; Network Check False -&gt; Reload End'
+    else:
+    print '&gt;&gt;&gt; Network Check True'
+    print '&gt;&gt;&gt; Danoo 3G DOG -&gt; Time Sleep 1800s'
+    time.sleep(1800)
+</code></pre>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+        <ul>
+          
+            <li class="prev"><a href="/default/SSH--C-%E5%8E%8B%E7%BC%A9%E4%BC%A0%E8%BE%93/" title="SSH--C-压缩传输">&larr; Previous</a></li>
+          
+          
+
+            <li><a href="/archive">Archive</a></li>
+
+          
+            <li class="next"><a href="/default/Python-auto_network/" title="Python-auto_network">Next &rarr;</a></li>
+          
+          
+        </ul>
+      </ul>
+    </div>
+    <hr>
+   <!-- 
+<div id="disqus_thread"></div>
+<script>
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+ -->
+  </div>
+  
+  <div class="span2">
+    <h4>Published</h4>
+    <div class="date"><span>2014-07-04</span></div>
+    <br>
+    <h4>Categories</h4>
+    <ul class="tag_box">
+    
+      <li>
+  <a href="/categories/#default-ref">default <span>96</span></a>
+</li>
+    
+    </ul>
+    <br>
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+      <li>
+  <a href="/tags/#python-ref">python <span>4</span></a>
+</li>
+    
+    </ul>
+  </div>
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy; nljb 2014
+          with help from <a href="http://github.com/wendal/gor" target="_blank" title="Gor -- Fast Blog">Gor</a>
+	  and Idea from <a href="http://ruhoh.com" target="_blank" title="The Definitive Technical Blogging Framework">ruhoh</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+<script>
+  var pres = document.getElementsByTagName("pre");
+  for (var i=0; i < pres.length; ++i) {
+    pres[i].className = "prettyprint linenums";
+  }
+  prettyPrint();
+</script>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-123-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>
