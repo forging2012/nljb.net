@@ -53,8 +53,8 @@ Libev是一个event loop:向libev注册感兴趣的events
 >
 
 	// 当标准输入上有可读取的数据时，将调用下面这个回调函数
-	// 其中,(cb)为:
-	void cb(struct ev_loop *loop, struct ev_io *watcher, int revents)回调事件
+	// 其中,(cb)为回调:
+	void cb(struct ev_loop *loop, struct ev_io *watcher, int revents);
 
 >
 
@@ -108,8 +108,6 @@ Libev是一个event loop:向libev注册感兴趣的events
 ---
 
 	// 而且还可以在回调函数内增加事件
-
-	// cb
 	void cb(struct ev_loop *loop, struct ev_io *watcher, int revents)
 	{
 
@@ -243,7 +241,7 @@ Libev是一个event loop:向libev注册感兴趣的events
 	    // STDIN_FILENO
 	    int client_sd;
 
-	    // 分派客户端的ev_io结构
+	    // 分派客户端的(ev_io)结构
 	    ev_io *w_client = new(ev_io);
 
 	    // libev,错误处理
