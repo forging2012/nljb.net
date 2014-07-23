@@ -133,7 +133,7 @@ Libev是一个event loop:向libev注册感兴趣的events
 
 ---
 
-	// 针对Libev实现Socket事件
+	// 针对Libev实现Socket事件,阻塞方式
 	#include <iostream>
 	#include <ev.h>
 	#include <netinet/in.h>
@@ -241,7 +241,7 @@ Libev是一个event loop:向libev注册感兴趣的events
 	    // STDIN_FILENO
 	    int client_sd;
 
-	    // 分派客户端的(ev_io)结构
+	    // 分派客户端的ev_io结构
 	    ev_io *w_client = new(ev_io);
 
 	    // libev,错误处理
@@ -274,6 +274,9 @@ Libev是一个event loop:向libev注册感兴趣的events
 	    // 缓冲区
 	    char buffer[BUFFER_SIZE];
 
+	    // 命令区
+	    char command[BUFFER_SIZE];
+
 	    // 读取到的字节数
 	    ssize_t read;
 
@@ -284,38 +287,97 @@ Libev是一个event loop:向libev注册感兴趣的events
 		return;
 	    }
 
-	    // recv普通socket写法
-	    read = recv(watcher->fd, buffer, BUFFER_SIZE, 0);
+	    // 铁人三项
+	    bool iCmdBegin = false; // 命令状态
+	    int index = 0;          // 命令下标
+	    string cmdType;         // 命令类型
 
-	    if(read < 0)
-	    {
-		printf("read error");
-		return;
+	    // xxx
+	    while(1) {
+
+		// 最后记得置零
+		bzero(buffer, BUFFER_SIZE);
+
+		// 读取本次输入数据
+		read = recv(watcher->fd, buffer, BUFFER_SIZE, 0);
+
+		// 分析数据
+		for(int i=0;i < read ;i++){
+
+		    // 寻找事件
+		    if(buffer[i] == '#'){
+			cout << "find #" << (int)buffer[i-1]<< endl;
+			// 事件开始
+			iCmdBegin = true;
+			// 继续
+			continue;
+		    }
+
+		    // 事件末尾
+		    if(iCmdBegin && buffer[i] == '\n') {
+
+			cout << "find ->" << cmdType << endl;
+
+			printf("get the message:\n%s\n",command);
+
+			// 处理
+			if (cmdType.compare("End\r") == 0){
+			    cout<< "#End" << endl;
+			    // 播放事件
+			}
+
+			if (cmdType.compare("Close\r") == 0){
+			    cout << "#Close" << endl;
+			    // 断开连接
+			    close(watcher->fd);
+			    // 每一次事件都必须用对应的停止函数，手动停止
+			    ev_io_stop(loop, watcher);
+			    // 释放内存
+			    delete(watcher);
+			    // 跳出
+			    return;
+			}
+
+			if (cmdType.compare("Quit\r") == 0){
+			    cout << "#Quit" << endl;
+			    // 断开连接
+			    close(watcher->fd);
+			    // 每一次事件都必须用对应的停止函数，手动停止
+			    ev_io_stop(loop, watcher);
+			    // 释放内存
+			    delete(watcher);
+			    // 跳出
+			    return;
+			}
+
+			// 重置
+			iCmdBegin = false;
+			cmdType = "";
+			index = 0;
+			bzero(command, BUFFER_SIZE);
+
+			// 返回
+			continue;
+		    }
+
+		    // 状态
+		    if(iCmdBegin) {
+			// 事件
+			cmdType += buffer[i];
+		    } else {
+			// 命令
+			command[index] = buffer[i];
+			// 增加
+			index++;
+		    }
+
+		}
+
+		// 原信息返回,也可以自己写信息,都一样.
+		// send(watcher->fd, buffer, read, 0);
+
 	    }
-
-
-	    // 断开链接的处理,停掉evnet就可以,同时记得释放客户端的结构体!
-	    if(read == 0)
-	    {
-		printf("someone disconnected.\n");
-		// 断开连接
-		close(watcher->fd);
-		// 每一次事件都必须用对应的停止函数，手动停止
-		ev_io_stop(loop, watcher);
-		// 释放内存
-		delete(watcher);
-		// 跳出
-		return;
-	    }
-	    else
-	    {
-		printf("get the message:%s\n",buffer);
-	    }
-
-	    // 原信息返回,也可以自己写信息,都一样.
-	    send(watcher->fd, buffer, read, 0);
-
-	    // 最后记得置零
-	    bzero(buffer, read);
 
 	}
+
+---
