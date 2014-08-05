@@ -8,6 +8,37 @@ tags:golang
 
 ---
 
+	// ICCID
+	func ICCID(iccid string) (string, error) {
+		// 上传数据
+		resp, e := http.PostForm("http://iservice.10010.com/ehallService/helpCenter/wireless/execute",
+			url.Values{
+				"iccid":    {iccid},
+				"proId":    {"011"},
+				"backData": {"noname"},
+				"callBack": {"wirelessCard.processData"}})
+		if e != nil {
+			// 返回空
+			return "", e
+		}
+		// 保证I/O正常关闭
+		defer resp.Body.Close()
+		log.Println(resp.StatusCode, http.StatusOK)
+		// 判断返回状态
+		if resp.StatusCode == http.StatusOK {
+			// 读取返回的数据
+			data, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				// 读取异常,返回错误
+				return "", err
+			}
+			log.Println("-->", string(data))
+		}
+		return "", nil
+	}
+
+---
+
 	func ICCID(iccid string) (string, error) {
 		// 上传数据
 		req, e := http.NewRequest("POST",
