@@ -125,7 +125,7 @@ text/plain 空格转换为 "+" 加号，但不对特殊字符编码。
 	<body>
 	<form enctype="multipart/form-data" action="http://127.0.0.1:9090/upload" method="post">
 	 <input type="file" name="uploadfile" />
-	 <input type="hidden" name="token" value="{{.}}"/>
+	 <input type="hidden" name="token" value="{...{.}...}"/>
 	 <input type="submit" value="upload" />
 	</form>
 	</body>
