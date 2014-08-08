@@ -93,3 +93,4 @@ tags:golang
 	    http.HandleFunc("/ajax/",ajaxHandler)
 	    http.HandleFunc("/",NotFoundHandler)
 	    http.ListenAndServe(":8888", nil)	
+	}
