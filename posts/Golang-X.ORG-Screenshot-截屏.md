@@ -68,4 +68,34 @@ tags:golang
 		return img, nil
 	}
 
+---
+
+	// 生成 image.RGBA 数据
+	// 想要保存为文件参考Z库方法
+	// z "github.com/nutzam/zgo"
+	
+	// JPEG将编码生成图片
+	// 选择编码参数,质量范围从1到100,更高的是更好 &jpeg.Options{90}
+	func ImageEncodeJPEG(ph string, img image.Image, option int) error {
+		// 确保文件父目录存在
+		FcheckParents(ph)
+		// 打开文件等待写入
+		f := FileW(ph)
+		// 保证文件正常关闭
+		defer f.Close()
+		// 写入文件
+		return jpeg.Encode(f, img, &jpeg.Options{option})
+	}
+
+	// PNG将编码生成图片
+	func ImageEncodePNG(ph string, img image.Image) error {
+		// 确保文件父目录存在
+		FcheckParents(ph)
+		// 打开文件等待写入
+		f := FileW(ph)
+		// 保证文件正常关闭
+		defer f.Close()
+		// 写入文件
+		return png.Encode(f, img)
+	}
 
