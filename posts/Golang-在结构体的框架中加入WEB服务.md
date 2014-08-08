@@ -51,6 +51,32 @@ tags:golang
 		}
 	}
 
+	// 可以在 Server 里面为所欲为的增加方法了
+	// 截图
+	func (this *Server) WebSnapshot(w http.ResponseWriter, r *http.Request) {
+		// 发现请求
+		log.Printf("web snapshot find request from [%s]", r.RemoteAddr)
+		// 返回结构
+		resp := new(WebResp)
+		// 初始化参数
+		resp.OK = true
+		// 执行
+		data, err := this.system()
+		// 判断是否执行异常
+		if err != nil {
+			// 返回状态
+			resp.OK = false
+			resp.Data = err.Error()
+			ResponseWriter(w, resp)
+			return
+		}
+		// 状态
+		resp.Data = data
+		// 返回
+		ResponseWriter(w, resp)
+	}
+		
+
 ---
 
 	// 你可能没有发现上面的优点,那看看普通的HTTP如何创建吧
