@@ -188,3 +188,36 @@ tags:golang
 		return
 
 	}
+
+---
+
+	// 而HTML页面是这样的 "template/files/filelist.html"
+	// 对于判断来首,{ #去掉本注释# if .Stat}},是以,空,非空,来判断的
+
+	<table>
+	<tr>
+	<td>
+	</tr>  
+	<tr>
+	<td>编号</td>
+	<td>文件名称</td>
+	<td>文件大小</td>
+	<td>创建日期</td>
+	<td>下载</td>
+	<td>操作</td>
+	</tr>
+	{ #去掉本注释# {range .Files}} 
+	<tr>  
+	<td>{ #去掉本注释# {.Id}}</td>
+	<td>{ #去掉本注释# {.Name}}</td>
+	<td>{ #去掉本注释# {.Size}}</td>
+	<td>{ #去掉本注释# {.Date}}</td>
+	<td><a href="../download.go?f={ #去掉本注释# {.Name}}">下载</a></td>
+	{ #去掉本注释# {if .Stat}}
+	<td><a href="../rmfile.go?f={ #去掉本注释# {.Name}}">删除</a></td>
+	{ #去掉本注释# {else}}
+	<td>删除</td>
+	{ #去掉本注释# {end}}
+	</tr>
+	{ #去掉本注释# {end}} 
+	</table>
