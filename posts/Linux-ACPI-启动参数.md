@@ -12,7 +12,7 @@ tags:system
 
 >
 
-	acpi=           [HW,ACPI] Advanced Configuration and Power Interface
+	acpi= [HW,ACPI] Advanced Configuration and Power Interface
 
 	force : 强制开启acpi.
 	off   : 关闭acpi.
@@ -25,11 +25,10 @@ tags:system
 
 >
 
-	acpi_sleep=     [HW,ACPI] Sleep options
+	// ACPI休眠选项。
+	acpi_sleep= [HW,ACPI] Sleep options
 
 	Format: { s3_bios, s3_mode }
-
-	// ACPI休眠选项。
 
 在从S3状态(挂起到内存)恢复的时候，硬件需要被正确的初始化。
 
@@ -41,21 +40,21 @@ tags:system
 
 >
 
-	acpi_sci=       [HW,ACPI] ACPI System Control Interrupt trigger mode
+	acpi_sci= [HW,ACPI] ACPI System Control Interrupt trigger mode
 
 	Format: { level | edge | high | low }
 
-	// ACPI系统控制终端触发器模式
+ACPI系统控制终端触发器模式
 
 	acpi_irq_balance [HW,ACPI]
 
-	// 使ACPI对中断请求进行平衡，在APIC模式下为默认值
+使ACPI对中断请求进行平衡，在APIC模式下为默认值
 
 	acpi_irq_nobalance [HW,ACPI]
 
-	// ACPI不对中断请求进行平衡（默认），PIC模式下为默认值
+ACPI不对中断请求进行平衡（默认），PIC模式下为默认值
 
-	acpi_irq_pci=   [HW,ACPI]
+	acpi_irq_pci= [HW,ACPI]
 
 	Format: <irq>,<irq>...
 
@@ -63,7 +62,7 @@ tags:system
 
 >
 
-	acpi_irq_isa=   [HW,ACPI]
+	acpi_irq_isa= [HW,ACPI]
 
 	Format: <irq>,<irq>...
 
@@ -71,7 +70,7 @@ tags:system
 
 >
 
-	acpi_os_name=   [HW,ACPI]
+	acpi_os_name= [HW,ACPI]
 
 告诉ACPI BIOS操作系统的名称。
 
@@ -81,7 +80,7 @@ tags:system
 
 >
 
-	acpi_osi=       [HW,ACPI]
+	acpi_osi= [HW,ACPI]
 
 空参数是关闭 _OSI方法.
 
