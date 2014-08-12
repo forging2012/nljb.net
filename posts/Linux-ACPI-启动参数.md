@@ -8,10 +8,6 @@ tags:system
 
 ---
 
-========================
-ACPI
-========================
-
 	[HW,ACPI,X86-64,i386]
 	acpi={force|off|ht|strict|noirq}
 	// ACPI的总开关
