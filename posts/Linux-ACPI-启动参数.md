@@ -17,10 +17,10 @@ tags:system
 	force : 强制开启acpi.
 	off   : 关闭acpi.
 	noirq : 不要使用acpi去路由irq。禁止使用ACPI来处理PCI设备中断路由
-		和pci=noacpi的区别是它允许使用ACPI来枚举PCI root bus.
+			和pci=noacpi的区别是它允许使用ACPI来枚举PCI root bus.
 	ht    : 只使用足够的acpi去支持超线程
-		这个参数和"acpi=off"几乎一样，它禁止了除多处理器配置相关的内容以外的所有ACPI功能。
-		如果acpi=off正常，但acpi=ht不正常, 则解析ACPI表或者Linux SMP的代码有bug.
+			这个参数和"acpi=off"几乎一样，它禁止了除多处理器配置相关的内容以外的所有ACPI功能。
+			如果acpi=off正常，但acpi=ht不正常, 则解析ACPI表或者Linux SMP的代码有bug.
 	strict : 降低对不严格遵循acpi规范平台的兼容性
 
 >
