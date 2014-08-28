@@ -221,3 +221,65 @@ tags:golang
 	</tr>
 	{ #去掉本注释# {end}} 
 	</table>
+
+---
+
+	通过ServeMux方式
+
+---
+
+	package main
+
+	import (
+		"github.com/gorilla/sessions"
+		"log"
+		"net/http"
+		"runtime"
+	)
+
+	// sessions
+	var store *sessions.CookieStore
+
+	func main() {
+
+		// 设置CPU核心数量
+		runtime.GOMAXPROCS(runtime.NumCPU())
+
+		// 设置日志的结构
+		log.SetFlags(log.Lshortfile | log.Ldate | log.Ltime | log.Lmicroseconds)
+
+		// sessions
+		store = sessions.NewCookieStore([]byte("something-very-secret"))
+
+		// ServeMux
+		mux := http.NewServeMux()
+
+		// Handle
+		mux.Handle("/images/", http.FileServer(http.Dir("template")))
+
+		// HandleFunc
+		mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			switch r.URL.Path {
+			case "/":
+				index(w, r)
+			default:
+				http.NotFound(w, r)
+			}
+		})
+		
+		// Listen
+		if err := http.ListenAndServe(":8080", mux); err != nil {
+			log.Panic(err)
+		}
+
+	}
+
+---
+
+	// sessions
+	session, _ := store.Get(r, "get_name_session")
+	session.Values["name"] = username
+	session.Save(r, w)
+
+
+
