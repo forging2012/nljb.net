@@ -8,6 +8,12 @@ tags:golang
 
 ---
 
+	http://blog.golang.org/go-image-package
+
+	http://blog.golang.org/go-imagedraw-package
+
+	http://blog.golang.org/gif-decoder-exercise-in-go-interfaces
+
 Golang 的图片出来通过提供操作每一个像素点设置颜色（http://www.cnblogs.com/ghj1976/p/3441536.html）
 
 提供通过可选蒙版图片重叠操作 （http://www.cnblogs.com/ghj1976/p/3443638.html） 这两种基础方式
