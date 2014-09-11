@@ -8,6 +8,99 @@ tags:qt
 
 ---
 
+	#include "mainwindow.h"
+	#include "ui_mainwindow.h"
+	#include <QtGui>
+
+	MainWindow::MainWindow(QWidget *parent) :
+	    QMainWindow(parent),
+	    ui(new Ui::MainWindow)
+	{
+	    ui->setupUi(this);
+
+	    ui->runButton->setFlat(true);
+	    ui->runTableWidget->setHidden(true);
+	    connect(ui->runButton, SIGNAL(clicked()), this ,SLOT(runShowTable()));
+
+	    ui->evoButton->setFlat(true);
+	    ui->evoTableView->setHidden(true);
+	    connect(ui->evoButton, SIGNAL(clicked()), this ,SLOT(evoShowTable()));
+
+	    ui->sysButton->setFlat(true);
+	    ui->sysTableView->setHidden(true);
+	    connect(ui->sysButton, SIGNAL(clicked()), this ,SLOT(sysShowTable()));
+
+	    ui->mbrButton->setFlat(true);
+	    ui->mbrTableWidget->setHidden(true);
+	    connect(ui->mbrButton, SIGNAL(clicked()), this ,SLOT(mbrShowTable()));
+
+	    ui->patchButton->setFlat(true);
+	    ui->patchTableWidget->setHidden(true);
+	    connect(ui->patchButton, SIGNAL(clicked()), this ,SLOT(patchShowTable()));
+
+	}
+
+	MainWindow::~MainWindow()
+	{
+	    delete ui;
+	}
+
+	void MainWindow::allHidden()
+	{
+	    ui->runTableWidget->setHidden(true);
+	    ui->evoTableView->setHidden(true);
+	    ui->sysTableView->setHidden(true);
+	    ui->mbrTableWidget->setHidden(true);
+	    ui->patchTableWidget->setHidden(true);
+	}
+
+	void MainWindow::runShowTable()
+	{
+
+	    allHidden();
+	    ui->runTableWidget->setColumnCount(5);
+	    ui->runTableWidget->setRowCount(100);
+	//    ui->runTableWidget->horizontalHeader()->setStretchLastSection(true);
+	    ui->runTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+
+	    QStringList header;
+	    header<< "指派" << "系统" << "进化" << "分区表" << "补丁";
+	    ui->runTableWidget->setHorizontalHeaderLabels(header);
+	    ui->runTableWidget->setItem(0,0,new QTableWidgetItem("Janxxxxxxxxxxxxxxxxx"));
+	    ui->runTableWidget->setItem(1,0,new QTableWidgetItem("Feb"));
+	    ui->runTableWidget->setItem(2,0,new QTableWidgetItem("Mar"));
+	    ui->runTableWidget->show();
+	}
+
+	void MainWindow::evoShowTable()
+	{
+	    allHidden();
+	    ui->evoTableView->show();
+	}
+
+	void MainWindow::sysShowTable()
+	{
+	    allHidden();
+	    ui->sysTableView->show();
+	}
+
+	void MainWindow::mbrShowTable()
+	{
+	    allHidden();
+	    ui->mbrTableWidget->show();
+	}
+
+	void MainWindow::patchShowTable()
+	{
+	    allHidden();
+	    ui->patchTableWidget->show();
+	}
+
+
+
+
+---
+
 	table->setSelectionMode(QAbstractItemView::SingleSelection)  
 	table.horizontalHeader()->setResizeMode(QheaderView::Fixed);  
 	table.horizontalHeader()->setStretchLastSection(true);  
