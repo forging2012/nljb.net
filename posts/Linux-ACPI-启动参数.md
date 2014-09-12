@@ -8,6 +8,124 @@ tags:system
 
 ---
 
+        acpi=           [HW,ACPI,X86]
+                        Advanced Configuration and Power Interface
+                        Format: { force | off | strict | noirq | rsdt }
+                        force -- enable ACPI if default was off
+                        off -- disable ACPI if default was on
+                        noirq -- do not use ACPI for IRQ routing
+                        strict -- Be less tolerant of platforms that are not
+                                strictly ACPI specification compliant.
+                        rsdt -- prefer RSDT over (default) XSDT
+                        copy_dsdt -- copy DSDT to memory
+                        See also Documentation/power/pm.txt, pci=noacpi
+        acpi_apic_instance=     [ACPI, IOAPIC]
+                        Format: <int>
+                        2: use 2nd APIC table, if available
+                        1,0: use 1st APIC table
+                        default: 0
+        acpi_backlight= [HW,ACPI]
+                        acpi_backlight=vendor
+                        acpi_backlight=video
+                        If set to vendor, prefer vendor specific driver
+                        (e.g. thinkpad_acpi, sony_acpi, etc.) instead
+                        of the ACPI video.ko driver.
+        acpi.debug_layer=       [HW,ACPI,ACPI_DEBUG]
+        acpi.debug_level=       [HW,ACPI,ACPI_DEBUG]
+                        Format: <int>
+                        CONFIG_ACPI_DEBUG must be enabled to produce any ACPI
+                        debug output.  Bits in debug_layer correspond to a
+                        _COMPONENT in an ACPI source file, e.g.,
+                            #define COMPONENT ACPIPCI_COMPONENT
+                        Bits in debug_level correspond to a level in
+                        ACPI_DEBUG_PRINT statements, e.g.,
+                            ACPI_DEBUG_PRINT((ACPI_DB_INFO, ...
+                        The debug_level mask defaults to "info".  See
+                        Documentation/acpi/debug.txt for more information about
+                        debug layers and levels.
+                        Enable processor driver info messages:
+                            acpi.debug_layer=0x20000000
+                        Enable PCI/PCI interrupt routing info messages:
+                            acpi.debug_layer=0x400000
+                        Enable AML "Debug" output, i.e., stores to the Debug
+                        object while interpreting AML:
+                            acpi.debug_layer=0xffffffff acpi.debug_level=0x2
+                        Enable all messages related to ACPI hardware:
+                            acpi.debug_layer=0x2 acpi.debug_level=0xffffffff
+                        Some values produce so much output that the system is
+                        unusable.  The "log_buf_len" parameter may be useful
+                        if you need to capture more output.
+        acpi_display_output=    [HW,ACPI]
+                        acpi_display_output=vendor
+                        acpi_display_output=video
+                        See above.
+        acpi_irq_balance [HW,ACPI]
+                        ACPI will balance active IRQs
+                        default in APIC mode
+        acpi_irq_nobalance [HW,ACPI]
+                        ACPI will not move active IRQs (default)
+                        default in PIC mode
+        acpi_irq_isa=   [HW,ACPI] If irq_balance, mark listed IRQs used by ISA
+                        Format: <irq>,<irq>...
+        acpi_irq_pci=   [HW,ACPI] If irq_balance, clear listed IRQs for
+                        use by PCI
+                        Format: <irq>,<irq>...
+        acpi_no_auto_ssdt       [HW,ACPI] Disable automatic loading of SSDT
+        acpi_os_name=   [HW,ACPI] Tell ACPI BIOS the name of the OS
+                        Format: To spoof as Windows 98: ="Microsoft Windows"
+        acpi_osi=       [HW,ACPI] Modify list of supported OS interface strings
+                        acpi_osi="string1"      # add string1 -- only one string
+                        acpi_osi="!string2"     # remove built-in string2
+                        acpi_osi=               # disable all strings
+        acpi_pm_good    [X86]
+                        Override the pmtimer bug detection: force the kernel
+                        to assume that this machine's pmtimer latches its value
+                        and always returns good values.
+        acpi_sci=       [HW,ACPI] ACPI System Control Interrupt trigger mode
+                        Format: { level | edge | high | low }
+        acpi_serialize  [HW,ACPI] force serialization of AML methods
+        acpi_skip_timer_override [HW,ACPI]
+                        Recognize and ignore IRQ0/pin2 Interrupt Override.
+                        For broken nForce2 BIOS resulting in XT-PIC timer.
+        acpi_sleep=     [HW,ACPI] Sleep options
+                        Format: { s3_bios, s3_mode, s3_beep, s4_nohwsig,
+                                  old_ordering, s4_nonvs, sci_force_enable }
+                        See Documentation/power/video.txt for information on
+                        s3_bios and s3_mode.
+                        s3_beep is for debugging; it makes the PC's speaker beep
+                        as soon as the kernel's real-mode entry point is called.
+                        s4_nohwsig prevents ACPI hardware signature from being
+                        used during resume from hibernation.
+                        old_ordering causes the ACPI 1.0 ordering of the _PTS
+                        control method, with respect to putting devices into
+                        low power states, to be enforced (the ACPI 2.0 ordering
+                        of PTS is used by default).
+                        nonvs prevents the kernel from saving/restoring the
+                        ACPI NVS memory during suspend/hibernation and resume.
+                        sciforce_enable causes the kernel to set SCI_EN directly
+                        on resume from S1/S3 (which is against the ACPI spec,
+                        but some broken systems don't work without it).
+        acpi_use_timer_override [HW,ACPI]
+                        Use timer override. For some broken Nvidia NF5 boards
+                        that require a timer override, but don't have HPET
+        acpi_enforce_resources= [ACPI]
+                        { strict | lax | no }
+                        Check for resource conflicts between native drivers
+                        and ACPI OperationRegions (SystemIO and SystemMemory
+                        only). IO ports and memory declared in ACPI might be
+                        used by the ACPI subsystem in arbitrary AML code and
+                        can interfere with legacy drivers.
+                        strict (default): access to resources claimed by ACPI
+                        is denied; legacy drivers trying to access reserved
+                        resources will fail to bind to device using them.
+                        lax: access to resources claimed by ACPI is allowed;
+                        legacy drivers trying to access reserved resources
+                        will bind successfully but a warning message is logged.
+                        no: ACPI OperationRegions are not marked as reserved,
+                        no further checks are performed.
+
+---
+
 	[HW,ACPI,X86-64,i386]
 	acpi={force|off|ht|strict|noirq}
 	// ACPI的总开关
