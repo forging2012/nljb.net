@@ -8,6 +8,37 @@ tags:system
 
 ---
 
+	// FTP 获取镜像方式（实现无盘)
+	echo "#################################"
+
+	echo "Server ->" ${addr}
+
+	/usr/bin/ftp -nv ${addr} <<!
+	user anonymous anonymous
+	prompt off
+	hash
+	bin
+	lcd /
+	mget image
+	close
+	!
+
+	/sbin/depmod -a
+	sleep 1
+
+	/sbin/modprobe loop
+	sleep 1
+
+	/sbin/losetup /dev/loop0 /image && ls -l /dev/loop0
+	sleep 1
+
+	/bin/mount /dev/loop0 /root
+	sleep 1
+
+	echo "#################################"
+
+---
+
 	// git@github.com:nulijiabei/boot.git
 
 	// 注：image为根目录打包镜像,不要超过2G,需要LOOP驱动
