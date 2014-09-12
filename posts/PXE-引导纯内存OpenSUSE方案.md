@@ -8,6 +8,32 @@ tags:system
 
 ---
 
+	mknod -m 0660 /dev/loop0 b 7 0
+
+---
+
+	emergency() {
+	    local plymouth sulogin
+	    if plymouth=$(type -p plymouth 2> /dev/null) ; then
+		$plymouth quit
+		$plymouth --wait
+	    fi
+	    if test -w /proc/splash ; then
+		echo verbose >| /proc/splash
+	    fi
+	    cd /
+	    echo -n "${1+$@} -- "
+	    if sulogin=$(type -p sulogin 2> /dev/null); then
+		echo "exiting to $sulogin"
+		PATH=$PATH PS1='$ ' $sulogin /dev/console
+	    else
+		echo "exiting to /bin/sh"
+		PATH=$PATH PS1='$ ' /bin/sh -i
+	    fi
+	}
+
+---
+
 	// FTP 获取镜像方式（实现无盘)
 	echo "#################################"
 
