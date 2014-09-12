@@ -17,6 +17,7 @@ tags:system
 	163-opensuse-11.4-non-oss: http://mirrors.163.com/openSUSE/distribution/11.4/repo/non-oss/
 
 其中Oss是指 Open Source Software，开源软件。那么Non-Oss就是非开源软件了。
+
 另外Sohu也有openSUSE的源，但是在我用的网络，不如163的快。
 
 	sohu-opensuse-11.4-update: http://mirrors.sohu.com/opensuse/update/11.4/
