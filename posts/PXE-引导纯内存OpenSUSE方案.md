@@ -188,6 +188,12 @@ tags:system
 	    range 192.168.0.10 192.168.0.224;
 	    option routers 192.168.0.1;
 	}
+
+	// 指定IP地址
+	host danooplayer {
+	       hardware ethernet 00:E0:B4:0B:DD:70;
+	       fixed-address 192.168.2.200;
+	}	
 	 
 	// --------------------------------------------- //
 	 
