@@ -261,3 +261,22 @@ tags:system
 	 
 	 
 	// --------------------------------------------- //
+
+---
+
+	// 解决无盘系统硬盘问题
+
+	// 文件共享方案
+	yast2-nfs-server
+	nfs-kernel-server
+
+	// 通过 NFS 共享分区 
+	mount -t nfs ${MATRIX_SERVER}:/danoo/content/ /danoo/content/ -o nolock
+	sleep 1
+
+	// 通过 xinitrc 控制 程序启动
+	if [ -e /danoo/content/xinitrc ];then
+	    ldconfig
+	    cp -aRrf /danoo/content/xinitrc /etc/X11/xinit/xinitrc
+	    killall X
+	fi
