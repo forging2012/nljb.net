@@ -48,6 +48,14 @@ MAP的说明
 
 ---
 
+	// 判断KEY是否存在
+	bool Exist(const keyName)
+	{
+	     return (mRegistryMap.find(keyName) != mRegistryMap.end());
+	}
+
+---
+
 	#ifndef INI_H
 	#define INI_H
 
@@ -62,12 +70,19 @@ MAP的说明
 	class INI
 	{
 	public:
-	    INI();
+	    INI(string);
+	    ~INI();
 	public:
-	    void ReadINI();
+	    int ReadINI();
+	    int WriteINI();
+	    void ClearINI();
 	    void ShowINI();
+	    void AppendValByKeysAndVals(string, string, string);
+	    int DelValByKeysAndVals(string, string);
+	    string GetValByKeysAndVals(string, string);
 	private:
 	    keys * key;
+	    string path;
 	};
 
 	#endif // INI_H
@@ -80,21 +95,29 @@ MAP的说明
 	#include <iostream>
 	#include <string.h>
 
-	INI::INI()
+	INI::INI(string _path)
 	{
 	    key = new keys();
+	    path = _path;
 	}
 
-	void INI::ReadINI()
+	INI::~INI()
 	{
+	    ClearINI();
+	    delete(key);
+	}
+
+	int INI::ReadINI()
+	{
+	    ClearINI();
 	    string line;
 	    string type;
 	    int i;
-	    ifstream inf("matrix.ini");
-	    if (!inf.is_open()){
-		return;
+	    ifstream f(path.c_str());
+	    if (!f.is_open()){
+		return -1;
 	    }
-	    while(getline(inf, line)){
+	    while(getline(f, line)){
 		if (line.substr(0,1) ==  "#" || line.empty())
 		{
 		    continue;
@@ -112,7 +135,7 @@ MAP的说明
 		{
 		    continue;
 		}
-		if((*key)[type] == NULL)
+		if(key->find(type) == key->end())
 		{
 		    values * val = new values();
 		    (*key)[type] = val;
@@ -120,7 +143,19 @@ MAP的说明
 		values * val = (*key)[type];
 		(*val)[line.substr(0,i)] = line.substr(line.find("=")+1,line.length());
 	    }
-	    inf.close();
+	    f.close();
+	    return 0;
+	}
+
+	void INI::ClearINI()
+	{
+	    keys::iterator it;
+	    for(it=(*key).begin(); it!=(*key).end(); it++)
+	    {
+		(*(*it).second).clear();
+		delete((*it).second);
+		(*key).erase((*it).first);
+	    }
 	}
 
 	void INI::ShowINI()
@@ -129,12 +164,88 @@ MAP的说明
 	    for(it=(*key).begin(); it!=(*key).end(); it++)
 	    {
 		cout << "[" << (*it).first << "]" << endl;
-		values * val = (*it).second;
+		values * vals = (*it).second;
 		values::iterator iv;
-		for(iv=(*val).begin(); iv!=(*val).end(); iv++)
+		for(iv=(*vals).begin(); iv!=(*vals).end(); iv++)
 		{
 		    cout << (*iv).first << "=" << (*iv).second << endl;
 		}
 	    }
+	}
+
+	string INI::GetValByKeysAndVals(string _keys, string _values)
+	{
+	    if (key->find(_keys) == key->end())
+	    {
+		return "";
+	    }
+	    values * vals = (*key)[_keys];
+	    if (vals->find(_values) == vals->end())
+	    {
+		return "";
+	    }
+	    return (*vals)[_values];
+	}
+
+	int INI::DelValByKeysAndVals(string _keys, string _values)
+	{
+	    if (key->find(_keys) == key->end())
+	    {
+		return -1;
+	    }
+	    values * vals = (*key)[_keys];
+	    if (vals->find(_values) == vals->end())
+	    {
+		return -1;
+	    }
+	    (*vals).erase(_values);
+	    if ((*vals).size() == 0)
+	    {
+		delete(vals);
+		(*key).erase(_keys);
+	    }
+	    return 0;
+	}
+
+	void INI::AppendValByKeysAndVals(string _keys, string _values, string _value)
+	{
+	    if(key->find(_keys) == key->end())
+	    {
+		values * val = new values();
+		(*key)[_keys] = val;
+	    }
+	    values * val = (*key)[_keys];
+	    (*val)[_values] = _value;
+	}
+
+	int INI::WriteINI()
+	{
+	    string data;
+	    ofstream f(path.c_str());
+	    if(!f.is_open())
+	    {
+		return -1;
+	    }
+	    keys::iterator it;
+	    for(it=(*key).begin(); it!=(*key).end(); it++)
+	    {
+		data.append("[");
+		data.append((*it).first);
+		data.append("]");
+		data.append("\n");
+		values * val = (*it).second;
+		values::iterator iv;
+		for(iv=(*val).begin(); iv!=(*val).end(); iv++)
+		{
+		    data.append((*iv).first);
+		    data.append("=");
+		    data.append((*iv).second);
+		    data.append("\n");
+		}
+	    }
+	    f.write(data.c_str(), strlen(data.c_str()));
+	    f.flush();
+	    f.close();
+	    return 0;
 	}
 
