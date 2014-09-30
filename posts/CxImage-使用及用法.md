@@ -74,9 +74,9 @@ CxImage类库是一个优秀的图像操作类库。
 	UpdateData();
 	CxImage smallImg;
 	tempimage.Crop(CRect(m_xTop,m_yTop,m_xWidth,m_yHeiht),&smallImg);
-		smallImg.Save("剪辑图片.jpg",CXIMAGE_SUPPORT_JPG);
+	smallImg.Save("剪辑图片.jpg",CXIMAGE_SUPPORT_JPG);
 	smallImg.Draw(pDC->GetSafeHdc(),CRect(40,70,picwidth,picheight));
-		pDC->DeleteDC();
+	pDC->DeleteDC();
 
 	// 混合
 	CDC *pDC=GetDC();
