@@ -85,3 +85,18 @@ CxImage类库是一个优秀的图像操作类库。
 	tempimage.Mix(smallImg,CxImage::OpAvg,0,0,true);
 	tempimage.Save("Mix混合.jpg",CXIMAGE_SUPPORT_JPG);
 	tempimage.Draw(pDC->GetSafeHdc(),CRect(40,70,picwidth,picheight));
+
+---
+
+编译
+
+	// 下载cximage599c_tar包
+	http://www.xdp.it/download.htm。
+
+	// 因为是新的版本，编译和网上一些教程有差异。直接使用：
+	./configure --prefix=/usr/ --enable-shared （生成并使用静态库）
+	// 或者
+	./configure --prefix=/usr/ --disable-shared （生成并使用动态库）
+	// make
+	// make install
+	// 大功告成。
