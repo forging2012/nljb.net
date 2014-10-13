@@ -7,6 +7,14 @@ categories:
 tags:c++
 
 ---
+保存Socket连接方法
+
+	sock_pt sock(new ip::tcp::socket(ios));
+	// 改为
+	sock_pt * sock = new sock_pt(new ip::tcp::socket(ios));
+	// 需要手动释放
+
+---
 .h
 
 	#ifndef XPLAYEVENT_H

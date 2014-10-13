@@ -7,6 +7,14 @@ categories:
 tags:c++
 
 ---
+关于保存Socket连接
+
+	// 由于栈的原因，连接被释放了...
+	ip::tcp::socket sock(ios);
+	// 改为堆的方式，连接被保留了...
+	ip::tcp::socket * sock = new ip::tcp::socket(ios);
+
+---
 .h
 
 	#ifndef XPLAYEVENT_H
