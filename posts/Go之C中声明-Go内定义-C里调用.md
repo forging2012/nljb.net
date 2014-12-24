@@ -12,7 +12,7 @@ tags:golang
 
 >
 
-<img src="{{urls.media}}/Go之C内声明-Go内定义-C内调用/1.png" alt="" width="600">
+<img src="{{urls.media}}/Go之C中声明-Go内定义-C里调用/1.png" alt="" width="600">
 
 >
 
@@ -44,7 +44,7 @@ tags:golang
 
 >
 
-<img src="{{urls.media}}/Go之C内声明-Go内定义-C内调用/2.png" alt="" width="600">
+<img src="{{urls.media}}/Go之C中声明-Go内定义-C里调用/2.png" alt="" width="600">
 
 >
 
