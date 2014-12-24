@@ -8,6 +8,8 @@ tags:golang
 
 ---
 
+http://blog.golang.org/c-go-cgo
+
 ### 说起来容易，做起来难啊，研究了两天了 ...
 
 >
@@ -74,4 +76,24 @@ tags:golang
 	}
 
 
+---
+
+### 传参呢 
+
+>
+
+	// 比如 增加一个 int 返回值
+	extern "C" inline int drv_appmain() { /* CGO */ }
+
+	// 调用输出这个值
+	extern "C" int start() {
+		int i = drv_appmain();
+		qDebug("-> %d", i);
+	}
+
+	// Go里面当然是 ...
+	//export drv_appmain
+	func drv_appmain() C.int {
+		return 100
+	}
 
