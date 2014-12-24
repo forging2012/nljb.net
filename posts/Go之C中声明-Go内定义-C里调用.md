@@ -1,5 +1,5 @@
 ---
-title: Go之C内声明-Go内定义-C内调用
+title: Go之C中声明-Go内定义-C里调用
 date: '2014-12-24'
 description:
 categories:
