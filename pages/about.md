@@ -19,6 +19,10 @@ description:
 
 ---
 
+<img src="{{urls.media}}/qrcode.png" alt="" width="300">
+
+---
+
 Me 夫人
 
 <img src="{{urls.media}}/1.jpg" alt="" width="600">
