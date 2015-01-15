@@ -62,7 +62,8 @@ tags:golang
 	/*
 		extern void init();
 		extern int start();
-		extern void * request(void *, int);
+		// 修正，此处 export 下无需声明
+		// extern void * request(void *, int);
 	*/
 	// #include <stdio.h>
 	// #include <stdlib.h>

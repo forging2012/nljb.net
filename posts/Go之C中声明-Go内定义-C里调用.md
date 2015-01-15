@@ -60,7 +60,8 @@ http://blog.golang.org/c-go-cgo
 
 	/*
 		extern int start();
-		extern void drv_appmain();
+		// 此处错误修正, export 下不需要此处声明
+		// extern void drv_appmain(); 
 	*/
 	// #cgo LDFLAGS: -L./ -ldemo
 	import "C"
