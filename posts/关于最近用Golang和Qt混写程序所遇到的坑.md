@@ -212,6 +212,66 @@ tags:golang
 	go build -ldflags -H=windowsgui 
 	go build -ldflags -H=windowsgui XXX.go
 
+---
+
+再次补充：
+
+
+	// 可以把函数当指针传，这样就不需要那么多的 drv_cgo_xxx
+	/*
+		extern void cgo_init();
+		extern int cgo_start();
+		extern void cgo_callback(void *);
+		extern void drv_cgo_callback(int, void*);
+		extern void drv_cgo_callback_2(int, void*);
+		static void init_callback()
+		{
+			int _cgo_connect = 1;
+			int _cgo_checkconn = 2;
+			int _cgo_disconn = 3;
+			int _cgo_command = 4;
+			int _cgo_shortcuts = 5;
+			int _cgo_message = 6;
+			extern int cgo_connect(void *, int);
+			extern int cgo_checkconn();
+			extern void cgo_disconn();
+			extern void cgo_command(void *, int);
+			extern void cgo_shortcuts(void *, int);
+			extern void * cgo_message();
+			drv_cgo_callback_2(_cgo_connect, &cgo_connect);
+			drv_cgo_callback_2(_cgo_checkconn, &cgo_checkconn);
+			drv_cgo_callback(_cgo_checkconn, &cgo_checkconn);
+			drv_cgo_callback(_cgo_disconn, &cgo_disconn);
+			drv_cgo_callback(_cgo_command, &cgo_command);
+			drv_cgo_callback(_cgo_shortcuts, &cgo_shortcuts);
+			drv_cgo_callback(_cgo_message, &cgo_message);
+		}
+	*/
+
+	typedef int (*COMMAND_CGO_CONNECT_FUNCTION)(void *, int);
+
+	typedef int (*COMMAND_CGO_CHECKCONN_FUNCTION)();
+
+	static COMMAND_CGO_CONNECT_FUNCTION cgo_connect = 0;
+
+	static COMMAND_CGO_CHECKCONN_FUNCTION cgo_checkconn = 0;
+
+	extern "C" void drv_cgo_callback_2(int _a, void * _b)
+	{
+	    /*
+	    int _cgo_connect = 1;
+	    int _cgo_checkconn = 2;
+	    */
+	    switch (_a) {
+	    case 1:
+		cgo_connect = (COMMAND_CGO_CONNECT_FUNCTION)_b;
+		break;
+	    case 2:
+		cgo_checkconn = (COMMAND_CGO_CHECKCONN_FUNCTION)_b;
+		break;
+	    }
+	}
+
 >
 
 <img src="{{urls.media}}/关于最近用Golang和Qt混写程序所遇到的坑/2.png" alt="" width="600">
