@@ -205,6 +205,13 @@ tags:golang
 
 这样一来，问题解决了，但是复杂了一些，对 Cgo 减10分.
 
+---
+
+补充，当 windows 运行的时候 会显示 DOS 窗口，怎么办呢 
+
+	go build -ldflags -H=windowsgui 
+	go build -ldflags -H=windowsgui XXX.go
+
 >
 
 <img src="{{urls.media}}/关于最近用Golang和Qt混写程序所遇到的坑/2.png" alt="" width="600">
