@@ -207,9 +207,9 @@ tags:golang
 
 ---
 
-补充一下，关于 windows 运行时候会出现 Dos 窗口问题 
+补充，当 windows 运行的时候 会显示 DOS 窗口，怎么办呢 
 
-	go build -ldflags -H=windowsgui
+	go build -ldflags -H=windowsgui 
 	go build -ldflags -H=windowsgui XXX.go
 
 >
