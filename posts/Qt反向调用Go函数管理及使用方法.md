@@ -219,3 +219,54 @@ tags:golang
 	}
 
 	.......
+
+---
+
+### 初始化 cgo_init 所调用函数
+
+>
+
+	#include "examples.h"
+	#include "cgo.h"
+	#include <QApplication>
+
+	using namespace std;
+
+	// ...
+	Examples * win;
+
+	// ...
+	Cgo * cgo;
+
+	// C.cgo_init 这里很重要，要先把, Cgo 初始化.
+	extern "C" void cgo_init()
+	{
+	    cgo = new Cgo();
+	}
+
+	// C.cgo_start
+	extern "C" int cgo_start()
+	{
+	    int argc = 0 ;
+	    char *argv[] = {};
+	    QApplication a(argc, argv);
+	    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+	    win = new Examples();
+	    win->setCgo(cgo);
+	    win->show();
+	    return a.exec();
+	}
+
+	// 这是一个 Go 调用 C 函数 C.cgo_callback
+	extern "C" void cgo_callback(void * p)
+	{
+	    win->sendDisplay((char*)p);
+	}
+
+	// 这里，在 Go 中调用，传入函数
+	extern "C" void drv_cgo_callback(void* _a, void* _b)
+	{
+	    cgo->setCgo(_a, _b);
+	}
+
+
