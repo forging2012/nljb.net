@@ -15,8 +15,12 @@
     ]
   },
 
-  "manifest" : {
-    "author" : "Jacob Thornton and Mark Otto",
-    "website" : "http://twitter.github.com/bootstrap"
+ "manifest" : {
+    "name" : "pure",
+    "website" : "http://www.nljb.net",
+    "author" : {
+      "name" : "NLJB",
+      "website" : "http://www.nljb.net"
+    }
   }
 }
