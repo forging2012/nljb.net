@@ -1,5 +1,5 @@
 ---
-title: Qt之QLineEdit自动补全.md
+title: Qt之QLineEdit自动补全
 date: '2015-02-10'
 description:
 categories:
