@@ -1,0 +1,59 @@
+---
+layout : default
+---
+
+<div class="post-header">
+  <h2 class="post-title">
+    {{ page.title }}
+  </h2>
+  {{# page.tagline }}
+  <small>{{ . }}</small>
+  {{/ page.tagline }}
+</div>
+
+<div class="post-meta">
+  <span>{{page.date}}</span>
+  <!--<span class="category">  
+    <ul>
+      <li>
+      {{# page.categories }}
+      {{> categories_list }}
+      {{/ page.categories }}
+      </li>
+
+      <li>
+      {{# page.tags }}
+      {{> tags_list }}
+      {{/ page.tags }}
+      </li>
+    </ul>
+  </span>
+  -->
+</div>
+
+<div class="post-description">
+  {{{ content }}}
+</div>
+<hr/>
+<div class="pagination pure-g">
+  <ul>
+    {{# page.previous }}
+    <li class="prev pure-u-1-3"><a href="{{ url }}" title="{{ title }}">&larr; 上一篇</a></li>
+    {{/ page.previous }}
+    {{^ page.previous }}
+    <li class="prev disabled pure-u-1-3"><a>&larr; 上一篇</a></li>
+    {{/ page.previous }}
+
+    <li class="pure-u-1-3"><a href="{{urls.base_path}}archive">存档</a></li>
+
+    {{# page.next }}
+    <li class="next pure-u-1-3"><a href="{{ url }}" title="{{ title }}">下一篇 &rarr;</a></li>
+    {{/ page.next }}
+    {{^ page.next }}
+    <li class="next disabled pure-u-1-3"><a>下一篇 &rarr;</a>
+    {{/ page.next }}
+  </ul>
+</div>
+
+{{{ comments }}}
+
