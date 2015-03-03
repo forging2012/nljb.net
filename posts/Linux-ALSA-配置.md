@@ -148,4 +148,7 @@ tags:system
 	alsactl store -f /var/lib/alsa/asound.state
 	alsactl restore -f /var/lib/alsa/asound.state
 
+调节声音
+
+	amixer set Master 100% 
 
