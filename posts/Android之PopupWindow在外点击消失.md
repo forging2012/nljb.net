@@ -79,3 +79,6 @@ tags:android
             }
         });
 
+	// 命令关闭 
+	popup.dismiss();
+
