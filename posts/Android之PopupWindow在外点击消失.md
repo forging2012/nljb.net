@@ -14,7 +14,7 @@ tags:android
 
 	// PopupWindow
 	// 载入一个Layout视图
-        View root = this.getLayoutInflater().inflate(R.layout.window, null);
+	View root = this.getLayoutInflater().inflate(R.layout.window, null);
 
 	// 通过视图及布局生成 PopupWindow
 	// import android.view.ViewGroup.LayoutParams;
