@@ -83,7 +83,22 @@ tags:android
 	    @Override
 	    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 		Log.i("info", "onFling");
-		send();
+		// Y 方向
+		if (e2.getY() - e1.getY() > 50)  // 从上向下滑动
+		{
+		    // ...
+		} else if (e1.getY() - e2.getY() > 50) // 从下向上滑动
+		{
+		    // ...
+		}
+		// X 方向
+		if (e1.getX() - e2.getX() > 50) // 从右向左滑动
+		{
+		    // ...
+		} else if (e2.getX() - e1.getX() > 50) // 从左向右滑动
+		{
+		    // ...
+		}
 		return false;
 	    }
 
