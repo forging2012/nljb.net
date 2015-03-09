@@ -40,6 +40,20 @@ tags:android
 	// 销毁 Activity 时被回调，该方法只会被调用一次
 	onDestroy()
 
+	@Override
+	public void onPause()
+	{
+	    super.onPause();
+	}
+
+	@Override
+	public void onStart()
+	{
+	    super.onStart();
+	}
+
+	...
+
 >
 
 ---
