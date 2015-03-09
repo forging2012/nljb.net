@@ -16,6 +16,36 @@ tags:android
 
 >
 
+### Activity 生命周期介绍
+
+>
+
+	活动状态，当前Activity位于前台，用户可见，可以获得焦点
+	暂停状态，其它Activity位于前台，该Activity依然可见，只是不能获得焦点
+	停止状态，该Activity不可见，失去焦点
+	销毁状态，该Activity结束，或Activity所在的Dalvik进程被结束
+
+	// 创建 Activity 时被回调，该方法只会被调用一次
+	onCreate(Bundle savedStatus)
+	// 启动 Activity 时被回调
+	onStart()
+	// 重新启动 Activity 时被回调
+	onRestart()
+	// 恢复 Activity 时被回调，onStart() 方法后一定会回调 onResume() 方法
+	onResume()
+	// 暂停 Activity 时被回调
+	onPause()
+	// 停止 Activity 时被回调
+	onStop()
+	// 销毁 Activity 时被回调，该方法只会被调用一次
+	onDestroy()
+
+>
+
+---
+
+>
+
 ### 将数据传递到下一个，Activity
 
 >
