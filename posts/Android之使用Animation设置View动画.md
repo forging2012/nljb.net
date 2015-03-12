@@ -74,7 +74,7 @@ tags:android
 			    }
 			});
 			// 为View设置开始动画
-                        // v.startAnimation(as);
+			// v.startAnimation(as);
 		    }
 		});
 	}
