@@ -174,6 +174,32 @@ tags:android
 
 	}
 
+	// R.layout.fragment_blank
+	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:id="@+id/xxx"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+	    android:paddingTop="@dimen/activity_vertical_margin"
+	    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+	    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	</FrameLayout>
+
+	// R.layout.activity_main
+	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+	    android:layout_height="match_parent" tools:context="com.example.nljb.nljb.BlankFragment">
+
+	    <!-- TODO: Update blank fragment layout -->
+	    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+		android:text="@string/hello_blank_fragment" />
+
+	</FrameLayout>
+		
 
 ---
 
@@ -316,3 +342,58 @@ tags:android
 	    }
 
 	}
+
+	// R.layout.menu 自定义的布局文件
+	<?xml version="1.0" encoding="utf-8"?>
+	<RelativeLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="63.0dp"
+	    android:id="@+id/actionbarLayoutId"
+	    android:background="@drawable/actionbar_background">
+	    <ImageButton
+		android:id="@+id/menuBtnId"
+		android:layout_marginLeft="12.0dp"
+		android:layout_marginTop="12.0dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/menu"
+		android:contentDescription="@string/app_name"
+		android:onClick="onClick"
+		/>
+	    <ImageButton 
+		android:id="@+id/noteBtnId"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="12.0dp"
+		android:background="@drawable/notes"
+		android:contentDescription="@string/app_name"
+		android:layout_marginRight="12.0dp"
+		android:layout_alignParentRight="true"
+		android:onClick="onClick"
+		/>
+	    <ImageButton 
+		android:id="@+id/editBtnId"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="12.0dp"
+		android:background="@drawable/edit"
+		android:layout_toLeftOf="@id/noteBtnId"
+		android:layout_marginRight="12.0dp"
+		android:contentDescription="@string/app_name"
+		android:onClick="onClick"
+		/>
+	    <ImageButton 
+		android:id="@+id/downloadBtnId"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="12.0dp"
+		android:background="@drawable/download"
+		android:layout_toLeftOf="@id/editBtnId"
+		android:layout_marginRight="12.0dp"
+		android:contentDescription="@string/app_name"
+		android:onClick="onClick"
+		/>
+	</RelativeLayout>
+
+
