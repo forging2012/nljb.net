@@ -16,11 +16,11 @@ tags:android
 
 	// 主要是向View对象设置动画效果
 	// 比如 Button, TextView ... 等 
-        AlphaAnimation 透明度动画效果
-        RotateAnimation 旋转动画效果
-        ScaleAnimation 缩放动画效果
-        TranslateAnimation 位移动画效果
-        AnimationSet 混合动画
+	AlphaAnimation 透明度动画效果
+	RotateAnimation 旋转动画效果
+	ScaleAnimation 缩放动画效果
+	TranslateAnimation 位移动画效果
+	AnimationSet 混合动画
 
 >
 
