@@ -80,3 +80,80 @@ tags:android
 	}
 
 
+---
+
+>
+
+### LayoutAnimationController
+
+>
+
+	// 布局动画效果
+	public class MainActivity extends Activity {
+
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// 获取 View
+		LinearLayout v = (LinearLayout) this.getLayoutInflater().inflate(R.layout.activity_main, null);
+		// 创建动画
+		ScaleAnimation sa = new ScaleAnimation(0, 1, 0, 1);
+		sa.setDuration(5000);
+		// 创建 Layout 动画
+		LayoutAnimationController lac = new LayoutAnimationController(sa, 0.5f);
+		// LayoutAnimationController.ORDER_NORMAL  正常顺序
+		// LayoutAnimationController.ORDER_RANDOM  随机顺序
+		// LayoutAnimationController.ORDER_REVERSE 倒序顺序
+		lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
+		// 将 Layout 动画设置到 View
+		v.setLayoutAnimation(lac);
+		// 将 View 设置到 Activity
+		setContentView(v);
+	    }
+	}
+
+---
+
+>
+
+### 默认的布局转换动画
+
+>
+
+	// 如果你要使用默认的动画
+	// 一个非常简单的方式是在View的XML布局文件中把android:animateLayoutchanges属性设置为true。
+　	// 这样就自动地按照默认方式来对要移除或添加的View，还有Group中的其他View进行动画。
+	<?xml version="1.0" encoding="utf-8"?>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
+
+	    <Button
+		android:id="@+id/addNewButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Add Button" />
+	    <!--
+	    <GridLayout
+		android:columnCount="4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/gridContainer"
+		// 默认的布局转换动画
+		android:animateLayoutChanges="true"
+		/>
+	    -->
+
+	    <LinearLayout
+		android:id="@+id/gridContainer"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		// 默认的布局转换动画
+		android:animateLayoutChanges="true" 
+		android:orientation="vertical">
+	    </LinearLayout>
+
+	</LinearLayout>
+
+
