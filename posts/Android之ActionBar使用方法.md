@@ -233,3 +233,86 @@ tags:android
 	    }
 
 	}
+
+
+---
+
+>
+
+### ActionBar 自定义 
+
+>
+
+	public class MainActivity extends Activity {
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		// 自定义actionbar的布局
+		setActionBarLayout(R.layout.menu);
+	    }
+
+	    //
+	    public void setActionBarLayout(int layoutId) {
+		// 获取 ActionBar
+		ActionBar actionBar = getActionBar();
+		if (null != actionBar) {
+		    // 隐藏 ActionBar 图标
+		    actionBar.setDisplayShowHomeEnabled(false);
+		    // 使自定义的普通View能在title栏显示
+		    actionBar.setDisplayShowCustomEnabled(true);
+		    // 载入 Layout
+		    View v = this.getLayoutInflater().inflate(layoutId, null);
+		    // 设置 Layout
+		    ActionBar.LayoutParams layout = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
+		    // 将 Layout 赋值 ActionBar
+		    actionBar.setCustomView(v, layout);
+		}
+	    }
+
+	    public void onClick(View v) {
+		switch (v.getId()) {
+		    case R.id.menuBtnId: {
+			Toast.makeText(getApplicationContext(), "欢迎", Toast.LENGTH_SHORT).show();
+		    }
+		    break;
+		    case R.id.noteBtnId: {
+			Toast.makeText(getApplicationContext(), "欢迎", Toast.LENGTH_SHORT).show();
+		    }
+		    break;
+		    case R.id.downloadBtnId: {
+			Toast.makeText(getApplicationContext(), "欢迎", Toast.LENGTH_SHORT).show();
+		    }
+		    break;
+		    case R.id.editBtnId: {
+			Toast.makeText(getApplicationContext(), "欢迎", Toast.LENGTH_SHORT).show();
+		    }
+		    break;
+		    default: {
+		    }
+		    break;
+		}
+	    }
+
+	    @Override
+	    public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		// getMenuInflater().inflate(R.menu.menu_main, menu);
+		// 返回
+		return true;
+	    }
+
+	    @Override
+	    public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		//noinspection SimplifiableIfStatement
+		if (id == R.id.action_settings) {
+		    return true;
+		}
+		return super.onOptionsItemSelected(item);
+	    }
+
+	}
