@@ -36,4 +36,12 @@ tags:system
 	sohu-opensuse-13.1-oss: http://mirrors.sohu.com/opensuse/distribution/13.1/repo/oss/
 	sohu-opensuse-13.1-non-oss: http://mirrors.sohu.com/opensuse/distribution/13.1/repo/non-oss/
 
+---
 
+	sudo zypper ar -f http://packman.inode.at/suse/openSUSE_13.1/ packman 
+	  
+	sudo zypper refresh 
+	  
+	sudo zypper install mplayer 
+
+---
