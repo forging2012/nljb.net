@@ -86,3 +86,26 @@ tags:android
 	    }
 	}
 
+---
+
+>
+
+### OnkeyDown 和 OnBackPressed 介绍
+
+>
+
+	// OnkeyDown事件和OnkeyUp事件是不同事件。 
+	// OnBackPressed方法会处理返回键的操作，不会向上传播
+	// 如果你想向上传播 请使用OnkeyDown事件或OnkeyUp事件
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+	}
+
+	// ...
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		return false;
+	}
+
+

@@ -93,3 +93,33 @@ Android提供了openFileOutput和openFileInput方法读取设备上的文件
 	}
 
 
+---
+
+>
+
+# Assets 目录介绍
+
+>
+
+Assets 这个目录保存的文件可以打包在程序里
+
+/res和/assets的不同点是，android不为/assets下的文件生成ID。
+
+如果使用/assets下的文件，需要指定文件的路径和文件名。
+
+>
+
+android中的资源文件，这些资源文件主要分为两类，一种出于asset目录下，称为原生文件
+
+这类文件在被打包成apk文件时是不会进行压缩的；
+
+另一类则是res下的文件，这类文件在打包成apk文件时，会进行小内存优化
+
+	AssetManager assetManager = this.getResources().getAsset();
+
+在activity中可以通过如下方法进行访问
+
+	InputStream inputStream = Resources.openRawResource(int id);
+
+asset和res下的文件都是只能读不能写
+
