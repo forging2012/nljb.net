@@ -135,3 +135,55 @@ SharedPreferences 对象本身只能获取数据而不支持存储和修改, 存
 	}
 
 
+---
+
+>
+
+### getSharedPreferences 与 getPreferences
+
+>
+
+getSharedPreferences是Context类中的方法, 可以指定filename以及mode.
+
+getPreferences是Activity类中的方法, 只需指定mode.
+
+>
+
+### getSharedPreferences 与 getDefaultSharedPreferences
+
+>
+
+	// 自定义的一些偏好设置用getSharedPreferences来获取，例如定义一个loginpref.xml的偏好文件
+	SharedPreferences sharedPreferences = getSharedPreferences("loginpref", Context.MODE_PRIVATE);
+	System.out.println("set_location = "+sharedPreferences.getBoolean("islogin", false));
+	Editor editor =  sharedPreferences.edit();
+	editor.putBoolean("islogin", false);
+	editor.commit();
+
+	// 每个应用有一个默认的偏好文件preferences.xml，使用getDefaultSharedPreferences获取
+	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+	System.out.println("set_location = "+preferences.getBoolean("if_set_location", false));
+	Editor editor =  preferences.edit();
+	editor.putBoolean("if_set_location", false);
+	editor.commit();
+	// "if_set_location"可能对应的是CheckBoxPreference或者其它，但是通用get***来获取值
+
+	<?xml version="1.0" encoding="utf-8"?>
+	<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	    <PreferenceCategory android:title="位置信息设置">
+	    <CheckBoxPreference
+	    android:key="set_location"
+		android:title="打开或关闭位置信息"
+		android:summary="更改您的位置设置，打开或者关闭位置共享"
+		android:defaultValue="true"
+	    />
+
+	    <Preference
+	    android:key="set_sys_location"
+		android:title="系统位置功能设置"
+		android:summary="点击到系统设置页面打开或关闭GPS位置功能"
+	    /> 
+	    </PreferenceCategory>
+	</PreferenceScreen>
+
+
