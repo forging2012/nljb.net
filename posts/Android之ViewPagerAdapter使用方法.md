@@ -85,7 +85,7 @@ tags:android
 		setContentView(R.layout.activity_main);
 
 		// 获取 LayoutInflater
-		LayoutInflater inflater = getLayoutInflater().from(this);
+		LayoutInflater inflater = LayoutInflater.from(this);
 
 		// 获取 View 并加入 List
 		views = new ArrayList<View>();
@@ -278,7 +278,7 @@ tags:android
 		setContentView(R.layout.activity_main);
 
 		// 获取 LayoutInflater
-		LayoutInflater inflater = getLayoutInflater().from(this);
+		LayoutInflater inflater = LayoutInflater.from(this);
 
 		// 获取 View 并加入 List
 		views = new ArrayList<View>();
