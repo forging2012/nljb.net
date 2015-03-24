@@ -16,6 +16,15 @@ tags:android
 
 >
 
+	// 包裹
+	wrap_content 
+	// 填满
+	fill_parent 
+	// 填满
+	match_parent 
+
+>
+
 ### FILL_PARENT
 
 >
