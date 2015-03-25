@@ -106,6 +106,14 @@ tags:android
 			    parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
 			    // 用于拍照的连续自动对焦模式
 			    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+			    // 方向判断 ORIENTATION_LANDSCAPE 横屏
+			    if(getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
+				// 90°
+				camera.setDisplayOrientation(90);
+			    }else {
+				// 0°
+				camera.setDisplayOrientation(0);
+			    }
 			    // 设置 Parameters
 			    camera.setParameters(parameters);
 			    // 预览
