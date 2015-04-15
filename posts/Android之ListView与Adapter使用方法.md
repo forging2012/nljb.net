@@ -98,26 +98,27 @@ tags:android
 	    }
 	}
 
-        // 创建一个自定义的BaseAdapter对象
-        mMenuBaseAdapter = new MenuBaseAdapter(MainActivity.this);
+	// 创建一个自定义的BaseAdapter对象
+	mMenuBaseAdapter = new MenuBaseAdapter(MainActivity.this);
 
 	// 获取一个ListView对象
-        ListView left_drawer = (ListView) findViewById(R.id.left_drawer);
+	ListView left_drawer = (ListView) findViewById(R.id.left_drawer);
 
 	// 将BaseAdapter设置给ListView
-        left_drawer.setAdapter(mMenuBaseAdapter);
+	left_drawer.setAdapter(mMenuBaseAdapter);
 
 	// 为ListView设置监听
-        left_drawer.setOnItemClickListener(mMenuClickListener);
+	left_drawer.setOnItemClickListener(mMenuClickListener);
 
 	// 监听
 	private AdapterView.OnItemClickListener mMenuClickListener = new AdapterView.OnItemClickListener() {
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-	    // position代表点击了ListView的第几个
-	    switch (position) {
-		case 0:
-		    break;
-	    }
-	}
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		    // position代表点击了ListView的第几个
+		    switch (position) {
+			case 0:
+			    break;
+		    }
+		}
+	};
