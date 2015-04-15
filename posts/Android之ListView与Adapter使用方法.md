@@ -35,6 +35,89 @@ tags:android
 
 >
 
-### Adapter
+### BaseAdapter
 
 >
+
+	// BaseAdapter 类
+	class MenuBaseAdapter extends BaseAdapter {
+
+	    // 上下文
+	    private Context context;
+
+	    // Activity
+	    private MainActivity activity;
+
+	    public MenuBaseAdapter(Context context) {
+		this.context = context;
+		this.activity = (MainActivity) context;
+	    }
+
+	    // 这里代表这ListView的行数量
+	    // 也可以通过构造传入List或者其它办法
+	    @Override
+	    public int getCount() {
+		// 项目数量
+		return 7;
+	    }
+
+	    @Override
+	    public Object getItem(int position) {
+		return null;
+	    }
+
+	    @Override
+	    public long getItemId(int position) {
+		return 0;
+	    }
+		
+	    // 在这里会按照getCount()的数量获取View
+	    // 所以在这里定制View就可以了
+	    @Override
+	    public View getView(int position, View convertView, ViewGroup parent) {
+		convertView = LayoutInflater.from(context).inflate(R.layout.menu_adapter_item, null);
+		ImageView imageView = null;
+		TextView textView = null;
+		switch (position) {
+		    case 0:
+			imageView = (ImageView) convertView.findViewById(R.id.imageView);
+			textView = (TextView) convertView.findViewById(R.id.textView);
+			imageView.setImageResource(R.drawable.menu_lock_icon);
+			convertView.setBackground(new ColorDrawable(0xff0997F7));
+			textView.setText("登录系统");
+			break;
+		    case 1:
+			imageView = (ImageView) convertView.findViewById(R.id.imageView);
+			textView = (TextView) convertView.findViewById(R.id.textView);
+			imageView.setImageResource(R.drawable.menu_bluetooth_icon);
+			textView.setText("连接蓝牙");
+			break;
+		}
+		// 返回
+		return convertView;
+	    }
+	}
+
+        // 创建一个自定义的BaseAdapter对象
+        mMenuBaseAdapter = new MenuBaseAdapter(MainActivity.this);
+
+	// 获取一个ListView对象
+        ListView left_drawer = (ListView) findViewById(R.id.left_drawer);
+
+	// 将BaseAdapter设置给ListView
+        left_drawer.setAdapter(mMenuBaseAdapter);
+
+	// 为ListView设置监听
+        left_drawer.setOnItemClickListener(mMenuClickListener);
+
+	// 监听
+	private AdapterView.OnItemClickListener mMenuClickListener = new AdapterView.OnItemClickListener() {
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	    // position代表点击了ListView的第几个
+	    switch (position) {
+		case 0:
+		    break;
+	    }
+	}
