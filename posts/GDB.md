@@ -55,3 +55,59 @@ GDB
 	bt(backtrace)
 
 列出调用栈
+
+>
+
+---
+
+>
+
+启动GDB后，首先就是要设置断点，程序中断后才能调试。
+
+>
+
+断点（BreakPoint）：
+
+>
+
+	在代码的指定位置中断，这个是我们用得最多的一种。设置断点的命令是break，它通常有如下方式：
+	// 在进入指定函数时停住
+	break <function> 
+	// 在指定行号停住。
+	break <linenum>
+	// 在当前行号的前面或后面的offset行停住。offiset为自然数。
+	break +/-offset
+	// 在源文件filename的linenum行处停住。
+	break filename:linenum 
+	// ...可以是上述的参数，condition表示条件，在条件成立时停住。
+	// 比如在循环境体中，可以设置break if i=100，表示当i为100时停住程序。
+	break ... if <condition> 
+
+	可以通过info breakpoints [n]命令查看当前断点信息。此外，还有如下几个配套的常用命令：
+	// 删除所有断点
+	delete
+	// 删除某个断点
+	delete breakpoint [n]
+	// 禁用某个断点
+	disable breakpoint [n] 
+	// 使能某个断点
+	enable breakpoint [n]
+
+>
+
+在gdb中，和调试步进相关的命令主要有如下几条：
+
+>
+
+	// 继续运行程序直到下一个断点（类似于VS里的F5）
+	continue 
+	// 逐过程步进，不会进入子函数（类似VS里的F10）
+	next 
+	// 逐语句步进，会进入子函数（类似VS里的F11）
+	setp 
+	// 运行至当前语句块结束
+	until
+	// 运行至函数结束并跳出，并打印函数的返回值（类似VS的Shift+F11）
+	finish
+
+ 
