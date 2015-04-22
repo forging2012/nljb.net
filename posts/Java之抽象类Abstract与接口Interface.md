@@ -1,5 +1,5 @@
 ---
-title: Java之抽象类与接口
+title: Java之抽象类Abstract与接口Interface
 date: '2015-04-22'
 description:
 categories:
