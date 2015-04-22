@@ -10,6 +10,37 @@ tags:java
 
 >
 
+### final 完结器(最终)
+
+>
+
+final关键字在JAVA中被称为完结器，表示最终的意思.
+
+final能声明，类，方法，属性
+
+final声明的对象，不能够被继承
+
+final声明的方法，不能够被重写
+
+final声明的变量，会变成常量，不可以被修改
+
+>
+
+	// 不能够被继承的类
+	final class Hello {}
+
+	class Hello {
+		// 不能够被继承的方法
+		public final void print() {
+		}
+		// 被变成常量的变量
+		final String HOME = "bj";
+	}
+
+---
+
+>
+
 ### 抽象类和接口的区别
 
 >
