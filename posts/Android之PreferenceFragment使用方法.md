@@ -167,3 +167,20 @@ Android应用程序通常要提供首选项，以允许用户定制应用程序�
 			android:summary="这是一个子开关" />  
 	    </PreferenceCategory>  
 	</PreferenceScreen>  
+
+>
+
+---
+
+>
+
+### 补充
+
+>
+
+	    <SwitchPreference
+		android:summaryOff="已关闭"
+		android:summaryOn="已开启"
+		android:title="无线状态(WIFI)" />
+
+
