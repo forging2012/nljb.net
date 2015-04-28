@@ -57,6 +57,8 @@ tags:android
 
 	}
 
+---
+
 	// 第二步，在XML-Layout中使用
 	<?xml version="1.0" encoding="utf-8"?>
 	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -75,6 +77,8 @@ tags:android
 		android:layout_height="50dp"/>
 
 	</RelativeLayout>	
+
+---
 
 	// 第三步，自定义View的参数(第一步已经讲了如何使用)
 	// values/attrs
