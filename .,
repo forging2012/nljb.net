@@ -1,0 +1,25 @@
+---
+title: Android之CardView卡片布局使用方法
+date: '2015-04-29'
+description:
+categories:
+
+tags:android
+
+---
+
+>
+
+### CardView
+
+>
+
+CardView继承至FrameLayout类，可以在一个卡片布局中一致性的显示内容，卡片可以包含圆角和阴影。
+
+>
+
+CardView是一个Layout，可以布局其他View。
+
+>
+
+
