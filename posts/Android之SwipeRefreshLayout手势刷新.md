@@ -76,3 +76,63 @@ SwipeRefreshLayout组件只接受一个子组件：即需要刷新的那个组�
 	    });
 	}
 
+>
+
+---
+
+>
+
+### 补充
+
+>
+
+解决，下拉刷新时手势与其它下拉控件冲突问题
+
+>
+
+	// XML
+	<?xml version="1.0" encoding="utf-8"?>
+	<com.example.nljb.surpass.MySwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/fragment_preference"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+
+	    <FrameLayout
+		android:id="@+id/preference"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"></FrameLayout>
+
+	</com.example.nljb.surpass.MySwipeRefreshLayout>
+
+>
+
+	// 控制下拉距离来实现大距离刷新，小距离忽略
+	public class MySwipeRefreshLayout extends SwipeRefreshLayout {
+
+	    private float mPrev;
+
+	    public MySwipeRefreshLayout(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	    }
+
+	    @Override
+	    public boolean onInterceptTouchEvent(MotionEvent event) {
+
+		switch (event.getAction()) {
+		    case MotionEvent.ACTION_DOWN:
+			mPrev = MotionEvent.obtain(event).getY();
+			break;
+
+		    case MotionEvent.ACTION_MOVE:
+			final float e = event.getY();
+			float diff = Math.abs(e - mPrev);
+			if (diff < 200) {
+			    return false;
+			}
+		}
+
+		return super.onInterceptTouchEvent(event);
+	    }
+
+	}
+
