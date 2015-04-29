@@ -26,7 +26,7 @@ CardView是一个Layout，可以布局其他View。
 
 >
 
-<img src="{{urls.media}}/Android之CardView卡片布局使用方法/screenshot.jpeg" alt="" width="400" height="600">
+<img src="{{urls.media}}/Android之CardView卡片布局使用方法/screenshot.png" alt="" width="400" height="600">
 
 >
 
