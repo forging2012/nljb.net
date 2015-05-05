@@ -14,6 +14,13 @@ tags:android
 
 >
 
+	AsyncTask与Thread的区别是：
+		Thread不可以在线程中直接操作UI对象，而需要使用消息机制
+		AsyncTask可以在线程中直接操作UI对象，onPostExecute()
+		其实AsyncTask是Thread的一个高级封装，拆分了主线程与子线程
+
+>
+
 	可以直接继承AsyncTask,在类中实现异步操作
 	并提供接口反馈当前异步执行的程度(可以通过接口实现UI进度更新)
 	最后反馈执行的结果给UI主线程.
