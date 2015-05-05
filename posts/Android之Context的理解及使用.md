@@ -70,6 +70,7 @@ tags:android
 
 >
 
+	// Activity
 	public class MainActivity extends Activity {
 
 	    // 标签
@@ -83,22 +84,39 @@ tags:android
 	    }
 	}
 
+	// Fragment
 	public class MainFragment extends Fragment {
 
 	    // MainActivity
 	    private MainActivity activity = null;
 
 	    // 构造	
-	    public MainFragment(Context context) {
-		// 向上转型
-		activity = (MainActivity) context	
+	    public MainFragment() {
+		// 实际情况
+		activity = (MainActivity) getActivity()
 	    }
 
 	    @Override
 	    protected void onCreate(Bundle savedInstanceState) {
-	       super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);
 		// 这样就可以获取父类对象内容了
 		// activity.ContextLabel
+	    }
+	}
+
+	// BaseAdapter
+	class EvolverBaseAdapter extends BaseAdapter {
+
+	    // 上下文
+	    private Context context;
+
+	    // Activity
+	    public MainActivity activity = null;
+
+	    // 构造
+	    public EvolverBaseAdapter(Context context, ArrayList<EvolverData> evolver) {
+		this.context = context;
+		activity = (MainActivity) context;
 	    }
 	}
 
