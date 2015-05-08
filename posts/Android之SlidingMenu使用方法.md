@@ -50,7 +50,7 @@ tags:android
 	    compile project(':lib:sliding')
 	}
 
-	// 修改 [lib]/[barcode]/build.gradle
+	// 修改 [lib]/[sliding]/build.gradle
 	...
 	buildscript {
 	    repositories {
