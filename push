@@ -1,0 +1,8 @@
+/Users/nljb/MyCore/gor/gor compile
+git add -A .
+git commit -am "..."
+git push
+cd compile
+git add -A .
+git commit -am "..."
+git push
