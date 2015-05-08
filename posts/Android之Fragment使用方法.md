@@ -10,6 +10,80 @@ tags:android
 
 >
 
+### 备注
+
+>
+
+---
+
+>
+
+Layout 占位供 Fragment 使用介绍
+
+>
+
+	// 当需要使用 Fragment 替换当前 View 里面某一个区域的时候
+	// 就需要使用一个 Layout 进行布局，并占位，然后通过 ID 进行
+	// Fragment 的 add 或 replace 或 rm 等操作 ...
+	<android.support.v4.widget.DrawerLayout
+	android:id="@+id/drawer_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<!-- The main content view -->
+	// 这个就是 Layout 占位
+	<FrameLayout
+	    android:id="@+id/main"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+	<!-- The navigation drawer -->
+	<ListView
+	    android:id="@+id/left_drawer"
+	    android:layout_width="200dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="start"
+	    android:background="#f5f5f5f5"
+	    android:choiceMode="singleChoice"
+	    android:divider="#ffe0e0e0"
+	    android:dividerHeight="1dp" />
+	</android.support.v4.widget.DrawerLayout>
+
+>
+	
+	// 这里就是向占位的 Layout 内替换一个 Fragment (其实不是替换Layout而是替换其内部的Fragment)
+	FragmentTransaction transaction = getFragmentManager().beginTransaction();
+	transaction.replace(R.id.main,new Fragment());
+	transaction.commit();	
+
+>
+
+---
+
+> 
+
+Fragment 不使用占位介绍
+
+>
+
+	// 一个完整的 LinearLayout 需要被 Fragment 替换的
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/main"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="horizontal"
+	    android:padding="10dp">
+	</LinearLayout>
+
+        // 直接用 Fragment 替换整个 Layout (其实不是替换Layout而是替换其内部的Fragment)
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.main,new Fragment());
+        transaction.commit();
+
+>
+
+---
+
+>
+
 ### Fragment 介绍
 
 >
