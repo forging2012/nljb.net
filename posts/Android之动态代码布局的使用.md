@@ -28,25 +28,14 @@ tags:android
 
 		// 定义了一个 MySwipeRefreshLayout 的 Layout 
 		layout = new MySwipeRefreshLayout(getActivity());
+
+		// 设置ID 
+		layout.setId(this.generateViewId());
 	
 		// 设置 LayoutParams
 		ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
 			ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 		layout.setLayoutParams(layoutParams);
-
-		// 定义了一个 FrameLayout
-		frame = new FrameLayout(getActivity());
-
-		// 这个很重要，设置ID
-		frame.setId(this.generateViewId());
-
-		// 设置 LayoutParams
-		ViewGroup.LayoutParams frameParams = new ViewGroup.LayoutParams(
-			ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-		frame.setLayoutParams(frameParams);
-
-		// 将 FrameLayout 加入到 MySwipeRefreshLayout
-		layout.addView(frame);
 
 		// 下拉更新
 		layout.setColorScheme(android.R.color.holo_blue_dark,

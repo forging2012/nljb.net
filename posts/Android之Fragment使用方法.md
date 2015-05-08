@@ -29,16 +29,7 @@ tags:android
 
 >
 
-### 先介绍 FrameLayout
-
->
-
-	FrameLayout 集成于 ViewGroup 类似于 LinearLayout 等
-	FrameLayout 就像一个容器，可以包含 View 和 Fragment 等控件
-	Fragment 可以被 add 或 replace 或 rm 到 FrameLayout 中 ...
-
-	所以 replace 或者 add 或者 rm 操作的都是 FrameLayout 而不是 Fragment
-
+	// Fragment 可以被 add 或者 rm 或 replace 到 Layout 中 ...
 	public class MainActivity extends Activity {
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
