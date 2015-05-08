@@ -73,10 +73,12 @@ Fragment 不使用占位介绍
 	    android:padding="10dp">
 	</LinearLayout>
 
-        // 直接用 Fragment 替换整个 Layout (其实不是替换Layout而是替换其内部的Fragment)
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.main,new Fragment());
-        transaction.commit();
+>
+
+	// 直接用 Fragment 替换整个 Layout (其实不是替换Layout而是替换其内部的Fragment)
+	FragmentTransaction transaction = getFragmentManager().beginTransaction();
+	transaction.replace(R.id.main,new Fragment());
+	transaction.commit();
 
 >
 
