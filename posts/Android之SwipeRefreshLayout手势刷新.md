@@ -136,3 +136,47 @@ SwipeRefreshLayout组件只接受一个子组件：即需要刷新的那个组�
 
 	}
 
+>
+
+---
+
+>
+
+### 下拉刷新时切换重影问题
+
+>
+
+	// 这个没找到什么好办法
+	// 网上说的设置背景之类的都无效
+	// 解决办法时，当发现用户离开当前页面
+	// 的意图时，停止刷新
+
+	// Refresh
+	public void startRefresh() {
+		refreshStatus = true;
+		layout.setRefreshing(true);
+	}
+
+	// Refresh
+	public void stopRefresh() {
+		layout.setRefreshing(false);
+		refreshStatus = false;
+	}
+
+	// 比如我这里是，当用户点击侧滑箭头时停止刷新
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		switch (id) {
+		    // 判断是否为主按钮点击
+		    case android.R.id.home:
+			// 拦截刷新状态
+			if (refreshStatus) {
+			    // 停止刷新
+			    stopRefresh();
+			}
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+
