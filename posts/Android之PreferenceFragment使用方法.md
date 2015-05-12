@@ -184,3 +184,65 @@ Android应用程序通常要提供首选项，以允许用户定制应用程序�
 		android:title="无线状态(WIFI)" />
 
 
+>
+
+---
+
+>
+
+### 补充 + 动态修改 PreferenceFragment 内容
+
+>
+
+	// preferences_evolver_fragment
+	<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:key="evolver_screen_preference">
+	</PreferenceScreen>
+
+	// EvolverPreference
+	public class EvolverPreference extends PreferenceFragment {
+
+	    // 标签
+	    private static final String TAG = "EvolverPreference";
+
+	    // PreferenceScreen
+	    PreferenceScreen evolver_screen_preference = null;
+
+	    // Handler 消息处理
+	    private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+		    switch (msg.what) {
+			case 0x1001:
+			    JSONObject json = (JSONObject) msg.obj;
+			    try {
+				JSONObject params = json.getJSONObject("params");
+				evolver_screen_preference.removeAll();
+				for (Iterator iter = params.keys(); iter.hasNext(); ) {
+				    String key = (String) iter.next();
+				    JSONObject software = params.getJSONObject(key);
+				    Preference preference = new Preference(getActivity());
+				    preference.setTitle(software.getString("name"));
+				    preference.setSummary("版本：" + software.getString("version") + " - " + software.getString("date"));
+				    evolver_screen_preference.addItemFromInflater(preference);
+				}
+			    } catch (JSONException e) {
+				e.printStackTrace();
+			    }
+		    }
+		}
+	    };
+
+	    // 获取 Handler
+	    public Handler getHandler() {
+		return handler;
+	    }
+
+	    @Override
+	    public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		addPreferencesFromResource(R.xml.preferences_evolver_fragment);
+		evolver_screen_preference = (PreferenceScreen) getPreferenceManager().findPreference("evolver_screen_preference");
+	    }
+
+	}
