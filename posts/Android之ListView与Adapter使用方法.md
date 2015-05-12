@@ -122,3 +122,110 @@ tags:android
 		    }
 		}
 	};
+
+>
+
+---
+
+>
+
+### 补充Adapter适配器内存优化
+
+>
+
+在Android中Adapter使用十分广泛，特别是在list中。所以adapter是数据的 “集散地” 
+
+>
+
+所以对其进行内存优化是很有必要的。主要使用convertView和ViewHolder来进行缓存处理
+
+>
+
+	// ViewHolder
+	class MenuViewHolder {
+	    ImageView imageView;
+	    TextView textView;
+	}
+
+	/**
+	 * Created by nljb on 15/4/3.
+	 */
+	class MenuBaseAdapter extends BaseAdapter {
+
+	    // 上下文
+	    private Context context;
+
+	    public MenuBaseAdapter(Context context) {
+		this.context = context;
+	    }
+
+	    @Override
+	    public int getCount() {
+		// 项目数量
+		return 7;
+	    }
+
+	    @Override
+	    public Object getItem(int position) {
+		return null;
+	    }
+
+	    @Override
+	    public long getItemId(int position) {
+		return 0;
+	    }
+
+	    @Override
+	    public View getView(int position, View convertView, ViewGroup parent) {
+		MenuViewHolder menuViewHolder = null;
+		ImageView imageView = null;
+		TextView textView = null;
+		if (convertView == null) {
+		    convertView = LayoutInflater.from(context).inflate(R.layout.menu_adapter_item, null);
+		    imageView = (ImageView) convertView.findViewById(R.id.imageView);
+		    textView = (TextView) convertView.findViewById(R.id.textView);
+		    menuViewHolder = new MenuViewHolder();
+		    menuViewHolder.imageView = imageView;
+		    menuViewHolder.textView = textView;
+		    convertView.setTag(menuViewHolder);
+		} else {
+		    menuViewHolder = (MenuViewHolder) convertView.getTag();
+		    imageView = menuViewHolder.imageView;
+		    textView = menuViewHolder.textView;
+		}
+		switch (position) {
+		    case 0:
+			imageView.setImageResource(R.drawable.menu_lock_icon);
+			convertView.setBackground(new ColorDrawable(0xff0997F7));
+			textView.setText("登录系统");
+			break;
+		    case 1:
+			imageView.setImageResource(R.drawable.menu_bluetooth_icon);
+			textView.setText("连接蓝牙");
+			break;
+		    case 2:
+			imageView.setImageResource(R.drawable.menu_tasks_icon);
+			textView.setText("命令列表");
+			break;
+		    case 3:
+			imageView.setImageResource(R.drawable.menu_tasks_icon);
+			textView.setText("配置列表");
+			break;
+		    case 4:
+			imageView.setImageResource(R.drawable.menu_qrcode_icon);
+			textView.setText("扫码配置");
+			break;
+		    case 5:
+			imageView.setImageResource(R.drawable.menu_config_icon);
+			textView.setText("系统设置");
+			break;
+		    case 6:
+			imageView.setImageResource(R.drawable.menu_conn_icon);
+			textView.setText("退出系统");
+			break;
+		}
+		// 返回
+		return convertView;
+	    }
+
+	}
