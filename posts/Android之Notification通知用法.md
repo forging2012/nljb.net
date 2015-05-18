@@ -57,11 +57,24 @@ Android给我们提供了NotificationManager来管理这个状态栏。
 		.setDefaults(Notification.DEFAULT_ALL)
 		// 为通知设置大图标 .setLargeIcon(...)
 		// 生成 Notification
-		.getNotification();
+		// 貌似 getNotification 被强制换成 build() 了
+		// .getNotification(); 
+		// .build();
 	// 发送消息
 	notificationManager.notify(NOTIFY_ID, notification);
 	// .......
 	}
+
+---
+
+>
+
+	// 一个可以点击即可打开网址的PendingIntent
+        // PendingIntent
+        PendingIntent contentIntent =
+		 PendingIntent.getActivity(this, 0, new Intent(Intent.ACTION_VIEW, Uri.parse(url)), PendingIntent.FLAG_UPDATE_CURRENT);
+
+>
 
 ---
 
