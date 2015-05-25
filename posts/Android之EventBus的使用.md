@@ -118,7 +118,7 @@ EventBus是一款针对Android优化的发布/订阅事件总线。
 	    }
 
 	    // 接收
-	    public void Event(String str) {
+	    public void onEvent(String str) {
 
 	    }
 
