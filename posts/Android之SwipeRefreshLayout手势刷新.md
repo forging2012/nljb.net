@@ -55,7 +55,8 @@ SwipeRefreshLayout组件只接受一个子组件：即需要刷新的那个组�
 	    setContentView(R.layout.activity_main);
 	    final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) findViewById(R.id.swipe);
 	    final TextView rndNum = (TextView) findViewById(R.id.rndNum);
-	    swipeView.setColorScheme(android.R.color.holo_blue_dark,
+	    // PS: setColorScheme 已经被弃用，使用setColorSchemeResources()来设置颜色。
+	    // swipeView.setColorScheme(android.R.color.holo_blue_dark,
 				 android.R.color.holo_blue_light, 
 				 android.R.color.holo_green_light, 
 				 android.R.color.holo_green_light);
