@@ -1,5 +1,5 @@
 ---
-title: Android之Reflect使用介绍
+title: Golang之Reflect使用介绍
 date: '2015-05-27'
 description:
 categories:
