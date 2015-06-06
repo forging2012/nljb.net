@@ -27,6 +27,13 @@ tags:android
 
 >
 
+	内部会创建一个进程作用域的线程池来管理要运行的任务
+	也就就是说当你调用了 AsyncTask#execute()后，AsyncTask会把任务交给线程池
+	由线程池来管理创建Thread和运行Therad。
+	对于内部的线程 池不同版本的Android的实现方式是不一样的
+
+>
+
 	// Params 启动任务执行的输入参数，比如HTTP请求的URL。
 	// Progress 后台任务执行的百分比。
 	// Result 后台执行任务最终返回的结果，比如String。
@@ -75,7 +82,7 @@ tags:android
 		super.onCancelled();
 	    }
 
-	};
+	}.execute();
 
 	// Thread
 	new Thread() {
