@@ -35,6 +35,21 @@ tags:android
 
 >
 
+### 禁用点击
+
+>
+
+	@Override
+	public boolean isEnabled(int position) {
+		return false;
+	}
+
+>
+
+---
+
+>
+
 ### BaseAdapter
 
 >

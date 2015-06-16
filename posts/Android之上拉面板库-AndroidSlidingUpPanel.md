@@ -23,7 +23,40 @@ tags:android
 	    compile 'com.sothree.slidinguppanel:library:3.0.0'
 	}
 
->
+---
+
+	SlidingUpPanelLayout slidingUpPanelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
+	slidingUpPanelLayout.setPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+	    @Override
+	    public void onPanelSlide(View view, float v) {
+
+	    }
+
+	    @Override
+	    public void onPanelCollapsed(View view) {
+		// 向下移动，图标变成向下
+		ImageView imageView = (ImageView) findViewById(R.id.menuUpward);
+		imageView.setImageResource(R.drawable.directional_up);
+
+	    }
+
+	    @Override
+	    public void onPanelExpanded(View view) {
+		// 向下移动，图标变成向上
+		ImageView imageView = (ImageView) findViewById(R.id.menuUpward);
+		imageView.setImageResource(R.drawable.directional_down);
+	    }
+
+	    @Override
+	    public void onPanelAnchored(View view) {
+	    }
+
+	    @Override
+	    public void onPanelHidden(View view) {
+	    }
+	});
+
+---
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    xmlns:custom="http://schemas.android.com/apk/res-auto"
