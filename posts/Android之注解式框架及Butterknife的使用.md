@@ -113,8 +113,17 @@ tags:android
 
 >
 
-	// @OnItemSelected
-	// @OnItemClick
+	@OnItemSelected(R.id.list_view)
+	void onItemSelected(int position) {
+	  // TODO ...
+	}
+
+	@OnItemSelected(value = R.id.maybe_missing, callback = NOTHING_SELECTED)
+	void onNothingSelected() {
+	  // TODO ...
+	}
+
+>
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
@@ -143,4 +152,59 @@ tags:android
 		}
 
 	}
+
+>
+
+---
+
+>
+
+### 在Fragegment中使用, 注解框架
+
+>
+
+	public class FancyFragment extends Fragment {
+	  @InjectView(R.id.button1) Button button1;
+	  @InjectView(R.id.button2) Button button2;
+
+	  @Override View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	    View view = inflater.inflate(R.layout.fancy_fragment, container, false);
+	    ButterKnife.inject(this, view);
+	    // TODO Use "injected" views...
+	    return view;
+	  }
+	}
+
+	@Override void onDestroyView() {
+		super.onDestroyView();
+		ButterKnife.reset(this);
+	}
+
+>
+
+---
+
+>
+
+	By default, both @InjectView and listener injections are required. An exception will be thrown if the target view cannot be found.
+
+	To suppress this behavior and create an optional injection, add the @Optional annotation to the field or method.
+
+	@Optional @InjectView(R.id.might_not_be_there) TextView mightNotBeThere;
+
+	@Optional @OnClick(R.id.maybe_missing) void onMaybeMissingClicked() {
+	  // TODO ...
+	}
+
+>
+
+	Custom views can bind to their own listeners by not specifying an ID.
+
+	public class FancyButton extends Button {
+	  @OnClick
+	  public void onClick() {
+	    // TODO do something!
+	  }
+	}
+
 
