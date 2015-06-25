@@ -111,4 +111,42 @@ tags:golang
 																						 
 >
 
+---
+
+>
+
+### UrlEncode编码
+
+>
+
+	将字符串以 URL 编码
+
+>
+
+	编码内容: http://www.baidu.com/p/home/index.html
+	编码结果: http%3a%2f%2fwww.baidu.com%2fp%2fhome%2findex.html
+
+>
+
+---
+
+>
+
+### Hex编码/十六进制编码
+
+>
+
+	将字符串以 十六进制 编码
+
+>
+
+	编码内容: www.baidu.com
+	编码结果: 7777772e62616964752e636f6d20
+
+>
+
+---
+
+>
+
 	...
