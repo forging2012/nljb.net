@@ -22,10 +22,6 @@ tags:android
 
 >
 
-<img src="{{urls.media}}/Android之layout_weight介绍/1.png" alt="" width="500" hight="800" >
-
->
-
 	<?xml version="1.0" encoding="utf-8"?>     
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"     
 	    android:orientation="vertical"     
@@ -49,6 +45,10 @@ tags:android
 	    android:gravity="right"     
 	    android:text="three"/>     
 	</LinearLayout>   
+
+>
+
+<img src="{{urls.media}}/Android之layout_weight介绍/1.png" alt="" width="500" hight="800" >
 
 >
 
