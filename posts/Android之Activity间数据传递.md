@@ -60,6 +60,31 @@ tags:android
 
 >
 
+### 补充关于传递一个类
+
+>
+
+	public class User implements Serializable {
+		 private String username;
+	}
+
+	User user = new User();
+	user.username = "root";
+
+	Intent intent = new Intent(LoginActivity.this, MyNavigationDrawer.class);
+	intent.putExtra("USER_INFO", (Serializable) user);
+	startActivity(intent);
+
+	Intent intent = getIntent();
+	User user = (User) intent.getSerializableExtra("USER_INFO");
+    Log.i("INFO", user.getUsername());
+
+>
+
+---
+
+>
+
 ### 将数据传递到下一个，Activity
 
 >
