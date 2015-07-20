@@ -60,6 +60,25 @@ tags:android
 
 >
 
+### Result 的相关介绍
+
+>
+
+	// 启动一个 Activity 并且设置它的 requestCode
+	startActivityForResult -> requestCode
+
+	// 在 Activity 关闭前设置一个返回状态 resultCode
+	setResult -> resultCode
+
+	// 监听 Activity 的返回的 requestCode 和 resultCode 与 intent
+	onActivityResult -> requestCode -> resultCode -> intent
+
+>
+
+---
+
+>
+
 ### 补充关于传递一个类
 
 >
