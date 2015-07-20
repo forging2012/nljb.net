@@ -35,6 +35,38 @@ tags:android
 
 >
 
+### 关于 ListView 头部
+
+>
+
+	// ListView 可以通过 setHeaderView 来设置一个头部View
+	View headerView = lif.inflate(R.layout.header, null);
+	mListView.addHeaderView(headerView);
+
+	...
+
+>
+
+---
+
+>
+
+### 关于 ListView 节头部
+
+>
+
+	// ListView 可以通过 SimplerExpandableListAdapter 
+	// ListView 可以通过 ExpandableListView 
+	// 可以处理分节列表中的二维数据结构
+
+	...
+
+>
+
+---
+
+>
+
 ### 禁用点击
 
 >
