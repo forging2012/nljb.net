@@ -27,7 +27,6 @@ SlidingDrawer配置上采用了水平展开或垂直展开两种（android:orien
 >
 
 <img src="{{urls.media}}/Android之SlidingDrawer的使用方法/1.gif" alt="" width="300" hight="480" >
-
 <img src="{{urls.media}}/Android之SlidingDrawer的使用方法/2.gif" alt="" width="300" hight="480" >
 
 >
