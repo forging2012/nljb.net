@@ -19,7 +19,11 @@ tags:android
 
 >
 
-了解MVVM之前，我们先简单说一下MVC、MVP模式。
+---
+
+>
+
+### 了解MVVM之前，我们先简单说一下MVC、MVP模式。
 
 >
 
@@ -34,6 +38,14 @@ tags:android
 	它们之间的通信是通过Presenter (MVC中的Controller)来进行的，所有的交互都发生在Presenter内部
 	而在MVC中View会从直接Model中读取数据而不是通过 Controller。
 	模型与视图完全分离，我们可以修改视图而不影响模型，可以更高效地使用模型，因为所有的交互在Presenter里面。
+
+>
+
+---
+
+>
+
+### MVVM
 
 >
 
