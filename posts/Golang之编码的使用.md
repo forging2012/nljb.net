@@ -127,6 +127,38 @@ tags:golang
 
 >
 
+	package main
+
+	import (
+		// "encoding/base32"
+		"encoding/base64"
+		"fmt"
+	)
+
+	func base64Encode(src []byte) []byte {
+		return []byte(base64.StdEncoding.EncodeToString(src))
+	}
+
+	func base64Decode(src []byte) ([]byte, error) {
+		return base64.StdEncoding.DecodeString(string(src))
+	}
+
+	func main() {
+
+		nljb := "www.nljb.net"
+		debyte := base64Encode([]byte(nljb))
+		fmt.Println(string(debyte))
+
+		srbyte, err := base64Decode(debyte)
+		fmt.Println(string(srbyte), err)
+
+	}
+
+	// 输出
+	d3d3Lm5samIubmV0
+	www.nljb.net <nil>
+
+
 ---
 
 >
