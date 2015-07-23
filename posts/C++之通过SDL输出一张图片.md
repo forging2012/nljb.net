@@ -1,10 +1,10 @@
 ---
-title: SDL-在屏幕上输出一张图片
+title: C++之通过SDL输出一张图片
 date: '2014-07-03'
 description:
 categories:
 
-tags:system
+tags:c++
 
 ---
 

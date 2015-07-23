@@ -1,10 +1,10 @@
 ---
-title: 静态方法跟实例方法
+title: C++之静态方法跟实例方法
 date: '2014-07-03'
 description:
 categories:
 
-tags:system
+tags:c++
 
 ---
 
