@@ -40,7 +40,7 @@ tags:golang
 
 		// KEY, 必须是16,24,32位的[]byte
 		// 分别对应AES_128,AES_192,AES_256
-		key := "astaxie12798akljzmknm.ahkjkljl;k"
+		key := "B8XKCA7IVW6WB7GX76V771RN8LJCY2H0"		
 
 		// 通过密钥生成一个新的密码块
 		c, err := aes.NewCipher([]byte(key))
