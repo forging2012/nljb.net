@@ -32,6 +32,10 @@ VGA -> Intel Corporation Broadwell-U Integrated Graphics (https://01.org/zh/linu
 
 >
 
+---
+
+>
+
 安装 libva -> Libva - 1.4.0 升级到 Libva - 1.5.1
 
 >
@@ -40,11 +44,19 @@ VGA -> Intel Corporation Broadwell-U Integrated Graphics (https://01.org/zh/linu
 
 >
 
+---
+
+>
+
 安装 -> xf86-video-intel - 2.99.911 升级到 xf86-video-intel - 2.99.917
 
 >
 
 <img src="{{urls.media}}/openSUSE之Broadwell-U的Graphics驱动方法/2.png" alt="" width="600" hight="120" >
+
+>
+
+---
 
 >
 
