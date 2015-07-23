@@ -1,5 +1,5 @@
 ---
-title: Android之如何安全的存储密码
+title: Golang之如何安全的存储密码
 date: '2015-07-23'
 description:
 categories:
