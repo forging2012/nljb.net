@@ -25,11 +25,11 @@ tags:android
 >
 
 	// 创建 Service 还需要添加 AndroidManifest.xml
-        <service
-            android:name=".MyService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
+	<service
+		android:name=".MyService"
+		android:enabled="true"
+		android:exported="true" >
+	</service>
 
 	// 创建 Service
 	public class MyService extends Service {
