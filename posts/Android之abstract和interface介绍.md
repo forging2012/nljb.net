@@ -14,39 +14,82 @@ tags:android
 
 >
 
+	// 抽象类
 	abstract class Abc {
 
-		public abstract void getData();
+		// 抽象类中的抽象方法
+		public abstract void setData(int i);
 
 		public void Print() {
-			getData();
-			System.out.print("+\n");
+			// 调用了抽象方法
+			setData(100);
 		}
 
 	}
 
+	// 该类继承抽象类
 	class Bcd extends Abc {
 
 		@Override
-		public void getData() {
-			System.out.print("-\n");
+		public void setData(int i) {
+			System.out.print(i);
 		}
 		
 	}
 
+	// 主类
 	class Main {
 
-		/*
-			输出
-			-
-			+
-		 */
+		// 主方法
 		public Main() {
+			// 继承抽象类的类必须实现抽象方法
+			// 除非继承抽象类的类型也是抽象类
 			Bcd bcd = new Bcd();
 			bcd.Print();
 		}
 
+		// 另外一种情况
+		// 实现抽象类的时,必须实现类中抽象方法
+		Abc abc = new Abc() {
+            @Override
+            public void setData(int i) {
+                System.out.print(i);
+            }
+        };
+
 	}
+
+>
+
+
+    // 抽象类
+    abstract class Server {
+
+		private int port;
+
+        // 抽象类中的抽象方法
+        public abstract int getPort();
+
+        public void start() {
+            // 调用了抽象方法
+            this.port = getPort();
+			// ... start ...
+        }
+
+    } 
+
+	// 主类
+    class Main {
+        public Main() {
+			Server server = new Server() {
+				@Override
+				public int getPort() {
+					return 8080;
+				}
+			};
+			server.start();
+        }
+    }   
 
 >
 
