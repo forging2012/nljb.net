@@ -78,9 +78,9 @@ tags:android
 
 	    @Override
 	    protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		// FragmentTransaction
-		replaceFragment(R.id.main, new MainFragment());
+			super.onCreate(savedInstanceState);
+			// FragmentTransaction
+			replaceFragment(R.id.main, new MainFragment());
 	    }
 	}
 
@@ -92,15 +92,15 @@ tags:android
 
 	    // 构造	
 	    public MainFragment() {
-		// 实际情况
-		activity = (MainActivity) getActivity()
+			// 实际情况
+			activity = (MainActivity) getActivity()
 	    }
 
 	    @Override
 	    protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		// 这样就可以获取父类对象内容了
-		// activity.ContextLabel
+			super.onCreate(savedInstanceState);
+			// 这样就可以获取父类对象内容了
+			// activity.ContextLabel
 	    }
 	}
 
@@ -115,8 +115,8 @@ tags:android
 
 	    // 构造
 	    public EvolverBaseAdapter(Context context, ArrayList<EvolverData> evolver) {
-		this.context = context;
-		activity = (MainActivity) context;
+			this.context = context;
+			activity = (MainActivity) context;
 	    }
 	}
 
