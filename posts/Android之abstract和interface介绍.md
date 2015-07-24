@@ -68,12 +68,16 @@ tags:android
 		private int port;
 
         // 抽象类中的抽象方法
-        public abstract int setPort();
+        public abstract void failure(String data);
+        public abstract void success(int code);
 
         public void start() {
-            // 调用了抽象方法
-            this.port = setPort();
 			// ... start ...
+			if (true | false) {
+				success(String data);
+			} else {
+				failuer(int code);
+			}
         }
 
     } 
@@ -83,8 +87,12 @@ tags:android
         public Main() {
 			Server server = new Server() {
 				@Override
-				public int setPort() {
-					return 8080;
+				public void success(String data) {
+					System.out.print(data)
+				}
+				@Override
+				public void failure(int code) {
+					System.out.print(code)
 				}
 			};
 			server.start();
