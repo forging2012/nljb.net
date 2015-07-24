@@ -68,11 +68,11 @@ tags:android
 		private int port;
 
         // 抽象类中的抽象方法
-        public abstract int getPort();
+        public abstract int setPort();
 
         public void start() {
             // 调用了抽象方法
-            this.port = getPort();
+            this.port = setPort();
 			// ... start ...
         }
 
@@ -83,7 +83,7 @@ tags:android
         public Main() {
 			Server server = new Server() {
 				@Override
-				public int getPort() {
+				public int setPort() {
 					return 8080;
 				}
 			};
