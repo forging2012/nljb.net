@@ -207,4 +207,76 @@ tags:android
 	  }
 	}
 
+>
+
+---
+
+>
+
+### 补充 
+
+>
+
+butterknife-7.0.1 发布，有些使用方法变更
+
+>
+
+	class ExampleActivity extends Activity {
+	  @Bind(R.id.title) TextView title;
+	  @Bind(R.id.subtitle) TextView subtitle;
+	  @Bind(R.id.footer) TextView footer;
+
+	  @Override public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.simple_activity);
+		ButterKnife.bind(this);
+		// TODO Use fields...
+	  }
+	}
+
+	public void bind(ExampleActivity activity) {
+	  activity.subtitle = (android.widget.TextView) activity.findViewById(2130968578);
+	  activity.footer = (android.widget.TextView) activity.findViewById(2130968579);
+	  activity.title = (android.widget.TextView) activity.findViewById(2130968577);
+	}
+
+	public class FancyFragment extends Fragment {
+	  @Bind(R.id.button1) Button button1;
+	  @Bind(R.id.button2) Button button2;
+
+	  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fancy_fragment, container, false);
+		ButterKnife.bind(this, view);
+		// TODO Use fields...
+		return view;
+	  }
+	}
+
+	public class MyAdapter extends BaseAdapter {
+	  @Override public View getView(int position, View view, ViewGroup parent) {
+		ViewHolder holder;
+		if (view != null) {
+		  holder = (ViewHolder) view.getTag();
+		} else {
+		  view = inflater.inflate(R.layout.whatever, parent, false);
+		  holder = new ViewHolder(view);
+		  view.setTag(holder);
+		}
+
+		holder.name.setText("John Doe");
+		// etc...
+
+		return view;
+	  }
+
+	  static class ViewHolder {
+		@Bind(R.id.title) TextView name;
+		@Bind(R.id.job_title) TextView jobTitle;
+
+		public ViewHolder(View view) {
+		  ButterKnife.bind(this, view);
+		}
+	  }
+	}
+
 
