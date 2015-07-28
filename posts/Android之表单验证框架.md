@@ -19,6 +19,7 @@ tags:android
 >
 
 	Saripaar特性：
+
 		使用Annotation标注的生命性规则
 		可扩展性
 		支持同步/异步验证，无线担心线程问题
