@@ -16,7 +16,11 @@ tags:android
 
 RecyclerView是android-support-v7-21版本中新增的一个Widgets
 
+>
+
 官方介绍RecyclerView是ListView的升级版本，更加先进和灵活。
+
+>
 
 我们写一个简单的实例例，来看一下究竟有多先进和灵活。
 
@@ -185,7 +189,8 @@ RecyclerView是android-support-v7-21版本中新增的一个Widgets
 	    @Override
 	    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 			// 这里在onCreate的ViewHolder时加载一个View
-			return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_adapter_item, null));
+			return new ViewHolder(LayoutInflater.from(parent.getContext()).
+											inflate(R.layout.recycler_adapter_item, null));
 	    }
 
 	    @Override
