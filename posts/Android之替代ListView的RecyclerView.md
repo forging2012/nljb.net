@@ -27,8 +27,8 @@ RecyclerView是android-support-v7-21版本中新增的一个Widgets
 
 >
 
-<img src="{{urls.media}}/Android之替代ListView的RecyclerView/1.png" alt="" width="400" height="600">
-<img src="{{urls.media}}/Android之替代ListView的RecyclerView/2.png" alt="" width="400" height="600">
+<img src="{{urls.media}}/Android之替代ListView的RecyclerView/1.png" alt="" width="300" height="500">
+<img src="{{urls.media}}/Android之替代ListView的RecyclerView/2.png" alt="" width="300" height="500">
 
 >
 
