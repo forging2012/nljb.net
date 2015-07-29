@@ -10,10 +10,6 @@ tags:golang
 
 >
 
-### 锁
-
->
-
 	Golang的包sync实现了两种类型的锁： sync.Mutex 和 sync.RWMutex。
 
 	通过阅读源代码我们可以知道sync.RWMutex是基于sync.Mutex实现的，其中的只读锁的实现使用类似引用计数的方式。
