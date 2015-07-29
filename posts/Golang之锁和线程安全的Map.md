@@ -14,7 +14,8 @@ tags:golang
 
 	通过阅读源代码我们可以知道sync.RWMutex是基于sync.Mutex实现的，其中的只读锁的实现使用类似引用计数的方式。
  
-	对于任意 sync.Mutex 或 sync.RWMutex 变量l。 如果 n < m ，那么第n次 l.Unlock() 调用在第 m次 l.Lock()调用返回前发生。
+	对于任意 sync.Mutex 或 sync.RWMutex 变量l。
+			 如果 n < m ，那么第n次 l.Unlock() 调用在第 m次 l.Lock()调用返回前发生。
 
 >
 
