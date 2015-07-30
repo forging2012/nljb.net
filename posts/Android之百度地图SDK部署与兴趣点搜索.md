@@ -1,5 +1,5 @@
 ---
-title: Android之百度地图兴趣点搜索
+title: Android之百度地图SDK部署与兴趣点搜索
 date: '2015-07-30'
 description:
 categories:
@@ -11,6 +11,18 @@ tags:android
 >
 
 ### 百度地图兴趣点搜索
+
+>
+
+POI（Point of Interest），中文可以翻译为“兴趣点”。
+
+>
+
+在地理信息系统中，一个POI可以是一栋房子、一个商铺、一个邮筒、一个公交站等。
+
+>
+
+百度地图SDK提供三种类型的POI检索：周边检索、区域检索和城市内检索。
 
 >
 
@@ -47,6 +59,9 @@ tags:android
 
 	10，需要提醒的是，生成APK需要通过, Build/Generate Signed APK(Studio) 生成
 			否则程序的指纹信息无法与安全码进行匹配...
+
+	// 百度地图仅POI搜索还有着很多功能... 具体请看官方文档
+	// http://developer.baidu.com/map/index.php?title=androidsdk
 
 >
 
