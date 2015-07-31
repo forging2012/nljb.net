@@ -83,7 +83,7 @@ LBS.云是百度地图针对LBS开发者推出的平台级服务
 
 	// 在百度云存储数据进行设置
 
-<img src="{{urls.media}}/Android之百度地图LBS云搜索/1.png" alt="" width="700" hight="350" >
+<img src="{{urls.media}}/Android之百度地图LBS云搜索/1.png" alt="" width="800" hight="450" >
 
 >
 
