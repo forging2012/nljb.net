@@ -131,6 +131,21 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。
 
 >
 
+	// 城市内检索
+	mPoiSearch.searchInCity(...);
+	// 范围内检索
+	mPoiSearch.searchInBound(...);
+	// 周边检索
+	mPoiSearch.searchNearby(...);
+	// POI 详情检索
+	mPoiSearch.searchPoiDetail(...);
+
+>
+
+---
+
+>
+
 ### 官方演示（稍加修改)
 
 >
@@ -261,10 +276,17 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。
 	//                .city(editCity.getText().toString())
 	//                .keyword(editSearchKey.getText().toString())
 	//                .pageNum(load_Index));
-			mPoiSearch.searchInCity((new PoiCitySearchOption())
-					.city(city)
-					.keyword(searchkey)
-					.pageNum(load_Index));
+				// 城市内检索
+				mPoiSearch.searchInCity((new PoiCitySearchOption())
+						.city(city)
+						.keyword(searchkey)
+						.pageNum(load_Index));
+				// 范围内检索
+				mPoiSearch.searchInBound(...);
+				// 周边检索
+				mPoiSearch.searchNearby(...);
+				// POI 详情检索
+				mPoiSearch.searchPoiDetail(...);
 		}
 
 		public void goToNextPage(View v) {
