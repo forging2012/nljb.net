@@ -1,5 +1,5 @@
 ---
-title: Android之百度地图SDK部署与兴趣点搜索
+title: Android之百度地图兴趣点搜索
 date: '2015-07-30'
 description:
 categories:
