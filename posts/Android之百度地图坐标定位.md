@@ -204,17 +204,20 @@ tags:android
 						case NORMAL:
 							requestLocButton.setText("跟随");
 							mCurrentMode = LocationMode.FOLLOWING;
-							mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
+							mBaiduMap.setMyLocationConfigeration(
+								new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
 							break;
 						case COMPASS:
 							requestLocButton.setText("普通");
 							mCurrentMode = LocationMode.NORMAL;
-							mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
+							mBaiduMap.setMyLocationConfigeration(
+								new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
 							break;
 						case FOLLOWING:
 							requestLocButton.setText("罗盘");
 							mCurrentMode = LocationMode.COMPASS;
-							mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
+							mBaiduMap.setMyLocationConfigeration(
+								new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
 							break;
 					}
 				}
@@ -228,12 +231,14 @@ tags:android
 					if (checkedId == R.id.defaulticon) {
 						// 传入null则，恢复默认图标
 						mCurrentMarker = null;
-						mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(mCurrentMode, true, null));
+						mBaiduMap.setMyLocationConfigeration(
+							new MyLocationConfiguration(mCurrentMode, true, null));
 					}
 					if (checkedId == R.id.customicon) {
 						// 修改为自定义marker
 						mCurrentMarker = BitmapDescriptorFactory.fromResource(R.drawable.icon_geo);
-						mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
+						mBaiduMap.setMyLocationConfigeration(
+							new MyLocationConfiguration(mCurrentMode, true, mCurrentMarker));
 					}
 				}
 			};
@@ -267,8 +272,8 @@ tags:android
 					return;
 				MyLocationData locData = new MyLocationData.Builder()
 						.accuracy(location.getRadius())
-								// 此处设置开发者获取到的方向信息，顺时针0-360
-								// 这里的方向需要用户通过传感器自定获取并设置
+						// 此处设置开发者获取到的方向信息，顺时针0-360
+						// 这里的方向需要用户通过传感器自定获取并设置
 						.direction(100).latitude(location.getLatitude())
 						.longitude(location.getLongitude()).build();
 				Log.i("纬度", String.valueOf(locData.latitude));
@@ -313,4 +318,4 @@ tags:android
 			super.onDestroy();
 		}
 
-	}
+	}:wq
