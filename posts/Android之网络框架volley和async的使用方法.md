@@ -40,6 +40,24 @@ tags:android
 
 >
 
+### 补充
+
+>
+
+	注意：
+
+	使用JsonObjectRequest或继承自JsonObjectRequest类的对象提交一个post请求时
+
+	如果有参数需要提交,就必须以JSONObject的json串方式提交.
+
+	否则通过重写getParams()方法的方式提交不管用，getParams()方法中提交post参数只适用于Request对象。
+
+>
+
+---
+
+>
+
 ### volley
 
 >
