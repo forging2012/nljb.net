@@ -297,6 +297,7 @@ tags:android
 
 		// 回调
 		// vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() { ... };
+		// 新版本改变: vPager.addOnPageChangeListener(this);
 		vp.setOnPageChangeListener(this);
 
 		// 添加 ImageView 对象到 ImageView[]
