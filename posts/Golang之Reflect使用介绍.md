@@ -116,7 +116,7 @@ Type就是定义的类型的一个数据类型，Value是值的类型
 
 >
 
-### 补充: 获取 Struct 对象的 Tag
+### 获取 Struct 对象的 Tag
 
 >
 
