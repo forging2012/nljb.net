@@ -82,6 +82,26 @@ tags:android
 
 >
 
+### 抢占焦点
+
+>
+
+关于在ListView的Item里增加(例CheckBox对象)造成Item无法点击问题
+
+>
+
+此问题是因为CheckBox对象抢占了Item的焦点，只需要在将CheckBox对象
+
+>
+
+android:focusable属性值设置为false即可
+
+>
+
+---
+
+>
+
 ### BaseAdapter
 
 >
@@ -276,3 +296,4 @@ tags:android
 	    }
 
 	}
+
