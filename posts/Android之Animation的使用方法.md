@@ -211,55 +211,55 @@ ValueAnimator包含了Property Animation动画的所有核心功能，如动画�
 
 >
 
-		比如我们使用 ValueAnimator 在2S内将view横向拉长为2倍，纵向压缩为0：
+	比如我们使用 ValueAnimator 在2S内将view横向拉长为2倍，纵向压缩为0：
 
-		// 在2S内将view横向拉长为2倍，纵向压缩为0
-		// 创建0－1的一个过程,任何复杂的过程都可以采用归一化，然后在addUpdateListener回调里去做自己想要的变化
-		ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1);
-		// 设置过程的时间为2S
-		valueAnimator.setDuration(SCALE_ANIM_TIME);
-		// 设置这个过程是速度不断变快的
-		valueAnimator.setInterpolator(new AccelerateInterpolator());
-		// 这个过程中不断执行的回调
-		valueAnimator.addUpdateListener(new AnimatorUpdateListener() {
-			@Override
-			public void onAnimationUpdate(ValueAnimator animation) {
-				// 不断回调的在0-1这个范围内，经过插值器插值之后的返回值
-				float value = (Float) animation.getAnimatedValue();
-				// ViewHelper可直接用于修改view属性
-				// 将宽在2S内放大一倍
-				ViewHelper.setScaleX(mTestImage, 1 + value);
-				// 将高在2S内压缩为0
-				ViewHelper.setScaleY(mTestImage, 1 - value);
-			}
-		});
-		// AnimatorListenerAdapter是AnimatorListener的空实现，根据需要覆盖的方法自行选择
-		valueAnimator.addListener(new AnimatorListenerAdapter() {
-			@Override
-			public void onAnimationStart(Animator animation) {
-				super.onAnimationStart(animation);
-				Toast.makeText(getApplicationContext(), "onAnimationStart", Toast.LENGTH_SHORT)
-						.show();
-			}
+	// 在2S内将view横向拉长为2倍，纵向压缩为0
+	// 创建0－1的一个过程,任何复杂的过程都可以采用归一化，然后在addUpdateListener回调里去做自己想要的变化
+	ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, 1);
+	// 设置过程的时间为2S
+	valueAnimator.setDuration(SCALE_ANIM_TIME);
+	// 设置这个过程是速度不断变快的
+	valueAnimator.setInterpolator(new AccelerateInterpolator());
+	// 这个过程中不断执行的回调
+	valueAnimator.addUpdateListener(new AnimatorUpdateListener() {
+		@Override
+		public void onAnimationUpdate(ValueAnimator animation) {
+			// 不断回调的在0-1这个范围内，经过插值器插值之后的返回值
+			float value = (Float) animation.getAnimatedValue();
+			// ViewHelper可直接用于修改view属性
+			// 将宽在2S内放大一倍
+			ViewHelper.setScaleX(mTestImage, 1 + value);
+			// 将高在2S内压缩为0
+			ViewHelper.setScaleY(mTestImage, 1 - value);
+		}
+	});
+	// AnimatorListenerAdapter是AnimatorListener的空实现，根据需要覆盖的方法自行选择
+	valueAnimator.addListener(new AnimatorListenerAdapter() {
+		@Override
+		public void onAnimationStart(Animator animation) {
+			super.onAnimationStart(animation);
+			Toast.makeText(getApplicationContext(), "onAnimationStart", Toast.LENGTH_SHORT)
+					.show();
+		}
 
-			@Override
-			public void onAnimationEnd(Animator animation) {
-				super.onAnimationEnd(animation);
-				Toast.makeText(getApplicationContext(), "onAnimationEnd", Toast.LENGTH_SHORT)
-						.show();
-			}
+		@Override
+		public void onAnimationEnd(Animator animation) {
+			super.onAnimationEnd(animation);
+			Toast.makeText(getApplicationContext(), "onAnimationEnd", Toast.LENGTH_SHORT)
+					.show();
+		}
 
-			@Override
-			public void onAnimationCancel(Animator animation) {
-				super.onAnimationCancel(animation);
-			}
+		@Override
+		public void onAnimationCancel(Animator animation) {
+			super.onAnimationCancel(animation);
+		}
 
-			@Override
-			public void onAnimationRepeat(Animator animation) {
-				super.onAnimationRepeat(animation);
-			}
-		});
-		valueAnimator.start();
+		@Override
+		public void onAnimationRepeat(Animator animation) {
+			super.onAnimationRepeat(animation);
+		}
+	});
+	valueAnimator.start();
 
 >
 
