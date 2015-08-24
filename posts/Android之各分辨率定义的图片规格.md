@@ -55,8 +55,8 @@ tags:android
 	mdpi		120dpi ~ 160dpi
 	hdpi		160dpi ~ 240dpi
 	xhdpi		240dpi ~ 320dpi
-	xxhdpi	320dpi ~ 480dpi
-	xxxhdpi	480dpi ~ 640dpi
+	xxhdpi		320dpi ~ 480dpi
+	xxxhdpi		480dpi ~ 640dpi
 
 	在设计图标时：
 	对于五种主流像素密度（MDIP, HDPI, XHDPI, XXHDPI, XXXHDPI) 
@@ -92,10 +92,10 @@ tags:android
 
 	比如说:
 
-		Nexus S和Nexus One	属于hdpi，		屏幕宽度是320dp
-		Nexus 5				属于xxhdpi，	屏幕宽度是360dp
-		Galaxy Nexus		属于xhdpi，		屏幕宽度是384dp
-		Nexus 6 			属于xxxhdpi，	屏幕宽度是410dp
+	Nexus S和Nexus One	属于hdpi		屏幕宽度是320dp
+	Nexus 5				属于xxhdpi		屏幕宽度是360dp
+	Galaxy Nexus		属于xhdpi		屏幕宽度是384dp
+	Nexus 6				属于xxxhdpi		屏幕宽度是410dp
 
 	所以说，光Google自己一家的产品就已经有这么多的标准，而且屏幕宽度和像素密度没有任何关联关系
 
