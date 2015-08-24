@@ -55,8 +55,10 @@ Android支持两种动画模式: tween animation, frame animation
 		这些动画可以同时进行，也可以在一个完成之后开始另一个。
 
 	用XML定义的动画放在/res/anim/文件夹内
-		XML文件的根元素可以为<alpha>,<scale>,<translate>,<rotate>,interpolator元素或<set>(表示以上几个动画的集合，set可以嵌套)。
-		默认情况下，所有动画是同时进行的，可以通过startOffset属性设置各个动画的开始偏移（开始时间）来达到动画顺序播放的效果。
+		XML文件的根元素可以为<alpha>,<scale>,<translate>,<rotate>,interpolator元素或<set>
+		(表示以上几个动画的集合，set可以嵌套)。
+		默认情况下，所有动画是同时进行的，可以通过startOffset属性设置各个动画的开始偏移
+		（开始时间）来达到动画顺序播放的效果。
 
 	可以通过设置interpolator属性改变动画渐变的方式
 		如AccelerateInterpolator，开始时慢，然后逐渐加快。默认为AccelerateDecelerateInterpolator。
@@ -129,7 +131,7 @@ Android支持两种动画模式: tween animation, frame animation
 >
 
 	属性动画，这个是在Android 3.0中才引进的，以前学WPF时里面的动画机制好像就是这个
-		它更改的是对象的实际属性，在View Animation（Tween Animation）中，其改变的是View的绘制效果，真正的View的属性保持不变
+		它更改的是对象的实际属性，在（Tween Animation）中，其改变的是View的绘制效果，真正的View的属性保持不变
 		比如无论你在对话中如何缩放Button的大小，Button的有效点击区域还是没有应用动画时的区域，其位置与大小都不变。
 		而在Property Animation中，改变的是对象的实际属性，如Button的缩放，Button的位置与大小属性值都改变了。
 		而且Property Animation不止可以应用于View，还可以应用于任何对象。
@@ -137,12 +139,18 @@ Android支持两种动画模式: tween animation, frame animation
 
 	在Property Animation中，可以对动画应用以下属性：
 
-	Duration：动画的持续时间
-	TimeInterpolation：属性值的计算方式，如先快后慢
-	TypeEvaluator：根据属性的开始、结束值与TimeInterpolation计算出的因子计算出当前时间的属性值
-	Repeat Count and behavoir：重复次数与方式，如播放3次、5次、无限循环，可以此动画一直重复，或播放完时再反向播放
-	Animation sets：动画集合，即可以同时对一个对象应用几个动画，这些动画可以同时播放也可以对不同动画设置不同开始偏移
-	Frame refreash delay：多少时间刷新一次，即每隔多少时间计算一次属性值，默认为10ms，最终刷新时间还受系统进程调度与硬件的影响
+	Duration：
+		动画的持续时间
+	TimeInterpolation：
+		属性值的计算方式，如先快后慢
+	TypeEvaluator：
+		根据属性的开始、结束值与TimeInterpolation计算出的因子计算出当前时间的属性值
+	Repeat Count and behavoir：
+		重复次数与方式，如播放3次、5次、无限循环，可以此动画一直重复，或播放完时再反向播放
+	Animation sets：
+		动画集合，即可以同时对一个对象应用几个动画，这些动画可以同时播放也可以对不同动画设置不同开始偏移
+	Frame refreash delay：
+		多少时间刷新一次，即每隔多少时间计算一次属性值，默认为10ms，最终刷新时间还受系统进程调度与硬件的影响
 
 >
 
@@ -150,7 +158,9 @@ Property Animation的工作方式
 
 >
 
-	对于下图的动画，这个对象的X坐标在40ms内从0移动到40 pixel.按默认的10ms刷新一次，这个对象会移动4次，每次移动40/4=10pixel。
+	对于下图的动画，这个对象的X坐标在40ms内从0移动到40 pixel
+
+	按默认的10ms刷新一次，这个对象会移动4次，每次移动40/4=10pixel。
 
 >
 
