@@ -10,7 +10,7 @@ tags:android
 
 >
 
-### Animation 
+### View Animation 
 
 >
 
@@ -123,6 +123,9 @@ tags:android
 	// 如果你要使用默认的动画
 	// 一个非常简单的方式是在View的XML布局文件中把android:animateLayoutchanges属性设置为true。
 　	// 这样就自动地按照默认方式来对要移除或添加的View，还有Group中的其他View进行动画。
+
+>
+
 	<?xml version="1.0" encoding="utf-8"?>
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:layout_width="match_parent"
