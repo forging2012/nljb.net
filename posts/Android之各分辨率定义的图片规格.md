@@ -193,7 +193,8 @@ tags:android
 
 	public class MakeXml {
 
-		private final static String rootPath = "C:\\Users\\Administrator\\Desktop\\layoutroot\\values-{0}x{1}\\";
+		private final static String rootPath = 
+				"C:\\Users\\Administrator\\Desktop\\layoutroot\\values-{0}x{1}\\";
 
 		private final static float dw = 320f;
 		private final static float dh = 480f;
