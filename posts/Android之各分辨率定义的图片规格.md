@@ -45,6 +45,234 @@ tags:android
 
 >
 
+### 补充
+
+>
+
+	屏幕：尺寸5.1，分辨率1920X1080
+	DPI：1920^2+1080^2(v)/5.1=2202/5.1=431
+
+	mdpi		120dpi ~ 160dpi
+	hdpi		160dpi ~ 240dpi
+	xhdpi		240dpi ~ 320dpi
+	xxhdpi	320dpi ~ 480dpi
+	xxxhdpi	480dpi ~ 640dpi
+
+	在设计图标时：
+	对于五种主流像素密度（MDIP, HDPI, XHDPI, XXHDPI, XXXHDPI) 
+	应按照(2:3:4:6:8)的比例进行缩放，(1x, 1.5x, 2x, 3x, 4x)
+
+	例如：
+	尺寸为48x48dp的图标，表示在MDPI的屏幕上其尺寸应为48x48px
+	在HDPI的屏幕上其实际大小是MDPI的1.5倍（72x72px）… 依此类推
+
+	字体：
+	对于字体的使用，官方不建议使用低于12号字体大小值
+
+	图片内存占用：
+	drawable-xxhdpi	11.65M
+	drawable		74.97M
+	drawable-mhdpi	74.95M
+	drawable-hdpi	35.38M
+	在图片密度不匹配的情况下，低分辨率图片会被拉伸到高分辨率图片
+
+>
+
+---
+
+>
+
+### 密度陷阱
+
+>
+
+	虽然说dp可以去除不同像素密度的问题，使得1dp在不同像素密度上面的显示效果相同，但是还是由于Android屏幕设备的多样性
+
+	如果使用dp来作为度量单位，并不是所有的屏幕的宽度都是相同的dp长度
+
+	比如说:
+
+		Nexus S和Nexus One	属于hdpi，		屏幕宽度是320dp
+		Nexus 5				属于xxhdpi，	屏幕宽度是360dp
+		Galaxy Nexus		属于xhdpi，		屏幕宽度是384dp
+		Nexus 6 			属于xxxhdpi，	屏幕宽度是410dp
+
+	所以说，光Google自己一家的产品就已经有这么多的标准，而且屏幕宽度和像素密度没有任何关联关系
+
+	即使我们使用dp，在320dp宽度的设备和410dp的设备上，还是会有90dp的差别。
+
+	当然，我们尽量使用match_parent和wrap_content，尽可能少的用dp来指定控件的具体长宽
+		再结合上权重，大部分的情况我们都是可以做到适配的。
+
+>
+
+	此外还有一个解决办法，也就是指定所有分辨率密度对应关系
+
+	// 下面是生成的一个320*480分辨率的文件
+	// 因为宽高分割之后总分数和像素数相同
+	// 所以x1就是1px，以此类推
+	<?xml version="1.0" encoding="utf-8"?>
+	<resources><dimen name="x1">1.0px</dimen>
+	<dimen name="x2">2.0px</dimen>
+	<dimen name="x3">3.0px</dimen>
+	<dimen name="x4">4.0px</dimen>
+	<dimen name="x5">5.0px</dimen>
+	<dimen name="x6">6.0px</dimen>
+	<dimen name="x7">7.0px</dimen>
+	<dimen name="x8">8.0px</dimen>
+	<dimen name="x9">9.0px</dimen>
+	<dimen name="x10">10.0px</dimen>
+	...省略好多行
+	<dimen name="x300">300.0px</dimen>
+	<dimen name="x301">301.0px</dimen>
+	<dimen name="x302">302.0px</dimen>
+	<dimen name="x303">303.0px</dimen>
+	<dimen name="x304">304.0px</dimen>
+	<dimen name="x305">305.0px</dimen>
+	<dimen name="x306">306.0px</dimen>
+	<dimen name="x307">307.0px</dimen>
+	<dimen name="x308">308.0px</dimen>
+	<dimen name="x309">309.0px</dimen>
+	<dimen name="x310">310.0px</dimen>
+	<dimen name="x311">311.0px</dimen>
+	<dimen name="x312">312.0px</dimen>
+	<dimen name="x313">313.0px</dimen>
+	<dimen name="x314">314.0px</dimen>
+	<dimen name="x315">315.0px</dimen>
+	<dimen name="x316">316.0px</dimen>
+	<dimen name="x317">317.0px</dimen>
+	<dimen name="x318">318.0px</dimen>
+	<dimen name="x319">319.0px</dimen>
+	<dimen name="x320">320px</dimen>
+	</resources>
+
+	// 那么1080*1960分辨率下是什么样子呢？
+	// 我们可以看下，由于1080和320是3.37倍的关系
+	// 所以x1=3.37px
+	<?xml version="1.0" encoding="utf-8"?>
+	<resources><dimen name="x1">3.37px</dimen>
+	<dimen name="x2">6.75px</dimen>
+	<dimen name="x3">10.12px</dimen>
+	<dimen name="x4">13.5px</dimen>
+	<dimen name="x5">16.87px</dimen>
+	<dimen name="x6">20.25px</dimen>
+	<dimen name="x7">23.62px</dimen>
+	<dimen name="x8">27.0px</dimen>
+	<dimen name="x9">30.37px</dimen>
+	<dimen name="x10">33.75px</dimen>
+	...省略好多行
+	<dimen name="x300">1012.5px</dimen>
+	<dimen name="x301">1015.87px</dimen>
+	<dimen name="x302">1019.25px</dimen>
+	<dimen name="x303">1022.62px</dimen>
+	<dimen name="x304">1026.0px</dimen>
+	<dimen name="x305">1029.37px</dimen>
+	<dimen name="x306">1032.75px</dimen>
+	<dimen name="x307">1036.12px</dimen>
+	<dimen name="x308">1039.5px</dimen>
+	<dimen name="x309">1042.87px</dimen>
+	<dimen name="x310">1046.25px</dimen>
+	<dimen name="x311">1049.62px</dimen>
+	<dimen name="x312">1053.0px</dimen>
+	<dimen name="x313">1056.37px</dimen>
+	<dimen name="x314">1059.75px</dimen>
+	<dimen name="x315">1063.12px</dimen>
+	<dimen name="x316">1066.5px</dimen>
+	<dimen name="x317">1069.87px</dimen>
+	<dimen name="x318">1073.25px</dimen>
+	<dimen name="x319">1076.62px</dimen>
+	<dimen name="x320">1080px</dimen>
+	</resources>
+
+>
+
+	import java.io.File;
+	import java.io.FileNotFoundException;
+	import java.io.FileOutputStream;
+	import java.io.PrintWriter;
+
+	public class MakeXml {
+
+		private final static String rootPath = "C:\\Users\\Administrator\\Desktop\\layoutroot\\values-{0}x{1}\\";
+
+		private final static float dw = 320f;
+		private final static float dh = 480f;
+
+		private final static String WTemplate = "<dimen name=\"x{0}\">{1}px</dimen>\n";
+		private final static String HTemplate = "<dimen name=\"y{0}\">{1}px</dimen>\n";
+
+		public static void main(String[] args) {
+			makeString(320, 480);
+			makeString(480,800);
+			makeString(480, 854);
+			makeString(540, 960);
+			makeString(600, 1024);
+			makeString(720, 1184);
+			makeString(720, 1196);
+			makeString(720, 1280);
+			makeString(768, 1024);
+			makeString(800, 1280);
+			makeString(1080, 1812);
+			makeString(1080, 1920);
+			makeString(1440, 2560);
+		}
+
+		public static void makeString(int w, int h) {
+
+			StringBuffer sb = new StringBuffer();
+			sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
+			sb.append("<resources>");
+			float cellw = w / dw;
+			for (int i = 1; i < 320; i++) {
+				sb.append(WTemplate.replace("{0}", i + "").replace("{1}",
+						change(cellw * i) + ""));
+			}
+			sb.append(WTemplate.replace("{0}", "320").replace("{1}", w + ""));
+			sb.append("</resources>");
+
+			StringBuffer sb2 = new StringBuffer();
+			sb2.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
+			sb2.append("<resources>");
+			float cellh = h / dh;
+			for (int i = 1; i < 480; i++) {
+				sb2.append(HTemplate.replace("{0}", i + "").replace("{1}",
+						change(cellh * i) + ""));
+			}
+			sb2.append(HTemplate.replace("{0}", "480").replace("{1}", h + ""));
+			sb2.append("</resources>");
+
+			String path = rootPath.replace("{0}", h + "").replace("{1}", w + "");
+			File rootFile = new File(path);
+			if (!rootFile.exists()) {
+				rootFile.mkdirs();
+			}
+			File layxFile = new File(path + "lay_x.xml");
+			File layyFile = new File(path + "lay_y.xml");
+			try {
+				PrintWriter pw = new PrintWriter(new FileOutputStream(layxFile));
+				pw.print(sb.toString());
+				pw.close();
+				pw = new PrintWriter(new FileOutputStream(layyFile));
+				pw.print(sb2.toString());
+				pw.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		public static float change(float a) {
+			int temp = (int) (a * 100);
+			return temp / 100f;
+		}
+	}
+
+>
+
+---
+
+>
+
 应用程序图标 （Icon）应当是一个 Alpha 通道透明的32位 PNG 图片。
 
 >
