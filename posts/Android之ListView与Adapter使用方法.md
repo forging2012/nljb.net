@@ -148,7 +148,7 @@ tags:android
 
 >
 
-android:focusable属性值设置为false即可
+	android:focusable属性值设置为false即可
 
 >
 
