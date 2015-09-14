@@ -35,6 +35,27 @@ tags:android
 
 >
 
+### 关于 ListView 禁用回弹
+
+>
+
+不同的安卓厂商对ListView或ScrollView都做了一些动画效果，比如下拉时为了产生弹性美感而有大幅度回弹效果
+
+>
+
+再比如魅族的下拉悬停，有时做了一个下拉刷新的功能会与之冲突。其实该美化实为多此一举。
+
+>
+
+	// 实际上可以通过设置ListView的一个ScrollMode属性来禁用
+	listView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+
+>
+
+---
+
+>
+
 ### 关于 ListView Item 焦点问题
 
 >
