@@ -35,6 +35,42 @@ tags:android
 
 >
 
+### 关于 ListView 支持长按事件
+
+>
+
+		// Long Click 监听
+		service_listview.setOnItemLongClickListener(this);
+
+		// Long Click 监听
+		@Override
+		public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+			switch (position) {
+				case 0:
+					break;
+				default:
+					AlertDialog.Builder builder = new AlertDialog.Builder(this);
+					builder.setMessage("您确定要取消该预约?");
+					builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					});
+					builder.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					});
+					builder.create().show();
+					break;
+			}
+			return false;
+		}
+
+---
+
+>
+
 ### 关于 ListView 禁用回弹
 
 >
