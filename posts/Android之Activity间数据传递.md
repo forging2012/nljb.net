@@ -109,6 +109,8 @@ tags:android
 	intent.putExtras(bundle);
 	startActivity(intent)
 
+	// bundle传递数据大于0.5M会抛出传输数据过大异常；
+
 >
 
 ---
