@@ -83,6 +83,7 @@ tags:android
 
 >
 
+	// 方法一
 	public class User implements Serializable {
 		 private String username;
 	}
@@ -97,6 +98,16 @@ tags:android
 	Intent intent = getIntent();
 	User user = (User) intent.getSerializableExtra("USER_INFO");
     Log.i("INFO", user.getUsername());
+
+	// 方法二
+	Intent intent = new Intent(A.this, B.class);
+	Person person = new Person();
+	Bundle bundle = new Bundle()
+	bundle.putString(“name”, “baidu”);
+	bundle.putSerializable(“person”, person);
+	…
+	intent.putExtras(bundle);
+	startActivity(intent)
 
 >
 
