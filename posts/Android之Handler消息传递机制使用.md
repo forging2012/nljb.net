@@ -125,4 +125,5 @@ Handler存在的意义就是一个消息机制, 可以在一个线程中创建�
 	// 发送消息
 	handler.sendEmptyMessage(1)
 
+	// 这样相当于创建了一个独立的Handler消息队列，且不是在UI线程中运行的
 
