@@ -10,6 +10,32 @@ tags:android
 
 >
 
+### 追加
+
+>
+
+### weightSum
+
+>
+
+	在LinearLayout的XML中，android:weightSum=“5”，表示这个LinearLayout总共平分成5块大小区域；
+
+	然后再LinearLayout里面的控件，使用android:layout_wetght=“1”，这表示它占用整个布局的1/5。
+
+>
+
+	也就是，父容器使用android:weightSum平分块，然后在子容器中使用layout_wetght设置该容器占用的比例
+
+>
+
+	Layout_开头都是交给父容器，没有Layout_开头都是本身的属性
+
+>
+
+---
+
+>
+
 ### layout_weight
 
 >
@@ -128,4 +154,3 @@ tags:android
 你会发现1的权重小，反而分的多了，这是为什么呢？？？
 
 网上很多人说是当layout_width=“fill_parent”时，weighth值越小权重越大，优先级越高，就好像在背口诀
-
