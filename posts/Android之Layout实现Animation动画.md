@@ -22,7 +22,8 @@ tags:android
 	// 设置Layout的宽高
 	ViewGroup.LayoutParams lp = head.getLayoutParams();
 	if (lp == null) {
-		lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+		lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+										 ViewGroup.LayoutParams.WRAP_CONTENT);
 	}
 	int widthMeasureSpec = ViewGroup.getChildMeasureSpec(0, 0, lp.width);
 	int heightMeasureSpec;
@@ -48,7 +49,8 @@ tags:android
 
 				public void onAnimationEnd(Animation animation) {
 					head.clearAnimation();
-					RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(head.getLayoutParams());
+					RelativeLayout.LayoutParams params = 
+									new RelativeLayout.LayoutParams(head.getLayoutParams());
 					// params.setMargins(0, head.getMeasuredHeight(), 0, 0);
 					head.setLayoutParams(params);
 				}
