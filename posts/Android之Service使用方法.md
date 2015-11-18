@@ -10,6 +10,39 @@ tags:android
 
 >
 
+### 在 Service 通知 Activity 更新 UI
+
+>
+
+解决方法：将 Hander 传入 Service 由 Service 发送更新消息到 Activity
+
+>
+
+	// 实例
+	public class UpdateService extends Service {
+
+		// ---------------------------------------
+
+		private static android.os.Handler mHandler;
+
+		// ---------------------------------------
+
+		// 启动Service并传入Handler
+		public static void onStart(Context context, android.os.Handler handler) {
+			mHandler = handler;
+			context.startService(new Intent(context, UpdateService.class));
+		}
+
+		// .... 随后就可以使用 mHandler 发送通知了 ...
+
+	}
+
+>
+
+---
+
+>
+
 ### Service 之 stratService()
 
 >
