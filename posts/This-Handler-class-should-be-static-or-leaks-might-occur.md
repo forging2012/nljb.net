@@ -57,3 +57,11 @@ Android推荐将Handler变为Static(静态)但这样一来其内部调用的都�
 
 >
 
+---
+
+>
+
+参考 http://www.cnblogs.com/jevan/p/3168828.html
+
+>
+
