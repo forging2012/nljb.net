@@ -382,6 +382,21 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。
 
 	源码可在BaiduMapsApiDemo工程中找到。
 
+	// ...
+
+	新增的聚合功能和内置覆盖物源码包com.baidu.mapapi.overlayutil开放
+
+	包括: 
+
+		BusLineOverlay, 
+		DrivingRouteOverlay, 
+		OverlayManager, 
+		PoiOverlay, 
+		TransitRouteOverlay, 
+		WalkingRouteOverlay，
+
+	开发者使用到这些功能可从官方Demo中src目录下获取源码，SDK中的jar包将不再包含这部分。
+
 >
 
 	public class PoiOverlay extends OverlayManager {
