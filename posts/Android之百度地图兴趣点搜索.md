@@ -366,4 +366,58 @@ POI（Point of Interest），中文可以翻译为“兴趣点”。
 		}
 	}
 
+---
+
+>
+
+### 补充, 自定义位置图标及显示位置数量
+
+>
+
+	百度地图在新版本中开放了 OverlayManager 和 PoiOverlay 
+
+	自V3.6.0起，原内置覆盖物相关类代码开源
+
+	（OverlayManager/PoiOverlay/TransitRouteOverlay/WalkingRouteOverlay/BusLineOverlay）
+
+	源码可在BaiduMapsApiDemo工程中找到。
+
+>
+
+	public class PoiOverlay extends OverlayManager {
+
+		// 设置最大显示兴趣点数量
+		private static final int MAX_POI_SIZE = 1;
+
+		@Override
+		public final List<OverlayOptions> getOverlayOptions() {
+			if (mPoiResult == null || mPoiResult.getAllPoi() == null) {
+				return null;
+			}
+			List<OverlayOptions> markerList = new ArrayList<OverlayOptions>();
+			int markerSize = 0;
+			for (int i = 0; i < mPoiResult.getAllPoi().size()
+					&& markerSize < MAX_POI_SIZE; i++) {
+				if (mPoiResult.getAllPoi().get(i).location == null) {
+					continue;
+				}
+				markerSize++;
+				Bundle bundle = new Bundle();
+				bundle.putInt("index", i);
+	// 默认设置
+	//            markerList.add(new MarkerOptions()
+	//                    .icon(BitmapDescriptorFactory.fromAssetWithDpi("Icon_mark"
+	//                            + markerSize + ".png")).extraInfo(bundle)
+	//                    .position(mPoiResult.getAllPoi().get(i).location));
+	// 自定义设置
+				markerList.add(new MarkerOptions()
+						.icon(BitmapDescriptorFactory.fromResource(R.drawable.default_icon_baidu)).extraInfo(bundle)
+						.position(mPoiResult.getAllPoi().get(i).location));
+
+			}
+			return markerList;
+		}
+
+	}
+
 
