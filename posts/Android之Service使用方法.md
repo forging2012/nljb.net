@@ -71,6 +71,11 @@ tags:android
 
 >
 
+---
+
+>
+
+
 	// 创建 Service 还需要添加 AndroidManifest.xml
 	<service
 		android:name=".MyService"
@@ -145,6 +150,34 @@ tags:android
 	// 客户绑定到 Service ... unBindService() 取消绑定
 	onUnbind()
 	onDestroy()
+
+>
+
+	当一个Service程序启动后，如果没有出现意外且明确调用stopService()方法
+		则它将会一直驻留在手机的服务之中。
+
+	如果希望由Activity启动的Service程序可以在Activity程序结束后自动结束
+		那么就应该将Activity和Service程序进行绑定。
+
+>
+
+	为此需要借助android.content.ServiceConnection接口
+		此接口的主要功能是当一个Activity程序与Service建立连接之后
+		执行Service连接或取消连接的处理操作
+
+	在Activity连接到Service程序之后，会触发Service类中的onBind()方法
+		在此方法中要返回一个android.os.IBinder接口的对象。
+
+	默认情况下，当一个Activity程序启动Service之后，该Service程序就会在后台独自运行
+		与前台的Activity不再有什么联系，但是如果使用ServiceConnection进行连接
+		则这个Service就会和相应的Activity程序绑定在一起，而不再是独立运行了。
+
+	// 当与一个Service建立连接时调用
+	public abstract void onServiceConnected(ComponenetName name, IBinderservice)
+	// 当与一个Service取消连接时调用
+	public abstract void onServiceDisconnected(ComponentName name)
+
+---
 
 >
 
