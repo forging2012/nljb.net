@@ -43,6 +43,22 @@ tags:android
 
 >
 
+### 每次 startService 都会被 执行的 onStartCommand
+
+>
+
+在 Service 后台运行时，如果程序退出后需要再启动，这时 Service 的 onCreate 是不会执行的.
+
+>
+
+但是 每次 startService 时 onStartCommand 都会被执行 ...
+
+>
+
+---
+
+>
+
 ### Service 之 stratService()
 
 >
