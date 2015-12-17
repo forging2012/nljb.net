@@ -111,3 +111,11 @@ tags:system
 
 >
 
+---
+
+>
+
+	powershell -ExecutionPolicy Bypass 
+
+>
+
