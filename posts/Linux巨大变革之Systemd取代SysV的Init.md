@@ -404,3 +404,81 @@ mount –t debugfs /sys/kernel/debug debugfs
 
 希望通过上面几个小例子，大家已经了解配置单元文件的作用和一般写法了。
 
+>
+
+---
+
+>
+
+# 补充
+
+>
+
+关于通过 getty.target 终端启动与守护进程
+
+>
+
+	// 创建终端配置文件
+	/usr/lib/systemd/system/getty@xxx.service
+
+	// 内容
+		#  This file is part of systemd.
+		#
+		#  systemd is free software; you can redistribute it and/or modify it
+		#  under the terms of the GNU Lesser General Public License as published by
+		#  the Free Software Foundation; either version 2.1 of the License, or
+		#  (at your option) any later version.
+
+		[Unit]
+		Description=Getty on %I
+		Documentation=man:agetty(8) man:systemd-getty-generator(8)
+		Documentation=http://0pointer.de/blog/projects/serial-console.html
+		Conflicts=rescue.service
+		After=systemd-user-sessions.service plymouth-quit-wait.service
+		After=rc-local.service
+
+		# If additional gettys are spawned during boot then we should make
+		# sure that this is synchronized before getty.target, even though
+		# getty.target didn't actually pull it in.
+		Before=getty.target
+		IgnoreOnIsolate=yes
+
+		# On systems without virtual consoles, don't start any getty. Note
+		# that serial gettys are covered by serial-getty@.service, not this
+		# unit.
+		// 终端 ...
+		ConditionPathExists=/dev/tty0
+
+		[Service]
+		# the VT is cleared by TTYVTDisallocate
+		// 这里就是需要通过终端启动的进程
+		ExecStart=/usr/bin/startx_run
+		Type=idle
+		Restart=always
+		RestartSec=0
+		UtmpIdentifier=%I
+		TTYPath=/dev/%I
+		TTYReset=yes
+		TTYVHangup=yes
+		TTYVTDisallocate=yes
+		KillMode=process
+		IgnoreSIGPIPE=no
+		SendSIGHUP=yes
+
+		# Unset locale for the console getty since the console has problems
+		# displaying some internationalized messages.
+		Environment=LANG= LANGUAGE= LC_CTYPE= LC_NUMERIC= LC_TIME= LC_COLLATE= LC_MONETARY= LC_MESSAGES= LC_PAPER= LC_NAME= LC_ADDRESS= LC_TELEPHONE= LC_MEASUREMENT= LC_IDENTIFICATION=
+
+		[Install]
+		WantedBy=getty.target
+
+	// 进入终端启动的进程目录
+	/etc/systemd/system/getty.target.wants 
+
+	// 连接需要启动的进程配置文件
+	getty@tty1.service -> /usr/lib/systemd/system/getty@.service
+	getty@tty2.service -> /usr/lib/systemd/system/getty@...
+	getty@tty3.service -> /usr/lib/systemd/system/getty@...
+	getty@tty4.service -> /usr/lib/systemd/system/getty@...
+
+>
