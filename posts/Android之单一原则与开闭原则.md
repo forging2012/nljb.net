@@ -14,55 +14,55 @@ tags:android
 
 >
 
-// 案例
-public class ImageLoader {
+	// 案例
+	public class ImageLoader {
 
-	// 图片缓存
-	LruCache<String, Bitmap> mImageCache;
+		// 图片缓存
+		LruCache<String, Bitmap> mImageCache;
 
-	// 构造
-	public ImageLoader() {
-		// 初始化
-		initImageCache()	
-	}
-
-	// 初始化
-	private void initImageCache() {
-		...
-		// 计算可使用的最大内存
-		int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-		// 取四分之一的可用内存作为缓存
-		int cacheSize = maxMemory / 4;
-		// 初始化图片缓存
-		mImageCache = new LruCache<String, Bitmap>(cacheSize) {
-			...
+		// 构造
+		public ImageLoader() {
+			// 初始化
+			initImageCache()	
 		}
-	}
 
-	// 显示Image
-	public void displayImage(String url, ImageView imageView) {
-		...
-		Bitmap bitmap = mImageCache.get(url);
-		if (bitmap != null) {
-			imageView.setImageBitmap(bitmap);
-		} else {
-			// ... new Runnable() ...
-			Bitmap bitmap = downloadImage(url);
-			if (bitmap == null) {
-				return;
-			} else {
-				imageView.setImageBitmap(bitmap);
-				miMageCache.put(url, bitmap);
+		// 初始化
+		private void initImageCache() {
+			...
+			// 计算可使用的最大内存
+			int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+			// 取四分之一的可用内存作为缓存
+			int cacheSize = maxMemory / 4;
+			// 初始化图片缓存
+			mImageCache = new LruCache<String, Bitmap>(cacheSize) {
+				...
 			}
 		}
-	}
 
-	// 下载Image
-	public Bitmap downloadImage(String imageUrl) {
-		...
-	}
+		// 显示Image
+		public void displayImage(String url, ImageView imageView) {
+			...
+			Bitmap bitmap = mImageCache.get(url);
+			if (bitmap != null) {
+				imageView.setImageBitmap(bitmap);
+			} else {
+				// ... new Runnable() ...
+				Bitmap bitmap = downloadImage(url);
+				if (bitmap == null) {
+					return;
+				} else {
+					imageView.setImageBitmap(bitmap);
+					miMageCache.put(url, bitmap);
+				}
+			}
+		}
 
-}
+		// 下载Image
+		public Bitmap downloadImage(String imageUrl) {
+			...
+		}
+
+	}
 
 >
 
