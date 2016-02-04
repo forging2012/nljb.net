@@ -137,7 +137,7 @@ tags:android
 
 	// 汽车，具体工厂类
 	public class CarFactory extends Factory {
-		@Overrid
+		@Override
 		public <T extends Car> T createCar(Class<T> clz) {
 			Car car = null;
 			try {
