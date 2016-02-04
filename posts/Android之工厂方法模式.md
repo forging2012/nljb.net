@@ -202,15 +202,26 @@ tags:android
 	public class Client {
 		public static void mian(String[] args) {
 			Factory factory = new CarFactory();
-			Car audiQ3 = factory.createCar(AudiQ3.class)
+			Car audiQ3 = factory.createCar(AudiQ3.class);
 			audiQ3.drive();
 			audiQ3.selfNavigation();
-			Car audiQ5 = factory.createCar(AudiQ5.class)
+			Car audiQ5 = factory.createCar(AudiQ5.class);
 			audiQ5.drive();
 			audiQ5.selfNavigation();
-			Car audiQ7 = factory.createCar(AudiQ7.class)
+			Car audiQ7 = factory.createCar(AudiQ7.class);
 			audiQ7.drive();
 			audiQ7.selfNavigation();
 		}
-	}	
+	}
+
+	// ...
+	Q3 启动了
+	Q3 自动巡航
+	Q5 启动了
+	Q5 自动巡航
+	Q7 启动了
+	Q7 自动巡航	
 	
+>
+
+
