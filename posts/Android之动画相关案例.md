@@ -66,35 +66,38 @@ tags:android
 
     // 动画隐藏 View
     private void hideViewAnimation(View v) {
-        // AnimationSet 把多个动画组合成一个组合的机制
-        AnimationSet animSet = new AnimationSet(true);
-        // 缩放动画效果（从大到小）
-        ScaleAnimation sa = new ScaleAnimation(
-                // 从 X 坐标，最大开始
-                1,
-                // 宽 / 父宽 = 0 - 1 范围 宽 比例
-                (float) v.getWidth() / ((View) v.getParent()).getWidth(),
-                // 从 Y 坐标，最大开始
-                1,
-                // 高 / 父高 = 0 - 1 范围 高 比例
-                (float) v.getHeight() / ((View) v.getParent()).getHeight(),
-                // 从 View 右下角开始
-                v.getX() + v.getWidth(),
-                // 从 View 右下角开始
-                v.getY() + v.getHeight());
-        // 设置动画持续时间
-        sa.setDuration(1000);
-        // 透明度渐变动画（从不透明到透明）
-        AlphaAnimation aa = new AlphaAnimation(1f, 0f);
-        // 设置动画持续时间
-        aa.setDuration(2000);
-        // 并可设置组中动画的时序关系，如同时播放，顺序播放等
-        animSet.addAnimation(sa);
-        animSet.addAnimation(aa);
-        // 开始执行动画
-        v.startAnimation(animSet);
-        // 隐藏 View
-        v.setVisibility(View.GONE);
+        // 只处理非隐藏状态下的 View
+        if (v.getVisibility() != View.GONE) {
+            // AnimationSet 把多个动画组合成一个组合的机制
+            AnimationSet animSet = new AnimationSet(true);
+            // 缩放动画效果（从大到小）
+            ScaleAnimation sa = new ScaleAnimation(
+                    // 从 X 坐标，最大开始
+                    1,
+                    // 宽 / 父宽 = 0 - 1 范围 宽 比例
+                    (float) v.getWidth() / ((View) v.getParent()).getWidth(),
+                    // 从 Y 坐标，最大开始
+                    1,
+                    // 高 / 父高 = 0 - 1 范围 高 比例
+                    (float) v.getHeight() / ((View) v.getParent()).getHeight(),
+                    // 从 View 右下角开始
+                    v.getX() + v.getWidth(),
+                    // 从 View 右下角开始
+                    v.getY() + v.getHeight());
+            // 设置动画持续时间
+            sa.setDuration(1000);
+            // 透明度渐变动画（从不透明到透明）
+            AlphaAnimation aa = new AlphaAnimation(1f, 0f);
+            // 设置动画持续时间
+            aa.setDuration(2000);
+            // 并可设置组中动画的时序关系，如同时播放，顺序播放等
+            animSet.addAnimation(sa);
+            animSet.addAnimation(aa);
+            // 开始执行动画
+            v.startAnimation(animSet);
+            // 隐藏 View
+            v.setVisibility(View.GONE);
+        }
     }
 
 >
