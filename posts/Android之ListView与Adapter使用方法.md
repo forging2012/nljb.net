@@ -35,6 +35,31 @@ tags:android
 
 >
 
+### 关于 ListView 中 onItemClick 的 position 非 0 开始
+
+>
+
+	// 主要遇到两种
+	//	一，插入 HeaderViews 造成 position 非 0
+	//	二，使用 PullToRefreshListView 造成 position 非 0
+
+	// 解决办法
+    mRefreshable.getRefreshableView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			if (position - appts.getRefreshableView().getHeaderViewsCount() == -1) {
+				...
+			} else if (position - appts.getRefreshableView().getHeaderViewsCount() >= 0) {
+				...
+			}
+	}
+
+>
+
+---
+
+>
+
 ### 关于 ListView 支持长按事件
 
 >
