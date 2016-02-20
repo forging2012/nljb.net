@@ -47,9 +47,9 @@ tags:android
     mRefreshable.getRefreshableView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			if (position - appts.getRefreshableView().getHeaderViewsCount() == -1) {
+			if (position - mRefreshable.getRefreshableView().getHeaderViewsCount() == -1) {
 				...
-			} else if (position - appts.getRefreshableView().getHeaderViewsCount() >= 0) {
+			} else if (position - mRefreshable.getRefreshableView().getHeaderViewsCount() >= 0) {
 				...
 			}
 	}
