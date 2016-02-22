@@ -54,6 +54,24 @@ tags:android
 			}
 	}
 
+	// ...
+	// 基数页
+	int page = 1;
+	// 基数
+	int base = 7;
+	// 更多
+	if (more) {
+		int viewCount = mListView.getRefreshableView().getCount();
+		int headerCound = mListView.getRefreshableView().getHeaderViewsCount();
+		int footerCound = mListView.getRefreshableView().getFooterViewsCount();
+		int count = viewCount - headerCound - footerCound;
+		if (count % base == 0) {
+			page = count / base + 1;
+		} else {
+			return;
+		}
+	}
+
 >
 
 ---
