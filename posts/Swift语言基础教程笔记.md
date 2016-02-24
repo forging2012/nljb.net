@@ -48,20 +48,85 @@ tags:ios
 
 	// 当值可能不存在（may be absent）的时候使用Optionals。
 
-	// 这个字符串是完全由数字组成的
-	let possibleNumber:String = "123"
-	// 这里调用toInt()方法时，转换会成功, 得到整型值123
-	let convertedNumber = Int(possibleNumber)
-	// 这里输出了Optional(123)
-	print(convertedNumber)
+	// 声明一个 Optionals 类型
+	var optionalInteger: Int?
+	var optionalInteger: Optional<Int>
+
+	// 当你确定可选类型确实包含值之后
+	// 你可以用后缀!来访问这个值
+	optionalInteger = 42
+	optionalInteger! // 42
+
+	// 使用操作符！去获取值为nil的可选变量会有运行时错误
+
+>
+
+	// 如果值为nil，任何操作都不会执行
+
+	var myString:String? = nil
+	if myString != nil {
+		print(myString)
+	}else{
+		print("nil")
+	}
+	// 输出 nil
+
+>
+
+	// 强制解析
+
+	var myString:String?
+	myString = "Hello, Swift!"
+	if myString != nil {
+	   print(myString)
+	}else{
+	   print("myString 值为 nil")
+	}
+	// 输出 Optional("Hello, Swift!")	
+
+	var myString:String?
+	myString = "Hello, Swift!"
+	if myString != nil {
+	   // 强制解析
+	   print( myString! )
+	}else{
+	   print("myString 值为 nil")
+	}
+	// 输出 Hello, Swift!
 	
-	// 这个字符串不是由数字组成的
-	let originalString:String = "hello, world"
-	// 这里调用toInt()方法时，转换会失败
-	// 所以返回的是Optional类型，也就是Int？类型
-	let resultNumber = Int(originalString)
-	// 这里输出了一个nil说明转换失败了什么都没有
-	print(resultNumber)
+>
+
+	// 自动解析
+
+	// 你可以在声明可选变量时使用感叹号（!）替换问号（?）。
+	// 这样可选变量在使用时就不需要再加一个感叹号（!）来获取值，它会自动解析。
+
+	var myString:String!
+	myString = "Hello, Swift!"
+	if myString != nil {
+	   print(myString)
+	}else{
+	   print("myString 值为 nil")
+	}
+	// 输出 Hello, Swift!
+
+>
+
+	// 可选绑定
+
+	// 使用可选绑定（optional binding）来判断可选类型是否包含值
+	// 如果包含就把值赋给一个临时常量或者变量。
+	
+	// 可选绑定可以用在if和while语句中来对可选类型的值进行判断并把值赋给一个常量或者变量。
+
+	var myString:String?
+	myString = "Hello, Swift!"
+	if let yourString = myString {
+	   print("你的字符串值为 - \(yourString)")
+	}else{
+	   print("你的字符串没有值")
+	}
+	// 你的字符串值为 - Hello, Swift!
 
 >
 
@@ -142,11 +207,18 @@ tags:ios
 
 >
 
-### 三目运算
+### 元运算
 
 >
 
+	// 三元
 	Exp1 ? Exp2 : Exp3;
+
+	// 二元
+	a ?? b -> a != nil ? a! : b
+
+	// a 必须为 Optionals 类型
+	// b 累心必须是 a 解包后类型
 
 >
 
