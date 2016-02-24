@@ -439,4 +439,18 @@ tags:ios
 
 >
 
+	// 参数的默认值
+	func sayHello(nickname:String, greeting:String = "nljb" ) -> String {	
+		...
+	}
+
+	// 使用时如果不传入greeting则使用默认值
+	sayHello("xxx")
+
+	// 如果设置了参数默认值则必须使用外部函数名
+	// 如果不指定参数默认值的外部函数名则自动使用内部函数名
+	sayHello("xxx", greeting: "xxx")
+
+>
+
 ---
