@@ -419,4 +419,24 @@ tags:ios
 
 >
 
+	// 内部函数名
+	// 外部函数名
+
+	// userName 外部函数名, greetingWord 外部函数名
+	// nickname 内部函数名, greetingWord 内部函数名
+	func sayHello(userName nickname:String, greetingWord greeting:String) -> String {
+		...
+	}
+
+	// 使用外部函数名
+	sayHello(userNmae: "xxx", greetingWord: "xxx")	
+	
+	// nickname 既是内部参数名，又是外部参数名
+	// greeting 既是内部参数名，又是外部参数名
+	func sayHello(#nickname:String, #greeting:String) -> String {	
+		...
+	}
+
+>
+
 ---
