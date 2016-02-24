@@ -20,8 +20,8 @@ tags:ios
 
 	布尔类型 Bool
 
-	字符类型 String
-	
+	字符类型 String, Character
+
 	字典类型 Dictionary
 
 	数组类型 Array
@@ -35,6 +35,16 @@ tags:ios
 	类型推断 type inference
 
 	强制解析 forced unwrapping
+
+>
+
+	let imInt:Int = 2
+	let imDouble:Double = 3.1415926
+	let imBool:Bool = true
+	let imString:String = "Hello"
+	let imTuple:(Int, Int) = (2, 4)
+	let imPptional:Int? = nil
+	let imCharacter:Character = "!"
 
 >
 
