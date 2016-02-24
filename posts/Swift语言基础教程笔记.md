@@ -15,25 +15,15 @@ tags:ios
 >
 
 	整数类型 Int, UInt
-
 	浮点类型 Float, Double 
-
 	布尔类型 Bool
-
 	字符类型 String, Character
-
 	字典类型 Dictionary
-
 	数组类型 Arraya, Tuples(元组)
-
 	可选类型 optionals
-
 	类型别名 typealias
-
 	类型安全 type safe
-
 	类型推断 type inference
-
 	强制解析 forced unwrapping
 
 >
