@@ -24,7 +24,7 @@ tags:ios
 
 	字典类型 Dictionary
 
-	数组类型 Array
+	数组类型 Arraya, Tuples(元组)
 
 	可选类型 optionals
 
@@ -213,6 +213,11 @@ tags:ios
 
 >
 
+	import Foundation
+	// 可以用String使用原来在OC语言里NSString中所有的方法
+
+>
+
 ---
 
 >
@@ -282,6 +287,44 @@ tags:ios
 
 >
 
+### 元组
+
+>
+
+	// 元组（tuples）是把多个值组合成一个复合值
+	// 元组内的值可以使任意类型
+
+>
+
+	let http404Error = (404, "Not Found")
+	// 将一个 Int 类型值和一个 String 类型值组合在一起
+
+	// 可以将一个元组的内容分解成单独的常量或变量：
+	let (statusCode, statusMessage) = http404Error
+	println("The status code is \(statusCode)")
+	println("The status message is \(statusMessage)")
+
+	// 如果你只需要一部分元组的值，忽略的部分用下划线(_)标记:
+	let (justTheStatusCode, _) = http404Error
+	println("The status code is \(justTheStatusCode)")
+
+	// 另外，可以使用索引访问元组中的各个元素，索引数字从0开始:
+	println("The status code is \(http404Error.0)")
+	println("The status message is \(http404Error.1)")
+
+	// 可以给元组的各个元素进行命名:
+	let http200Status = (statusCode: 200, description: "OK")
+
+	// 这时，可以使用元素名来访问这些元素的值:
+	println("The status code is \(http200Status.statusCode)")
+	println("The status message is \(http200Status.description)")
+
+>
+
+---
+
+>
+
 ### 字典
 
 >
@@ -332,6 +375,31 @@ tags:ios
 >
 
 ---
+
+>
+
+### 函数
+
+>
+
+	// Swift 定义函数使用关键字 func
+	// 可以指定一个或多个输入参数和一个返回值类型
+	// 无参函数 func runoob() -> String 
+	// 单个参数 func runoob(site:String) -> String 
+	func runoob(one:String, two:String) -> String {
+		return site
+	}
+	print(runoob("xxx"))
+
+	// 例
+	func sayHello(name:String?) ->String {
+		// 这里如果用户没有指定名称则返回Guest
+		let result = "Hello, " + (name ?? "Guest") + "!"
+		return result
+	}
+	var nickname:String?
+	nickname = "World"
+	print(sayHello(nickname))
 
 >
 
