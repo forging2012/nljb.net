@@ -27,17 +27,14 @@ tags:ios
 	数组类型 Array
 
 	可选类型 optionals
-		来处理值可能缺失的情况, 可选类型表示有值或没有值
 
 	类型别名 typealias
-		typealias Feet = Int
 
 	类型安全 type safe
 
 	类型推断 type inference
 
 	强制解析 forced unwrapping
-		当你确定可选类型确实包含值后，可以在可选的名字后加一个感叹号(!)来获取值
 
 >
 
@@ -135,7 +132,7 @@ tags:ios
 
 >
 
-### 运算符
+### 三目运算
 
 >
 
@@ -192,3 +189,58 @@ tags:ios
 ---
 
 >
+
+### 字典
+
+>
+
+	// 我们可以使用以下语法来创建一个特定类型的空字典：
+	var someDict =  [KeyType : ValueType]()
+
+	// 以下是创建一个空字典，键的类型为 Int，值的类型为 String 的简单语法：
+	var someDict = [Int : String]()
+
+	// 以下为创建一个字典的实例：
+	var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+
+	// 我们可以根据字典的索引来访问数组的元素，语法如下：
+	var someVar = someDict[key]
+
+	// 我们可以使用 updateValue(forKey:) 增加或更新字典的内容。
+	// 如果 key 不存在，则添加值，如果存在则修改 key 对应的值。
+	someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+	var oldVal = someDict.updateValue("One 新的值", forKey: 1)
+
+	// 我们可以使用 removeValueForKey() 方法来移除字典 key-value 对。
+	// 如果 key 存在该方法返回移除的值，如果不存在返回 nil 。实例如下：
+	var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+	var removedValue = someDict.removeValueForKey(2)
+
+	// 我们可以使用 for-in 循环来遍历某个字典中的键值对。实例如下:
+	var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+	for (key, value) in someDict {
+	   print("字典 key \(key) -  字典 value \(value)")
+	}
+
+	// 你可以提取字典的键值(key-value)对，并转换为独立的数组。实例如下：
+	var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+	let dictKeys = [Int](someDict.keys)
+	let dictValues = [String](someDict.values)
+
+	// 我们可以使用只读的 count 属性来计算字典有多少个键值对：
+	var someDict1:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+	var someDict2:[Int:String] = [4:"Four", 5:"Five"]
+	print("someDict1 含有 \(someDict1.count) 个键值对")
+	print("someDict2 含有 \(someDict2.count) 个键值对")
+
+	// 我们可以通过只读属性 isEmpty 来判断字典是否为空，返回布尔值:	
+	var someDict3:[Int:String] = [Int:String]()
+	print("someDict1 = \(someDict1.isEmpty)")
+
+>
+
+---
+
+>
+
+---
