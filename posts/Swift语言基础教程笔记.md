@@ -42,6 +42,33 @@ tags:ios
 
 >
 
+### 可选类型
+
+>
+
+	// 当值可能不存在（may be absent）的时候使用Optionals。
+
+	// 这个字符串是完全由数字组成的
+	let possibleNumber:String = "123"
+	// 这里调用toInt()方法时，转换会成功, 得到整型值123
+	let convertedNumber = Int(possibleNumber)
+	// 这里输出了Optional(123)
+	print(convertedNumber)
+	
+	// 这个字符串不是由数字组成的
+	let originalString:String = "hello, world"
+	// 这里调用toInt()方法时，转换会失败
+	// 所以返回的是Optional类型，也就是Int？类型
+	let resultNumber = Int(originalString)
+	// 这里输出了一个nil说明转换失败了什么都没有
+	print(resultNumber)
+
+>
+
+---
+
+>
+
 ### 变量
 
 >
