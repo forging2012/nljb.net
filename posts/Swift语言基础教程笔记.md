@@ -451,6 +451,19 @@ tags:ios
 	// 如果不指定参数默认值的外部函数名则自动使用内部函数名
 	sayHello("xxx", greeting: "xxx")
 
+	// _ 取消苹果为参数默认值所指定强制外部函数名的设置
+	func sayHello(nickname:String, _ greeting:String = "nljb" ) -> String {	
+		...
+	}
+
+	// 通过外部函数名可以指定传入的参数
+	func sayHello(nickname:String, greeting:String = "nljb", others:String = "com") -> String {	
+		...
+	}
+
+	// ...
+	sayHello("www", others: "net")
+
 >
 
 ---
