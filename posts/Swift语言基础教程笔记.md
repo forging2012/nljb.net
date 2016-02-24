@@ -392,7 +392,7 @@ tags:ios
 	print(runoob("xxx"))
 
 	// 例
-	func sayHello(name:String?) ->String {
+	func sayHello(name:String?) -> String {
 		// 这里如果用户没有指定名称则返回Guest
 		let result = "Hello, " + (name ?? "Guest") + "!"
 		return result
@@ -400,6 +400,21 @@ tags:ios
 	var nickname:String?
 	nickname = "World"
 	print(sayHello(nickname))
+
+>
+
+	// 常量参数
+	func sayHello(name:String) -> String {
+		// 传值操作
+		// 则此时name是常量参数不可以修改
+	}
+
+	// 变量参数
+	func sayHello(var name:String) -> String {
+		// 传值操作
+		// 局部变量参数，修改不会影响外部
+		// 则此时name是变量参数可以修改
+	}
 
 >
 
@@ -463,6 +478,20 @@ tags:ios
 
 	// ...
 	sayHello("www", others: "net")
+
+>
+
+	// 传引用值, 当声明参数的时候加上 inout
+	// 则如果修改该值，外部的值也随之改变
+	func sayHello(inout a:Int, inout b:Int) {
+		a = 100
+		b = 100	
+	}
+
+	// ...
+	var x = 0
+	var y = 0
+	sayHello(&x, b: &y)
 
 >
 
