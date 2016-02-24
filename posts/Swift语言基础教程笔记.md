@@ -403,4 +403,20 @@ tags:ios
 
 >
 
+	// 通过元组返回多个值
+	func maxminScores(scores:[Int]) -> (maxscore:Int, minscore:Int)	{
+		...
+		return (scores[0], scores[1])
+	}
+	
+	// 元组返回异常情况, 则这里需要使用 optionals 可选型
+	func maxminScores(scores:[Int]) -> (maxscore:Int, minscore:Int)? {
+        if scores.isEmpty {
+			return nil
+		}
+        return (scores[0], scores[1])
+    }
+
+>
+
 ---
