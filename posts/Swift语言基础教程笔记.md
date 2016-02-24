@@ -373,6 +373,9 @@ tags:ios
 >
 
 	// Swift 定义函数使用关键字 func
+
+	// Swift func 是可以进行嵌套使用的
+
 	// 可以指定一个或多个输入参数和一个返回值类型
 	// 无参函数 func runoob() -> String 
 	// 单个参数 func runoob(site:String) -> String 
@@ -482,6 +485,37 @@ tags:ios
 	var x = 0
 	var y = 0
 	sayHello(&x, b: &y)
+
+>
+
+	// 函数类型
+	func sayHello(a:Int, b:Int) -> String {
+		...
+    }
+
+	// 则 another 当 sayHello 用
+	let another = sayHello
+
+	// 指定类型
+	let another:(Int, Int) -> String = sayHello
+
+	// 返回值为空也必须写 () or Void
+	let another:(Int, Int) -> () = sayHello
+
+>
+
+	// ...
+	func sayWorld() -> Int {
+		return 99;
+	}
+
+	// 返回函数类型
+	func sayHello() () -> Int {
+		return sayWorld();
+	}
+
+	let x = sayHello()
+	x()
 
 >
 
