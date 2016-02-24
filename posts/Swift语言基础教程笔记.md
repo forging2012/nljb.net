@@ -96,7 +96,6 @@ tags:ios
 >
 
 	// 常用方法
-
 	isEmpty 
 		判断字符串是否为空，返回布尔值
 	hasPrefix(prefix: String) 
@@ -109,22 +108,6 @@ tags:ios
 		let myInt: Int? = Int(myString)
 	String.characters.count 
 		计算字符串的长度
-	utf8 
-		可以通过遍历String的utf8属性来访问它的UTF-8编码
-	utf16 
-		可以通过遍历String的utf16属性来访问它的UTF-16编码
-	unicodeScalars 
-		可以通过遍历String值的unicodeScalars属性来访问它的Unicode标量编码.
-	+
-		连接两个字符串，并返回一个新的字符串
-	+=
-		连接操作符两边的字符串并将新字符串赋值给左边的操作符变量
-	==
-		判断两个字符串是否相等
-	< 
-		比较两个字符串，对两个字符串的字母逐一比较。
-	!=
-		比较两个字符是否不相等。
 
 >
 
