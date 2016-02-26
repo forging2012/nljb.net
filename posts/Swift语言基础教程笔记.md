@@ -19,7 +19,8 @@ tags:ios
 	布尔类型 Bool
 	字符类型 String, Character
 	字典类型 Dictionary
-	数组类型 Arraya, Tuples(元组)
+	数组类型 Arraya(List), Tuples(元组)
+	集合理性 Set(无序数据集合)
 	函数类型 Function
 	闭包类型 Closure
 	可选类型 optionals
