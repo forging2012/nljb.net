@@ -42,6 +42,7 @@ tags:ios
 >
 
 ---
+
 >
 
 ### 类型转换
@@ -768,6 +769,72 @@ tags:ios
 	    case .QRcode(let s):
 	        print(s)
 	}
+
+>
+
+---
+
+>
+
+### 结构体
+
+>
+
+	// 结构体（未初始化值)
+	struct MarkStruct {
+	    var mark1: Int
+	    var mark2: Int
+	    var mark3: Int
+	}
+	
+	// 结构体变量
+	var mark = MarkStruct(mark1: 1, mark2: 2, mark3: 3)
+	
+	// 结构体（初始化值)
+	struct MarkStruct {
+	    var mark1 = 1
+	    var mark2 = 2
+	    var mark3 = 3
+	}
+	
+	// 结构体变量
+	var mark = MarkStruct();
+
+>
+
+---
+
+>
+
+### 备注
+
+>
+
+	// 类(类型)与结构体 T()
+	var a:String = String()
+	
+	// : 后面指定的是类型
+	// Swift可以自动识别类型
+	var a = String()
+	
+	// 初始化值，可能在()里面填写
+	var a = String("Hello World")
+	
+>
+	
+	// 数组
+	var someArray = [Int]()
+	var someInts:[Int] = [10, 20, 30]
+	
+	// 无序集合
+	var e:Set<String> = ["A", "B"]
+	var e = Set<String>(["A", "B"])
+	
+	// 字典
+	var someDict = [Int : String]()
+	var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+	
+	....
 
 >
 
