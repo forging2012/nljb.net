@@ -20,6 +20,8 @@ tags:ios
 	字符类型 String, Character
 	字典类型 Dictionary
 	数组类型 Arraya, Tuples(元组)
+	函数类型 Function
+	闭包类型 Closure
 	可选类型 optionals
 	类型别名 typealias
 	类型安全 type safe
@@ -223,7 +225,7 @@ tags:ios
 	a ?? b -> a != nil ? a! : b
 
 	// a 必须为 Optionals 类型
-	// b 累心必须是 a 解包后类型
+	// b 类型必须是 a 解包后类型
 
 >
 
@@ -372,6 +374,25 @@ tags:ios
 
 >
 
+---
+
+>
+
+	// 值类型
+	值类型传入的都是对象的副本，对值类型的修改不会影响原对象
+	Int Float Double Bool Tuple String Array Dictionarry
+	
+	// 引用类型
+	引用类型传入的都是对象的引用，对引用类型的修改会影响原对象
+	Function（函数） Closure(闭包）
+	
+
+>
+
+---
+
+>
+
 	// Swift 定义函数使用关键字 func
 
 	// Swift func 是可以进行嵌套使用的
@@ -516,6 +537,123 @@ tags:ios
 
 	let x = sayHello()
 	x()
+
+>
+
+---
+
+>
+
+### 闭包
+
+>
+
+	// 接受闭包的函数
+	func sayHello(a:Int, _ x:(a:Int, b:Int) -> Int) -> Int { return x(a: a,b: a) }
+	
+	// 传入闭包
+	let x = sayHello(100, {(a:Int, b:Int) -> Int in return a + b })
+	
+	// 传入闭包 简写
+	let y = sayHello(100, {a, b in return a + b })
+	
+	// 传入闭包 简写
+	let z = sayHello(100, {a, b in a + b })
+	
+	// 传入闭包 简写 传入参数($0 ... $n)
+	let v = sayHello(100, {$0 + $1})
+	
+	// 传入闭包 简写 运算符
+	let n = sayHello(100, +)
+
+>
+
+	// 结尾闭包 ... 当闭包是最后一个参数时
+	let m = sayHello(100) {
+	    (a:Int, b:Int) -> Int in
+	    return a + b
+	}
+	
+>
+
+	// 闭包内使用外部变量
+	var num = 5
+	let h = sayHello(100) {
+	    (a:Int, b:Int) -> Int in
+	    return a + b + 5
+	}
+	
+>
+
+---
+
+>
+
+### 枚举
+
+>
+
+	// 枚举类型
+	enum GameEnding {
+	    case Win
+	    case Lose
+	    case Draw
+	}
+	
+>
+	
+	// 使用案例
+	
+	var yourScore:Int = 0
+	var enemyScore:Int = 0
+	
+	var theGameEnding:GameEnding = .Win
+	if yourScore > enemyScore { theGameEnding = .Win }
+	if yourScore < enemyScore { theGameEnding = .Lose }
+	if yourScore == enemyScore { theGameEnding = .Draw }
+	
+	switch theGameEnding {
+		case .Win: print("Win")
+		case .Lose: print("Lose")
+		case .Draw: print("Draw")
+	}
+	
+>
+
+	// 枚举类型
+	enum Month:Int {
+	    case Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+	}
+	
+	// 枚举变量
+	let m:Month = .Jan
+	
+	// 枚举变量，挂接值
+	print(m.rawValue)
+	
+	// 挂接值创建变量 
+	// 使用?的原因是rawValue不可控
+	// 如果rawValue在Month中没有则返回nil
+	let o:Month? = Month(rawValue: 12)
+
+>
+
+	// 枚举类型
+	enum Month {
+	    case OK
+	    case Error
+	}
+	
+	// 可以进行状态定义
+	func isOK() -> Month {
+	    return Month.Error
+	}
+	
+	if isOK() == Month.OK {
+	    print("OK")
+	} else {
+	    print("Error")
+	}
 
 >
 
