@@ -42,6 +42,43 @@ tags:ios
 >
 
 ---
+>
+
+### 类型转换
+
+>
+
+	// 最简单的子类转父类：
+	var parentObject ＝ childObject as ParentClass
+	// 最简单的父类转子类（该父类对象一定要是该子类的引用）：
+	var childObject = parentObject as ChildClass
+	
+>
+
+	Int转其他：
+	var aInt : Int = 5
+	var aFloat = Float(aInt)
+	var aDouble = Double(aInt)
+	var aInt32 = Int32(aInt)
+	var aCGFloat = CGFloat(aInt)
+	var aString = String(aInt)
+	
+	Double转其他：
+	var bDouble : Double = 0.99
+	var bInt = Int(bDouble)
+	var bFloat = Float(bDouble)
+	var bCGFloat = CGFloat(bDouble)
+	var bString = "\(bDouble)"
+	
+	String 转其他：
+	var cString : String = "5"
+	var cInt = NSString(string: aString).integerValue
+	var dString : String = "0.99"
+	var dDouble = NSString(string: bString).doubleValue
+
+>
+
+---
 
 >
 
