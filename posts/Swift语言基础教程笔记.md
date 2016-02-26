@@ -19,15 +19,21 @@ tags:ios
 	布尔类型 Bool
 	字符类型 String, Character
 	字典类型 Dictionary
-	数组类型 Arraya(List), Tuples(元组)
-	集合理性 Set(无序数据集合)
+	数组类型 Arraya(List)
+	元组类型 Tuples
+	集合理性 Set
 	函数类型 Function
 	闭包类型 Closure
-	可选类型 optionals
-	类型别名 typealias
-	类型安全 type safe
-	类型推断 type inference
-	强制解析 forced unwrapping
+	结构类型 Struct
+	枚举类型 Enum
+	可选类型 Optionals
+	
+>
+
+	类型别名 Typealias
+	类型安全 Type safe
+	类型推断 Type inference
+	强制解析 Forced unwrapping
 
 >
 
@@ -51,11 +57,22 @@ tags:ios
 
 	// 值类型
 	值类型传入的都是对象的副本，对值类型的修改不会影响原对象
-	Int Float Double Bool Tuple String Array Dictionarry Struct Enum
+	Int 
+	Float 
+	Double 
+	Bool 
+	Tuple 
+	String 
+	Array 
+	Dictionarry 
+	Struct 
+	Enum
 	
 	// 引用类型
 	引用类型传入的都是对象的引用，对引用类型的修改会影响原对象
-	Function（函数） Closure(闭包）Class(类)
+	Function（函数） 
+	Closure(闭包）
+	Class(类)
 	
 >
 
