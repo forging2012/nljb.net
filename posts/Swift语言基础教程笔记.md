@@ -620,7 +620,7 @@ tags:ios
 	
 >
 
-	// 枚举类型
+	// 枚举类型（挂接值为Int, 并且自动++)
 	enum Month:Int {
 	    case Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
 	}
@@ -638,10 +638,10 @@ tags:ios
 
 >
 
-	// 枚举类型
-	enum Month {
-	    case OK
-	    case Error
+	// 枚举类型（挂接值为String)
+	enum Month:String {
+	    case OK = "Is Ok"
+	    case Error = "Is Error"
 	}
 	
 	// 可以进行状态定义
@@ -650,9 +650,32 @@ tags:ios
 	}
 	
 	if isOK() == Month.OK {
-	    print("OK")
+	    print(Month.OK.rawValue)
 	} else {
-	    print("Error")
+	    print(Month.Error.rawValue)
+	}
+	
+>
+
+	// 枚举类型
+	enum BarCode {
+	    // 包含四个Int的UPCA
+	    case UPCA(Int, Int, Int, Int)
+	    // 包含一个String的QRcode
+	    case QRcode(String)
+	}
+	
+	// 枚举变量（方法一）
+	let codeA = BarCode.UPCA(100, 200, 300, 400)
+	// 枚举变量（方法二）
+	let codeB:BarCode = .QRcode("Hello QRcode")
+	
+	// 使用变量
+	switch codeA {
+	    case .UPCA(let a, let b, let c, let d):
+	        print(a,b,c,d)
+	    case .QRcode(let s):
+	        print(s)
 	}
 
 >
