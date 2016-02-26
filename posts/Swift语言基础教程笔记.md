@@ -45,6 +45,24 @@ tags:ios
 
 >
 
+### 值类型与引用类型
+
+>
+
+	// 值类型
+	值类型传入的都是对象的副本，对值类型的修改不会影响原对象
+	Int Float Double Bool Tuple String Array Dictionarry Struct Enum
+	
+	// 引用类型
+	引用类型传入的都是对象的引用，对引用类型的修改会影响原对象
+	Function（函数） Closure(闭包）Class(类)
+	
+>
+
+---
+
+>
+
 ### 类型转换
 
 >
@@ -463,25 +481,6 @@ tags:ios
 >
 
 ### 函数
-
->
-
----
-
->
-
-	// 值类型
-	值类型传入的都是对象的副本，对值类型的修改不会影响原对象
-	Int Float Double Bool Tuple String Array Dictionarry
-	
-	// 引用类型
-	引用类型传入的都是对象的引用，对引用类型的修改会影响原对象
-	Function（函数） Closure(闭包）
-	
-
->
-
----
 
 >
 
