@@ -301,6 +301,38 @@ tags:ios
 
 >
 
+### 无序集合
+
+>
+
+	// 无序集合, 初始化
+	var s = Set<String>(["D", "E"])
+	// 插入数据
+	s.insert("A")
+	s.insert("B")
+	
+	// 无序集合, 初始化
+	var e:Set<String> = ["A", "B"]
+	// 是否为空
+	e.isEmpty
+	// 集合数量
+	e.count
+	// 是否存在
+	e.contains("A")
+	// 移除对象
+	e.remove("B")
+	
+	// 两个集合的交集
+	s.intersect(e)
+	// 两个集合的并集
+	s.union(e)
+
+>
+
+---
+
+>
+
 ### 元组
 
 >
