@@ -60,6 +60,27 @@ tags:ios
 	optionalInteger! // 42
 
 	// 使用操作符！去获取值为nil的可选变量会有运行时错误
+	
+>
+	
+	// 普通的函数
+	func sayHello(name:String, _ addr:String) {
+	    print(name, addr)
+	}
+	
+	// 传入两个参数（可选型）
+	var name:String? = "nljb"
+	var addr:String? = "beijing"
+	
+	// 需要解包才可以传入
+	// 当然可以这样(name!, addr!)
+	// 也可以使用if-let安全解包
+	// 并且if-let添加判断条件
+	if let name = name where name == "jbnl", let addr = addr {
+	    sayHello(name, addr)
+	} else {
+	    print("no nljb")
+	}
 
 >
 
