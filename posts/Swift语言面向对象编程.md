@@ -487,3 +487,51 @@ tags:ios
 >
 
 ---
+
+>
+
+### 下标
+
+>
+
+*定义下标使用subscript关键字*
+
+*对于同一个类、结构体或枚举可以定义多个下标，通过索引值类型的不同来进行重载，而且索引值的个数可以是多个*
+
+>
+
+	struct Hi {
+	    subscript(index:Int) -> Int {
+	        get {
+	            if index == 0 {
+	                return 100
+	            } else {
+	                return 1000
+	            }
+	        }
+	        set {
+	            print(newValue)
+	        }
+	    }
+	}
+	
+	// 实例
+	var h = Hi()
+	// 赋值调用 Set
+	h[0] = 100
+	// 读取调用 Get
+	print(h[0])
+	
+*用只读计算属性一样，可以直接将原本写在Get代码块中的代码写在subscript中*
+
+	struct Hi {
+	    subscript(index:Int) -> Int {
+	        if index == 0 {
+	            return 100
+	        } else {
+	            return 1000
+	        }
+	    }
+	}
+
+---
