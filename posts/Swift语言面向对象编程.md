@@ -436,3 +436,54 @@ tags:ios
 >
 
 ---
+
+>
+
+### 方法
+
+>
+
+***在实例中修改值类型***
+
+*结构体和枚举是值类型，值类型的属性是不能在它的实例方法中被修改，但是 ...*
+
+*可以使用变异方法从方法内部改变它的属性（值），并且它做的任何改变在方法结束时还保留在原始结构中*
+
+	struct Hi {
+	    var a:Int
+	    var b:Int
+	    func change() {
+	        a = 10 // Error
+	        b = 10 // Error
+	    }
+	}
+	
+	struct Hi {
+	    var a:Int
+	    var b:Int
+	    // 使用变态方法
+	    mutating func change() {
+	        a = 10 // OK
+	        b = 10 // OK
+	    }
+	}
+	
+	*注意：不能在结构体类型常量上调用变异方法，常量属性不能被改变*
+	
+>
+
+***在变异方法中给self赋值***
+
+*变异方法能够赋值给隐含属性self一个全新的实例*
+	
+	struct Hi {
+	    var x = 0, y = 0
+	    mutating func change() {
+	    	 // 赋值一个全新的实例
+	        self = Hi(x: 10, y: 10)
+	    }
+	}
+	
+>
+
+---
