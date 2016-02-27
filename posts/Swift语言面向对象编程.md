@@ -14,10 +14,14 @@ tags:ios
 
 >
 
-	// 注意：Class 是引用类型
+***注意：Class 是引用类型***
 
-	// Class 继承 扩展类型
-	// Class 构造 重载 静态方法 重写 父类方法
+>
+
+* Class 继承 扩展类型
+* Class 构造 重载 静态方法 重写 父类方法
+
+>
 	
 	// Class
 	class Hi {
@@ -67,13 +71,15 @@ tags:ios
 	
 >
 
-	// Class 静态方法
+***Class 静态方法***
+
 	// Class Func
 	Hi.sayClass()
 
 >
 	
-	// Class 继承
+***Class 继承***
+
 	class Hello:Hi {
 	    
 	    // 重写方法
@@ -92,7 +98,8 @@ tags:ios
 	
 >
 	
-	// Class 扩展 
+***Class 扩展***
+
 	// 在原有类的基础上进行扩展
 	extension Hi {
 	    
@@ -137,3 +144,14 @@ tags:ios
 ---
 
 >
+
+### 标识恒等
+
+>
+
+* 等价于（ === ）
+* 不等价于（ !== ）
+
+>
+
+---
