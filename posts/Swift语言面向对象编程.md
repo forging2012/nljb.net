@@ -305,4 +305,94 @@ tags:ios
 
 >
 
+***计算属性***
+
+>
+
+*类、结构体、枚举可以定义计算属性*
+
+*计算属性不直接存储值，而是提供一个getter来获取值*
+
+*一个可选的setter来间接设置其它属性或变量的值*
+
+>
+
+	// 结构体
+	struct Hello {
+	    var x:Int
+	    var y:Int
+	}
+	
+	// 类
+	class Hi {
+	    
+	    var h:Hello?
+	    
+	    // 计算属性
+	    var a:Hello {
+	        // 读取 a 时调用 Get
+	        get {
+	            print("run get ...")
+	            return h ?? Hello(x: 0, y: 0)
+	        }
+	        // 设置 a 时调用 Set
+	        // 也可以 set { ... } 则默认使用 newValue
+	        set(hello) {
+	            print("run set ...")
+	            self.h = hello
+	        }
+	    }
+	    
+	}
+	
+	// 实例
+	var h = Hi()
+	
+	// 设置 a 时调用 Set
+	h.a = Hello(x: 5, y: 5)
+	
+	// 读取 a 时调用 Get
+	print(h.a.x)
+	print(h.a.y)
+	
+>
+
+***只读计算属性***
+
+*只有Get没有Set的计算属性就是只读计算属性*
+
+*只读计算属性的声明可以去掉Get关键字和花括号
+	
+	var a:Hello {
+		return Hello(x: 0, y: 0)
+	}
+
+>
+
+***属性监视器***
+
+>
+
+*属性监视器监控和响应属性值的变化*
+
+*每次属性被设置的时候都会调用属性监视器，甚至新的值和现在的值相同的时候也不例外*
+
+* willSet 在设置新的值之前调用
+* didSet  在设置新的值之后调用
+
+>
+
+	class Hi {
+		var total:Int = 0 {
+	       willSet {
+	           print(total, newValue)
+	       }
+	       didSet {
+	           print(total)
+	       }
+       }
+	}
+
+>
+
 ---
