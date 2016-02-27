@@ -307,7 +307,7 @@ tags:ios
 
 ***计算属性***
 
->
+*计算属性和属性监察器所描述的模式可以用于全局变量和本地变量*
 
 *类、结构体、枚举可以定义计算属性*
 
@@ -361,7 +361,7 @@ tags:ios
 
 *只有Get没有Set的计算属性就是只读计算属性*
 
-*只读计算属性的声明可以去掉Get关键字和花括号
+*只读计算属性的声明可以去掉Get关键字和花括号*
 	
 	var a:Hello {
 		return Hello(x: 0, y: 0)
@@ -372,6 +372,8 @@ tags:ios
 ***属性监视器***
 
 >
+
+*计算属性和属性监察器所描述的模式可以用于全局变量和本地变量*
 
 *属性监视器监控和响应属性值的变化*
 
@@ -384,14 +386,52 @@ tags:ios
 
 	class Hi {
 		var total:Int = 0 {
+			// 在设置新的值之前调用
 	       willSet {
 	           print(total, newValue)
 	       }
+	       // 在设置新的值之后调用
 	       didSet {
 	           print(total)
 	       }
        }
 	}
+
+>
+
+***类型属性***
+
+*使用关键字static来定义值类型的类型属性，使用关键字class来为类定义类型属性*
+
+* static 在枚举、结构体中修饰的属性、方法
+* class 在类中修饰的属性、方法
+
+*注意：也就是静态属性与方法，在类中使用(class)在枚举和结构体中使用(static)*
+
+	struct Struct {
+	    static var a = "Hello"
+	    static var b:Int {
+	        return 0
+	    }
+	}
+	
+	enum Enum {
+	    static var a = "Hello"
+	    static var b:Int {
+	        return 0
+	    }
+	}
+	
+	class Class {
+	    class var a:Int {
+	        return 0
+	    }
+	    class func b() -> Int {
+	        return 0
+	    }
+	}
+	
+*注意：类型属性是通过类型本身获取和设置的，而不是通过实例*
 
 >
 
