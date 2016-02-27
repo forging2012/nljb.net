@@ -23,6 +23,8 @@ tags:ios
 
 >
 	
+***Class***
+
 	// Class
 	class Hi {
 	    
@@ -65,6 +67,8 @@ tags:ios
 
 >
 
+***Class 实例***
+
 	// Class
 	var hi = Hi(name: "nljb", addr: "beijing")
 	hi.sayHi()
@@ -78,7 +82,7 @@ tags:ios
 
 >
 	
-***Class 继承***
+***Class 继承 与 重写***
 
 	class Hello:Hi {
 	    
@@ -124,13 +128,17 @@ tags:ios
 
 >
 
+***Class protocol***
+
 	// 接口
 	protocol Pro {
 	    // 接口方法
 	    func sayHello() -> String
 	}
 	
-	// Class 继承接口
+***Class 继承接口***
+
+	// 继承 Pro
 	class Hi:Pro {
 	    // 接口方法
 	    func sayHello() -> String {

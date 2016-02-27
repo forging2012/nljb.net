@@ -14,28 +14,34 @@ tags:ios
 
 >
 
-	整数类型 Int, UInt
-	浮点类型 Float, Double 
-	布尔类型 Bool
-	字符类型 String, Character
-	字典类型 Dictionary
-	数组类型 Arraya(List)
-	元组类型 Tuples
-	集合理性 Set
-	函数类型 Function
-	闭包类型 Closure
-	结构类型 Struct
-	枚举类型 Enum
-	可选类型 Optionals
+***数据类型***
+
+* 整数类型 Int, UInt
+* 浮点类型 Float, Double 
+* 布尔类型 Bool
+* 字符类型 String, Character
+* 字典类型 Dictionary
+* 数组类型 Array(List)
+* 元组类型 Tuples
+* 集合理性 Set
+* 函数类型 Function
+* 闭包类型 Closure
+* 结构类型 Struct
+* 枚举类型 Enum
+* 可选类型 Optionals
 	
 >
 
-	类型别名 Typealias
-	类型安全 Type safe
-	类型推断 Type inference
-	强制解析 Forced unwrapping
+***其它类型***
+
+* 类型别名 Typealias
+* 类型安全 Type safe
+* 类型推断 Type inference
+* 强制解析 Forced unwrapping
 
 >
+
+***类型赋值***
 
 	let imInt:Int = 2
 	let imDouble:Double = 3.1415926
@@ -55,8 +61,9 @@ tags:ios
 
 >
 
-	// 值类型
-	值类型传入的都是对象的副本，对值类型的修改不会影响原对象
+***值类型***
+
+	// 值类型传入的都是对象的副本，对值类型的修改不会影响原对象
 	Int 
 	Float 
 	Double 
@@ -68,7 +75,10 @@ tags:ios
 	Struct 
 	Enum
 	
-	// 引用类型
+>
+	
+***引用类型***
+
 	引用类型传入的都是对象的引用，对引用类型的修改会影响原对象
 	Function（函数） 
 	Closure(闭包）
@@ -91,7 +101,8 @@ tags:ios
 	
 >
 
-	Int转其他：
+***Int 转其它***
+
 	var aInt : Int = 5
 	var aFloat = Float(aInt)
 	var aDouble = Double(aInt)
@@ -99,14 +110,16 @@ tags:ios
 	var aCGFloat = CGFloat(aInt)
 	var aString = String(aInt)
 	
-	Double转其他：
+***Double 转其它***
+
 	var bDouble : Double = 0.99
 	var bInt = Int(bDouble)
 	var bFloat = Float(bDouble)
 	var bCGFloat = CGFloat(bDouble)
 	var bString = "\(bDouble)"
 	
-	String 转其他：
+***String 转其它***
+
 	var cString : String = "5"
 	var cInt = NSString(string: aString).integerValue
 	var dString : String = "0.99"
@@ -122,6 +135,8 @@ tags:ios
 
 >
 
+***Optionals***
+
 	// 当值可能不存在（may be absent）的时候使用Optionals。
 
 	// 声明一个 Optionals 类型
@@ -136,6 +151,8 @@ tags:ios
 	// 使用操作符！去获取值为nil的可选变量会有运行时错误
 	
 >
+
+***例***
 	
 	// 普通的函数
 	func sayHello(name:String, _ addr:String) {
@@ -170,7 +187,7 @@ tags:ios
 
 >
 
-	// 强制解析
+***强制解析***
 
 	var myString:String?
 	myString = "Hello, Swift!"
@@ -193,7 +210,7 @@ tags:ios
 	
 >
 
-	// 自动解析
+***自动解析***
 
 	// 你可以在声明可选变量时使用感叹号（!）替换问号（?）。
 	// 这样可选变量在使用时就不需要再加一个感叹号（!）来获取值，它会自动解析。
@@ -209,7 +226,7 @@ tags:ios
 
 >
 
-	// 可选绑定
+***可选绑定***
 
 	// 使用可选绑定（optional binding）来判断可选类型是否包含值
 	// 如果包含就把值赋给一个临时常量或者变量。
@@ -224,6 +241,8 @@ tags:ios
 	   print("你的字符串没有值")
 	}
 	// 你的字符串值为 - Hello, Swift!
+	
+	// 注意：还可以使用二元运算符，具体可以看二元运算介绍
 
 >
 
@@ -265,6 +284,8 @@ tags:ios
 
 >
 
+***String***
+
 	// 空字符串
 	var stringA = ""
 	stringA.isEmpty
@@ -284,7 +305,8 @@ tags:ios
 
 >
 
-	// 常用方法
+***常用方法***
+
 	isEmpty 
 		判断字符串是否为空，返回布尔值
 	hasPrefix(prefix: String) 
@@ -300,8 +322,10 @@ tags:ios
 
 >
 
-	import Foundation
+***Foundation***
+
 	// 可以用String使用原来在OC语言里NSString中所有的方法
+	import Foundation
 
 >
 
@@ -313,10 +337,12 @@ tags:ios
 
 >
 
-	// 三元
+***三元***
+
 	Exp1 ? Exp2 : Exp3;
 
-	// 二元
+***二元***
+
 	a ?? b -> a != nil ? a! : b
 
 	// a 必须为 Optionals 类型
@@ -331,6 +357,8 @@ tags:ios
 ### 数组
 
 >
+
+***Array***
 
 	// 我们可以使用构造语法来创建一个由特定数据类型构成的空数组：
 	var someArray = [SomeType]()
@@ -348,6 +376,8 @@ tags:ios
 	var someVar = someArray[index]
 
 >
+
+***例***
 
 	// 数组
 	var arr1 = []
@@ -377,6 +407,8 @@ tags:ios
 ### 无序集合
 
 >
+
+***Set***
 
 	// 无序集合, 初始化
 	var s = Set<String>(["D", "E"])
@@ -409,6 +441,8 @@ tags:ios
 ### 元组
 
 >
+
+***Tuples***
 
 	// 元组（tuples）是把多个值组合成一个复合值
 	// 元组内的值可以使任意类型
@@ -447,6 +481,8 @@ tags:ios
 ### 字典
 
 >
+
+***Dictionary***
 
 	// 我们可以使用以下语法来创建一个特定类型的空字典：
 	var someDict =  [KeyType : ValueType]()
@@ -501,6 +537,8 @@ tags:ios
 
 >
 
+***Function***
+
 	// Swift 定义函数使用关键字 func
 
 	// Swift func 是可以进行嵌套使用的
@@ -525,13 +563,17 @@ tags:ios
 
 >
 
-	// 常量参数
+***常量参数***
+
 	func sayHello(name:String) -> String {
 		// 传值操作
 		// 则此时name是常量参数不可以修改
 	}
+	
+>
 
-	// 变量参数
+***变量参数***
+
 	func sayHello(var name:String) -> String {
 		// 传值操作
 		// 局部变量参数，修改不会影响外部
@@ -540,7 +582,9 @@ tags:ios
 
 >
 
-	// 通过元组返回多个值
+***通过元组返回多个值***
+
+	// ...
 	func maxminScores(scores:[Int]) -> (maxscore:Int, minscore:Int)	{
 		...
 		return (scores[0], scores[1])
@@ -555,9 +599,8 @@ tags:ios
     }
 
 >
-
-	// 内部函数名
-	// 外部函数名
+	
+***内部与外部 函数名***
 
 	// userName 外部函数名, greetingWord 外部函数名
 	// nickname 内部函数名, greetingWord 内部函数名
@@ -576,7 +619,9 @@ tags:ios
 
 >
 
-	// 参数的默认值
+***参数的默认值***
+
+	// ...
 	func sayHello(nickname:String, greeting:String = "nljb" ) -> String {	
 		...
 	}
@@ -603,6 +648,8 @@ tags:ios
 
 >
 
+***inout***
+
 	// 传引用值, 当声明参数的时候加上 inout
 	// 则如果修改该值，外部的值也随之改变
 	func sayHello(inout a:Int, inout b:Int) {
@@ -616,6 +663,8 @@ tags:ios
 	sayHello(&x, b: &y)
 
 >
+
+***函数类型***
 
 	// 函数类型
 	func sayHello(a:Int, b:Int) -> String {
@@ -655,6 +704,8 @@ tags:ios
 ### 闭包
 
 >
+
+***Closure***
 
 	// 接受闭包的函数
 	func sayHello(a:Int, _ x:(a:Int, b:Int) -> Int) -> Int { return x(a: a,b: a) }
@@ -700,6 +751,8 @@ tags:ios
 ### 枚举
 
 >
+
+***Enum***
 
 	// 枚举是值类型
 
@@ -797,6 +850,8 @@ tags:ios
 ### 结构体
 
 >
+
+***Struct***
 
 	// 结构体是值类型
 
