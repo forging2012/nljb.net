@@ -589,10 +589,17 @@ tags:ios
 *类可以调用和访问超类的方法、属性、下标、并且可以重写这些方法、属性、和下标，以优化或修改它们的行为*
 
 *可以为继承来的属性添加观察器，这样一来当属性值发生改变的时候，类就会被通知到*
-b
+
 *可以为任何属性添加观察器，无论它原本被定义为存储属性还是计算属性*
 
 *子类只允许修改从超类继承来的变量属性，而不能修改继承来的常量属性*
+
+	class Hi:Pro {
+	    // 接口方法
+	    func sayHello() -> String {
+	        return "Hello"
+	    }
+	}
 
 >
 
@@ -609,6 +616,16 @@ b
 *如果要重写某个特征，需要在重写定义的前面加上override关键字*
 
 *访问超类（父类）的方法、属性、下标可以使用（super.xxx）*
+
+	class Hello:Hi {
+	    // 重写方法
+	    override func sayHi() {
+	        // 执行父类方法
+	        super.sayHi("Hello")
+	        // ...
+	       print("Hello \(name)")
+	    }
+	}
 
 ***重写方法***
 
@@ -685,5 +702,149 @@ b
 		// 构造也没有为其赋值
 		init() { }
 	}
+
+***构造中修改常量属性***
+
+*只要在构造结束前常量的值能确定，就可以在构造总的任意时间点修改常量的属性值*
+
+	class Hi {
+	    let a:Int
+	    init() {
+	        self.a = 99
+	    }
+	}
+
+***值类型的构造器代理***
+
+*构造器可以通过调用其它构造器来完成实例的部分构造，这一过程成为构造器代理*
+
+	struct Hi {
+	    init() {
+	        print("...")
+	    }
+	    init(index:Int) {
+	        self.init()
+	        print(index)
+	    }
+	}
+	
+***类的继承和构造***
+
+*每一个类都必须至少拥有一个指定构造器*
+
+*类中所有存储属性，包括所有继承自超类的属性，都必须在构造中设置初始值*
+
+*系统提供两种类型的构造来确保所有类实例中的存储属性都能获得初始值(指定构造器、便利构造器)*
+
+*便利构造器是类中次要的、辅助型的构造器，可以定义便利构造器来调用同一个类中的指定构造器，并为其参数提供默认值，也可以定义便利构造器来创建一个特殊用途或特定输入参数的实例*
+
+>
+
+* 子类构造器必须调用直接父类的指定构造器
+* 便利构造器必须调用同一个类中的其它构造器 
+* 便利构造器调用的构造器链的最终节点必须是指定构造器
+
+>
+
+	class Hello {
+	    init(index:Int) {
+	        print("init hello = \(index)")
+	    }
+	}
+	
+	
+	class Hi:Hello {
+	    
+	    var a:Int, b:Int
+	    
+	    init(a:Int,b:Int) {
+	        self.a = a
+	        self.b = b
+	        // 子类必须调用直接父类的指定构造器(除非init(){})
+	        // 必须最后一步调用
+	        super.init(index: a)
+	    }
+	    
+	    convenience init(a:Int,b:Int,c:Int) {
+	    	  // ...
+	    	  // 便利构造器必须调用一个self.init(...)
+	    	  // 必须最后一步调用 ...
+	        self.init(a: a, b: b + c)
+	    }
+	    
+	}
+	
+	// 使用指定构造器初始化
+	var h = Hi(a: 1, b: 1))
+	// 使用便利构造器初始化
+	var h = Hi(a: 1, b: 1, c: 1)
+
+>
+
+***构造器的继承和重载***
+
+*系统中的子类不会默认继承超类的构造器*
+
+***自动构造器的继承***
+
+*如果子类没有定义任何指定构造器，它将自动继承超类的指定构造器*
+
+	class Good {
+		 // 构造器
+	    init(str:String) {
+	        print(str)
+	    }
+	}
+	
+	// 子类没有定指定构造器
+	class Hi:Good {
+	    // 自动继承所有超类的指定构造器
+	}
+	
+	// 子类没有定指定构造器
+	class Hello:Hi {
+	    // 自动继承所有超类的指定构造器
+	}
+	
+	var h = Hello(str: "Hello")
+	
+*如何子类提供了所有超类指定的构造器的实现，它将自动继承超类的便利构造器, 不管是通过啥们上面方法自动继承还是通过自定义实现的，它将自动继承所有超类的便利构造器*
+
+	class Hi {
+	    init() {
+	        
+	    }
+	    init(index:Int) {
+	        print(index)
+	    }
+	    convenience init(str:String) {
+	        self.init()
+	        print(str)
+	    }
+	}
+	
+	class Hello:Hi {
+	    override init() {
+	        super.init()
+	    }
+	    override init(index: Int) {
+	        super.init(index: index)
+	    }
+	}
+	
+	// 继承了超类的便利构造器
+	var h = Hello(str: "hello")
+	
+***要求实现或重写构造器***
+
+*表示每一个子类都必须实现这个构造器*
+
+	class Hi {
+		required init() {
+			...
+		}
+	}
+	
+>
 
 ---
