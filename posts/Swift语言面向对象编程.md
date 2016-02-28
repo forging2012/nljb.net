@@ -965,3 +965,83 @@ tags:ios
 >
 
 ---
+
+>
+
+### 扩展
+
+>
+
+***扩展可以:***
+
+* 添加计算属性和静态计算属性
+* 定义实例方法和类型方法
+* 提供新的构造器
+* 定义下标
+* 定义和使用新的嵌套类型
+* 使一个已有类型符合某个协议
+
+>
+
+*一个扩展可以扩展一个已有类型，使其能够适配一个或多个协议*
+	
+	extension SomeType: SomeProtocol, AnotherProctocol {
+		...
+	}
+	
+***扩展构造器***
+
+*扩展可以向已有类型添加新的构造器，这可以让你扩展其它类型，将自己定制类型作为构造器参数, 或者提供该类型的原始实现中没有包含的额外初始化选项*
+
+	struct Rect {
+		...
+	}
+	
+	// 添加新的构造器
+	extension Rect {
+	    
+	    init(a:Int, b:Int) {
+	      ...  
+	    }
+	    
+	}
+
+***扩展方法***
+
+	class Hi {
+	    
+	}
+	
+	extension Hi {
+	    func say() {
+	        print("say Hi")
+	    }
+	    class func hello() {
+	        print("say Hello")
+	    }
+	}
+	
+	var h = Hi()
+	h.say()
+	Hi.hello()
+	
+***扩展下标***
+
+	extension Hi {
+		subscript(index:Int) -> Int {
+			return 0
+		}
+	}
+	
+***扩展嵌套类型***
+
+	extension Character {
+		// 在Character中嵌套一个Kind的枚举
+		enum Kind {
+			...
+		}
+	}
+
+>
+
+---
