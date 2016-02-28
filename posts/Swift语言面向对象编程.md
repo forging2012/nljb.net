@@ -10,6 +10,20 @@ tags:ios
 
 >
 
+### 断言
+
+>
+
+*可以使用全局函数assert来声明一个断言。向assert函数传递一个条件表达式，如果表达式为false,可以打印一段信息*
+
+	assert(1 > 2, "Error)
+
+>
+
+---
+
+>
+
 ### Class
 
 >
@@ -522,7 +536,7 @@ tags:ios
 	// 读取调用 Get
 	print(h[0])
 	
-*用只读计算属性一样，可以直接将原本写在Get代码块中的代码写在subscript中*
+*只读属性，可以直接将原本写在Get代码块中的代码写在subscript中*
 
 	struct Hi {
 	    subscript(index:Int) -> Int {
@@ -533,5 +547,31 @@ tags:ios
 	        }
 	    }
 	}
+
+>
+
+*下标是用来访问集合、列表或序列中元素的快捷方式*
+
+	// 通过下标来访问类、结构体、枚举中的数组
+
+	struct Matrix {
+	    
+	    var grid = [Int : String]()
+	    subscript(index:Int) ->String {
+	    get {
+	        return grid[index]!
+	    }
+	    set {
+	            grid.updateValue(newValue, forKey: index)
+	    }
+	    }
+	    
+	}
+	
+	var m = Matrix(grid: [Int : String]())
+	m[0] = "Hello"
+	print(m[0])
+
+>
 
 ---
