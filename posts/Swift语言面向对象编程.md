@@ -1045,3 +1045,51 @@ tags:ios
 >
 
 ---
+
+>
+
+### 协议（接口)
+
+>
+
+*协议用于统一方法和属性的名称，而不实现功能，协议能够被类、枚举、结构体实现，满足协议条件的被称为遵循者*
+
+*遵循者需要提供协议指定成员，如属性、方法、操作符、下标等*
+
+	protocol SomeProtocol {
+	    // ...
+	}
+
+	class SomeClass: SomeProtocol {
+	}
+	
+*当某个类含有超类的同时实现了协议，应吧超类放在所有的协议之前*
+
+	class SomeClass: SomeSuperClass, SomeProtocol {
+	}
+	
+***协议属性要求***
+
+*在属性声明后写上{get set}表示属性为可读写的*
+
+	// 只限协议里面才可以这样设置
+	protocol SomeProtocol {
+	    var a:Int {get set}
+	}
+
+* 用类来实现协议时，使用class来表示该属性为类成员（静态）
+* 用结构体和枚举来实现协议时，使用static来表示 ...
+
+>
+	
+	protocol SomeProtocol {
+	       class var a:Int { get set }
+	}
+		
+	protocol SomeProtocol {
+	    static var b:Int { get set }
+	}
+	
+>
+
+---
