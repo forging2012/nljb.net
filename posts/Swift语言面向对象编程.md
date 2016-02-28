@@ -902,7 +902,7 @@ tags:ios
 
 	class Hi {
 	    func a() {
-	            print("a ...")
+	        print("a ...")
 	    }
 	}
 	
@@ -929,6 +929,38 @@ tags:ios
 	        y.c()
 	    }
 	}
+	
+*注意：可选绑定(if let x = item as? Hi)*
+
+***Any和AnyObject的转换***
+
+* AnyObject 可以代表任何class类型实例
+* Any 可以表示任何类型，除了方法类型(func type)
+
+>
+
+* AnyObject 用于任何类实例
+* Any 用于任何变量
+
+***AnyObject***
+
+*当需要工作中使用Cocoa API，它一般接收一个[AnyObject]类型的数组，或者说"一个任何对象类型的数组"*
+
+	let obj:[AnyObject] = [Hello(), World()]
+	
+***Any***
+
+*使用Any类型来混合不同类型一起工作, 但是方法类型不可以*
+
+	var things = [Any]()
+	things.append(0)
+	things.append(0.0)
+	things.append(42)
+	things.append(3.1415926)
+	things.append("hi")
+	things.append(3.0, 5.0)
+	things.append(Hello())
+	things.append(World())
 
 >
 
