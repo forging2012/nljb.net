@@ -1262,6 +1262,90 @@ tags:ios
 
 ***通过扩展补充协议声明***
 
+	protocol Protocol {
+	    func play()
+	}
+	
+	class Dice {
+	    func play() {
+	        
+	    }
+	}
+	
+	extension Dice:Protocol { }
 
+***集合中的协议类型***
+
+*协议类型可以被集合使用，表示集合中的元素均为协议类型*
+
+***协议的继承***
+
+*协议能够继承一到多个其它协议，语法与类的继承相似*
+
+***协议合成***
+
+*一个协议可由多个协议采用protocol<OneProtocol, TwoProtocol>这样的格式进行组合，称为洗衣合成*
+
+	protocol Named {
+	    
+	}
+	
+	protocol Aged {
+	    
+	}
+	
+	struct Person: Named, Aged {
+	
+	}
+	
+	func sayHello(a:protocol<Named, Aged>) {
+	
+	}
+	
+***检查协议的一致性***
+
+* 使用is检查协议一致性
+* 使用as将协议类型向下转换为其它协议类型
+
+>
+
+* is操作符用来检查实例是否遵循了某个协议
+* as?返回一个可选值，当实例遵循协议时，返回协议类型，否则返回nil
+* as用以强制转换类型
+
+>
+
+	// objc 用来表示协议是可选的
+	// 也可用来表示暴露给Objective-C的代码
+	// 此外objc型协议只对类有效，只能在类中检查协议的一致性
+	objc protocol HasArea {
+		var area: Double { get }
+	}
+
+>
+
+***可选协议要求***
+
+*optional*
+
+*可选协议含有可选成员，其遵循者可以选择是否实现这些成功，在协议中使用optional关键字作为前缀*
+
+	objc protocol Hello {
+		optional var name:String { get }
+		optional func sayHi()
+		optional func sayHello()
+	}
+
+>
+
+---
+
+>
+
+### 泛型
+
+>
+
+>
 
 ---
