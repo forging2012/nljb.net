@@ -1447,8 +1447,34 @@ tags:ios
 
 >
 
+***访问级别***
 
+*提供了三种不同的访问级别, 这些访问级别相对于源文件中定义的实体，同时也相对于这些源文件所属模块*
+
+* public 可以访问自己模块或应用中源文件里的任何实体，别人也可以访问引入该模块中源文件里所有的实体
+* internal 可以访问自己模块或应用中源文件里任何实体，但是别人不能访问该模块中源文件里的实体
+* private 只能在当前源文件中使用的实体，称为私有实体
 
 >
+
+* public 某个接口或Framework是可以被任何人使用的，可以将其设置为 public 级别
+* internal 通常情况下，某个接口或 Framework 作为内部结构使用时，可以将其设置为 internal 级别
+* private 使用 private 级别，可以用作隐藏某些功能的实现细节
+
+>
+
+*一个 public 访问级别的变量，不能将它的类型定义为 internal 和 private 类型*
+
+*函数的访问级别不能高于它的参数、返回类型的访问级别*
+
+*默认的访问级别为 internal*
+
+	public class SomeClass() { }
+	internal class SomeClass() { }
+	private class SomeClass() { }
+	
+	public var some = 0
+	internal let some = 0
+	private func someFunction() { }
 
 ---
