@@ -1092,4 +1092,176 @@ tags:ios
 	
 >
 
+***方法要求***
+
+*协议方法支持可变参数，不支持默认参数*
+
+	protocol SomeProtocol {
+	    // 不支持, 默认参数
+	    func say(a:String = "hi"){
+	        // Error
+	    }
+	}
+	
+	// 可变参数，可以使一个参数接受零个或多个指定类型的值
+	func sayNumber(numbers: Double...){
+	    for number in numbers {
+	        print(number)
+	    }
+	    
+	}
+	sayNumber(1, 2, 3, 4, 5)
+
+>
+
+***可变方法要求***
+
+*能在方法或函数内部改变实例类型的方法称谓可变方法*
+
+*在值类型（结构体和枚举）中的函数前加上mutating关键字来表示该函数允许改变该实例和其属性的类型*
+
+*类中的成员为引用类型，可以方便地修改实例及其属性的值而无需改变类型*
+
+*结构体和枚举中的成员为值类型，修改变量的值就相当于修改变量的类型，而系统不允许修改类型，因此需要前置mutating来表示该函数中能够修改类型*
+
+* 用class实现协议中的mutating方法时，不用写mutating关键字
+* 用结构体、枚举实现协议中的mutating方法时，必须写mutating关键字
+
+>
+
+	// Error
+	struct Hi {
+	    var a:Int = 0
+	    var b:Int = 0
+	    // 这样是错误的，不允许修改
+	    func change(a:Int, b:Int) {
+	        self.a = a
+	        self.b = b
+	    }
+	}
+
+	// OK
+	struct Hi {
+	    var a:Int = 0
+	    var b:Int = 0
+	    // 这样是OK的
+	    mutating func change(a:Int, b:Int) {
+	        self.a = a
+	        self.b = b
+	    }
+	}
+	
+>
+
+### 协议作为类型
+
+>
+
+*协议本身不实现任何功能，但可以将它当作类型来使用*
+
+*使用场景:*
+
+* 作为函数、方法、或构造器中的参数类型、返回值类型
+* 作为常量、变量、属性的类型
+* 作为序列、字典或其它集合项的类型
+
+*协议类型应与其它类型（Int, String）的写法相同，使用驼峰式*
+
+	protocol Protocol {
+	    func sayMe()
+	}
+	
+	class Hello:Protocol {
+	    func sayMe() {
+	        print("show me")
+	    }
+	}
+	
+	class Hi {
+	    let p:Protocol
+	    init(p:Protocol) {
+	        self.p = p
+	    }
+	}
+	
+	var h = Hello()
+	var x = Hi(p: h)
+	x.p.sayMe()
+
+>
+
+***代理***
+
+*代理是一种设计模式，它允许类或结构体将一些需要它们负责的功能交由给其它的类型*
+
+*代理模式实现：定义协议来封装那些需要被代理的函数和方法，使其遵循者拥有这些被代理的函数和方法*
+
+	protocol Hello {
+	    var name:String? {get set}
+	    func play()
+	}
+	
+	// 2, 定义一个代理，让别人实现这个方法 ...
+	protocol HelloDelegate {
+	    func game(hello:Hello)
+	}
+	
+	
+	// 3, 继承了代理，就必须实现代理的方法
+	class HelloTracker:HelloDelegate {
+	    // 4, 实现代理方法
+	    func game(hello:Hello) {
+	        print(hello.name)
+	    }
+	}
+	
+	// 使用代理
+	class Hi:Hello {
+	    
+	    var name:String?
+	    
+	    init(name:String) {
+	        self.name = name
+	    }
+	    
+	    // 代理变量
+	    var delegate:HelloDelegate?
+	    
+	    func play() {
+	        // 1, 需要一个Game方法，又不想实现
+	        delegate?.game(self)
+	    }
+	    
+	}
+	
+	var h = Hi(name: "nljb")
+	h.delegate = HelloTracker()
+	h.play()
+
+>
+
+***通过扩展添加协议一致性***
+
+*即使无法修改
+
+*通过扩展为已存在的类型添加协议时，该类型的所有实例也会随之添加协议中的方法*
+
+	protocol Protocol {
+	    func play()
+	}
+	
+	class Dice {
+	    
+	}
+	
+	extension Dice:Protocol {
+	    func play() {
+	        print("扩展添加协议")
+	    }
+	}
+
+***通过扩展补充协议声明***
+
+
+
 ---
