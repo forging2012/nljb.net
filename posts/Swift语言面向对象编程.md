@@ -1346,6 +1346,109 @@ tags:ios
 
 >
 
+*泛型代码可以让你写出根据自我需求，适用于任何类型的、灵活且可重用的函数和类型，它可以让你避免重复的代码，用一种清晰和抽象的方式来表达代码的意图*
+
+***泛型函数***
+
+	func sayHello<T>(inout a:T, inout b:T) {
+	    let x = a
+	    a = b
+	    b = x
+	}
+	
+	var a:String = "a"
+	var b:String = "b"
+	sayHello(&a, b: &b)
+	print(a, b)
+	
+>
+
+*通常用字母T来命名类型参数，不过可以使用任何有效的标识符来作为类型参数名*
+
+***泛型类型***
+
+	struct Stack<T> {
+	    var a:T
+	    func sayHello() -> T {
+	        return a
+	    }
+	}
+	
+***扩展泛型类型***
+	
+	extension Stack {
+	    func sayHi() -> T {
+	        return a
+	    }
+	}
+	
+***类型约束***
+
+*类型约束指定了一个必须继承自指定类的类型参数，或者遵循一个特定的协议或协议构成*
+
+	protocol SomeProtocol {
+	    
+	}
+	
+	class SomeClass {
+	    
+	}
+	
+	func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+	}
+
+>
+
+***关联类型***
+
+*typealias*
+
+*当定义一个协议时，有时候声明一个或多个关联类型作为协议定义的一部分是非常有用的*
+
+*一个关联类型给定作用于协议部分的类型一个节点名(或别名)*
+
+	protocol Container {
+	    typealias ItemType
+	    mutating func append(item: ItemType)
+	    var count: Int { get }
+	    subscript(i: Int) -> ItemType { get }
+	}
+	
+	struct IntStack:Container {
+	   typealias ItemType = Int
+	    func append(item: ItemType) {
+	        
+	    }
+	    var count:Int {
+	        return 0
+	    }
+	    subscript(i:Int) -> Int {
+	        return 0
+	    }
+	}
+
+***扩展已知类型为一指定关联类型***
+
+	extension Array: Container {}
+	
+***where子句***
+
+*一个where语句是你能够要求一个关联类型遵循一个特定的协议*
+
+	protocol Container {
+	    typealias ItemType
+	}
+	
+	func all<C1:Container, C2:Container where C1.ItemType == C2.ItemType>
+	    (a:C1, b:C2) -> Bool {
+	    typealias ItemType = Int
+	    return true
+	}
+
+>
+
+
+
 >
 
 ---
