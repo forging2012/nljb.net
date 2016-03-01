@@ -64,3 +64,66 @@ tags:ios
 	applicationWillTerminate
 	
 >
+
+***非运行状态-应用启动场景***
+
+*用户点击图标，可能是第一次启动这个应用，也可能是应用终止后再次启动*
+
+	状态：Not running（未运行）-> Inactive(未激活） -> Active（激活）
+	阶段：Not running（未运行）-> Inactive(未激活）= application:didFinishLaunchingWithOptions
+	阶段：Inactive(未激活）-> Active（激活） = applicationDidBecomeActive
+
+>
+
+***点击Home键-应用退出场景***
+
+*应用处于运行状态(Active)时点击Home键或者其它应用程序导致当前应用中断*
+
+*该场景的跃迁状态可以分成两种情况：可以在后台运行或挂起，不可以在后台运行或挂起, 取决于产品属性的配置*
+
+*配置属性：Application does not run in background*
+
+>
+
+***可以在后台运行或挂起***
+
+	状态：Active（激活）-> Inactive(未激活） -> Backgroud(后台) -> Suspended(挂起）
+	阶段：Active（激活）-> Inactive(未激活）= applicationWillResignActive
+	阶段：Inactive(未激活） -> Backgroud(后台) ＝ （ 不涉及说明的方法和通知 ）
+	阶段：Backgroud(后台) -> Suspended(挂起） ＝ applicationDidEnterBackground
+	
+>
+	
+***不可以在后台运行或挂起***
+
+	状态：Active（激活）-> Inactive(未激活） -> Backgroud(后台) -> Suspended(挂起）-> Not running
+	阶段：Active（激活）-> Inactive(未激活）= （ 不涉及说明的方法和通知 ）
+	阶段：Inactive(未激活） -> Backgroud(后台) = （ 不涉及说明的方法和通知 ）
+	阶段：Backgroud(后台) -> Suspended(挂起） ＝ applicationDidEnterBackground
+	阶段：Suspended(挂起）-> Not running = applicationWillTerminate
+	
+>
+
+***挂起重新运行场景***
+
+*挂起状态下的应用重新运行，所经历的场景与调用的方法*
+
+	状态：Suspended(挂起）-> Backgroud(后台) -> Inactive(未激活） -> Active（激活)
+	阶段：Suspended(挂起）-> Backgroud(后台) = （ 不涉及说明的方法和通知 ）
+	阶段：Backgroud(后台) -> Inactive(未激活）＝ applicationWillEnterForeground
+	阶段：Inactive(未激活） -> Active（激活) ＝ applicationDidBecomeActive
+	
+>
+
+***内存清除-应用终止场景***
+
+*应用在后台处理完成时进入挂起状态（这是一种休眠状态），发生低内存时，为了满足其它应用，该应用会被终止*
+
+	状态：Backgroud(后台) -> Suspended(挂起）-> Not running
+	阶段：该内存清除场景下，应用不会调用任何方法，也不会发出任何通知
+	
+>
+
+---
+
+
