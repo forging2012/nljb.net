@@ -10,11 +10,27 @@ tags:ios
 
 >
 
-<img src="{{urls.media}}/IOS之表示图的使用/1.png" alt="" width="500" height="600">
+### 调节 UITableView 的 TOP 
+
+>
+
+***IOS 状态栏高度 20***
+
+>
+
+<img src="{{urls.media}}/IOS之表示图的使用/2.png" alt="" width="500" height="500">
+
+>
+
+---
 
 >
 
 ### iOS TableViewController 使用
+
+>
+
+<img src="{{urls.media}}/IOS之表示图的使用/1.png" alt="" width="500" height="600">
 
 >
 
@@ -76,17 +92,5 @@ tags:ios
 >
 
 ---
-
->
-
-### 调节 UITableView 的 TOP 
-
->
-
-***IOS 状态栏高度 20***
-
->
-
-<img src="{{urls.media}}/IOS之表示图的使用/1.png" alt="" width="500" height="500">
 
 >
