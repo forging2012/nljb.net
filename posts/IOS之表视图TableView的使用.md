@@ -37,6 +37,7 @@ tags:ios
 * 新建一个 TableViewController
 * 新建一个 Cocoa Touch Class（Main.storyboard）
 * 向 Main.storyboard 中拖入 Table View Controller
+* 将 Table View Controller 的 Class 设置为 TableViewController
 * 将 Table View Cell 的 identifier 设置为 reuseIdentifier
 * 通过 reuseIdentifier 获取 UITableViewCell
 * 通过 Tag 从 UITableViewCell 中获取 UILabel
@@ -92,5 +93,57 @@ tags:ios
 >
 
 ---
+
+>
+
+### iOS TableView 使用
+
+>
+
+* 新建一个 MyTableView
+* 新建一个 Cocoa Touch Class（Main.storyboard）
+* 向 Main.storyboard 中拖入 View Controller
+* 向 View Controller 中拖入 Table View
+* 向 Table View 中拖入 Table View Cell
+* 将 Table View 的 Class 设置为 MyTableView
+* 将 Table View Cell 的 identifier 设置为 UserCenter
+* 通过 UserCenter 获取 UITableViewCell
+* 通过 Tag 从 UITableViewCell 中获取 UILabel
+
+>
+
+	class MyTableView: UITableView, UITableViewDataSource {
+	    
+	    required init?(coder aDecoder: NSCoder) {
+	        super.init(coder: aDecoder)
+	        self.dataSource = self
+	    }
+	    
+	    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	        return 1
+	    }
+	    
+	    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	        return 3
+	    }
+	    
+	    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	        let cell = tableView.dequeueReusableCellWithIdentifier("UserCenter", forIndexPath: indexPath) as UITableViewCell
+	        let label = cell.viewWithTag(1) as! UILabel
+	        label.text = "Hello World"
+	        return cell
+	    }
+	    
+	}
+
+>
+
+---
+
+>
+
+### 理解iOS Section的定义
+
+>
 
 >
