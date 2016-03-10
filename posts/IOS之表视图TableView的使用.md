@@ -146,4 +146,41 @@ tags:ios
 
 >
 
+	class MyTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
+	    
+	    var data:NSDictionary!
+	
+	    required init?(coder aDecoder: NSCoder) {
+	        super.init(coder: aDecoder)
+	        self.dataSource = self
+	        self.delegate = self
+	        data = NSDictionary(contentsOfURL: NSBundle.mainBundle().URLForResource("data", withExtension: "plist")!)
+	    }
+	    
+	    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	        return data.count
+	    }
+	    
+	    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	        return (data.allValues[section] as! NSArray).count
+	    }
+	    
+	    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	        return data.allKeys[section] as? String
+	    }
+	    
+	    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+	        let cell = tableView.dequeueReusableCellWithIdentifier("UserCenter", forIndexPath: indexPath) as UITableViewCell
+	        let label = cell.viewWithTag(1) as! UILabel
+	        label.text = (data.allValues[indexPath.section] as! NSArray).objectAtIndex(indexPath.row) as? String
+	        return cell
+	    }
+	    
+	    // 响应点击事件
+	    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	        print((data.allValues[indexPath.section] as! NSArray).objectAtIndex(indexPath.row) as? String)
+	    }
+	    
+	}
+
 >
