@@ -18,7 +18,7 @@ tags:ios
 
 >
 
-<img src="{{urls.media}}/IOS之表示图的使用/2.png" alt="" width="500" height="500">
+<img src="{{urls.media}}/IOS之表示图的使用/2.jpg" alt="" width="500" height="500">
 
 >
 
