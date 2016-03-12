@@ -14,7 +14,48 @@ tags:ios
 
 >
 
-...
+***静态表***
+
+>
+
+*表视图(UITableView)与表视图控制器(UITableViewController)其实是一回事。
+表视图控制器是一种只能显示表视图的标准视图控制器，可在表视图占据整个视图时使用这种控制器。
+虽然如此，相对于使用标准视图控制器并自行添加表视图，使用表视图控制器除了将自动设置委托和数据源属性外
+没有任何其它的优势*
+
+>
+
+*注意：Static Cells模式仅仅适用于表视图控制器(UITableViewController)*
+
+*最基本的设置是Content(内容)属性，它包含两个值：Static Cells和Dynamic Prototypes*
+
+* Static Cells用来显示固定的单元格，内容呈现主要通过Xcode的可视化编程来实现，不需要额外的代码支持。
+* Dynamic Prototypes为动态单元格，通过设定一个Cell模板
+*  // 然后通过实现datasource接口和delegate接口的一些关键方法，从而动态生成表视图
+
+>
+
+***表单布局***
+
+* 创建 Table View Controller
+* 设置 Content 为 Static Cells
+* 设置 Style 为 Grouped
+* 设置 Table View 的 Sections 数量
+* 设置 Sections 的 Rows 和 Header 与 Footer
+* ... 设置其它如 Border Style 边框属性等
+
+>
+
+* UITableViewStylePlain 按照普通样式显示
+* UITableViewStyleGrouped 按分组样式显示
+
+>
+
+---
+
+>
+
+### 集合视图
 
 >
 
