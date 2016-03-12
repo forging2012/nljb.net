@@ -59,6 +59,80 @@ tags:ios
 
 >
 
+* 单元格，集合视图中的一个单元格
+* 节，集合视图中的一个行数据，由多个单元格构成
+* 补充视图，节的头和脚
+* 装饰视图，集合视图中的背景视图
+
+>
+
+* 添加 CollectionViewController (集合视图控制器)
+* 修改 ViewController 继承 UICollectionViewController 类
+* 设置 Collection View Controller 的 Class 为 ViewController
+* 创建 Cell 继承 UICollectionViewCell 类
+* 设置 Collection View Cell 的 Class 为 Cell
+* 设置 Collection View Cell 的 identifier 为 Cell
+* 可以 通过尺寸检查器 将 Size 改为 Custom 尺寸设置为 150 X 150
+* 可以 向 Collection View Cell 里面拖动 View 来设计 单元格
+
+>
+
+	class ViewController: UICollectionViewController {
+	    
+	    var events : NSArray!
+	    
+	    override func viewDidLoad() {
+	        super.viewDidLoad()
+	        
+	        let plistPath = NSBundle.mainBundle().pathForResource("events", ofType: "plist")
+	        //获取属性列表文件中的全部数据
+	        self.events = NSArray(contentsOfFile: plistPath!)
+	        
+	    }
+	    
+	    override func didReceiveMemoryWarning() {
+	        super.didReceiveMemoryWarning()
+	    }
+	    
+	    //UICollectionViewDataSource
+	    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	        return self.events.count / 2
+	    }
+	    
+	    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	        return 2
+	    }
+	    
+	    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
+	        let event = self.events[indexPath.section*2 + indexPath.row] as! NSDictionary
+	        
+	        cell.label.text = event["name"] as? String
+	        let imageFile = event["image"] as! String
+	        cell.imageView.image = UIImage(named: imageFile)
+	        
+	        return cell
+	    }
+	    
+	    //UICollectionViewDelegate
+	    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+	        let event = self.events[indexPath.section*2 + indexPath.row] as! NSDictionary
+	        NSLog("select event name : %@", event["name"] as! String)
+	    }
+	}
+	
+>
+
+	class Cell: UICollectionViewCell {
+	    
+	    @IBOutlet weak var imageView: UIImageView!
+	    
+	    @IBOutlet weak var label: UILabel!
+	
+	}
+
+>
+
 ---
 
 >
