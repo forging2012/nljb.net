@@ -78,5 +78,3 @@ tags:ios
 * wCompact|hRegular 适用于所有的 iPhone 竖屏情形
 * wAny|hRegular 适用于所有的垂直方向是 正常 的情形，例如：iPhone 竖屏、iPad 横屏和竖屏
 * wRegular|hRegular 适用于所有的 iPad 横屏和竖屏情形
-
->
