@@ -15,3 +15,17 @@ tags:ios
 >
 
 <img src="{{urls.media}}/IOS之使用Unwind_Segue返回/1.png" alt="" width="400" height>
+
+>
+
+* 在上个页面中实如下方法
+* 在当前页面拖动按钮选择Exit
+* 在弹出的选项中选择close即可		
+
+>
+
+    @IBAction func close(segue:UIStoryboardSegue) {
+        
+    }
+
+>
