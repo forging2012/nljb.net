@@ -14,7 +14,7 @@ tags:ios
 
 >
 
-<img src="{{urls.media}}/IOS之使用Unwind_Segue返回/1.png" alt="" width="400" height>
+<img src="{{urls.media}}/IOS之使用Unwind_Segue返回/1.png" alt="" width="300" height="500">
 
 >
 

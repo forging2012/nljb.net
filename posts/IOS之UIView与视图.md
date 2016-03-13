@@ -22,7 +22,7 @@ tags:ios
 
 >
 
-<img src="{{urls.media}}/IOS之UIView与视图/1.jpeg" alt="" width="700" height="1000">
+<img src="{{urls.media}}/IOS之UIView与视图/1.jpeg" alt="" width="500" height="800">
 
 >
 
