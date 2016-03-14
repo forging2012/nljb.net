@@ -39,6 +39,8 @@ tags:ios
 
 | 设备 | 尺寸（英寸）| 像素 | 说明 |
 | --- | :---: | :---: | :---: |
+| iPhone 6s Plus | 5.5 | 1920 x 1080 | Retina HD 高清显示屏, 401PPI |
+| iPhone 6s | 4.7 | 1334 x 750 | Retina HD 高清显示屏, 326PPI |
 | iPhone 6 Plus | 5.5 | 1920 x 1080 | Retina HD 高清显示屏, 401PPI |
 | iPhone 6 | 4.7 | 1334 x 750 | Retina HD 高清显示屏, 326PPI |
 | iPhone 5/5S/5C(iPod touch 5) | 4 | 1136 x 640 | Retina 显示屏, 326PPI |
