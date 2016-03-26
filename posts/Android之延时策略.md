@@ -50,6 +50,23 @@ tags:android
 
 >
 
+	mTimer = new Timer(true);
+	TimerTask task = new TimerTask() {
+		@Override
+		public void run() {
+			// 线程内更新UI
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					// Log.d("Step -->", "更新数据 ...");
+				}
+			});
+		}
+	};
+	mTimer.schedule(task, 1000, 1000);
+
+>
+
 ---
 
 >
