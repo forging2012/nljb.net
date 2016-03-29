@@ -27,6 +27,22 @@ tags:android
 
 >
 
+### 补充 setMode ...
+
+>
+
+* BOTH:上拉刷新和下拉刷新都支持 
+* DISABLED：禁用上拉下拉刷新
+* PULL_FROM_START:仅支持下拉刷新（默认）
+* PULL_FROM_END：仅支持上拉刷新 
+* MANUAL_REFRESH_ONLY：只允许手动触发
+
+>
+
+---
+
+>
+
 ### android studio 导入 PullToRefresh
 
 >
