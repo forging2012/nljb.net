@@ -204,3 +204,75 @@ tags:android
 
 	}
 
+>
+
+---
+
+>
+
+	    // ---- 初始化（委托历史）----
+        mProxyListView = (PullToRefreshListView) views.get(1).findViewById(R.id.listView);
+        mProxyListView.getLoadingLayoutProxy(true, false).setPullLabel("下拉刷新");
+        mProxyListView.getLoadingLayoutProxy(true, false).setReleaseLabel("释放立即刷新");
+        mProxyListView.getLoadingLayoutProxy(true, false).setRefreshingLabel("正在刷新 ...");
+        mProxyListView.getLoadingLayoutProxy(false, true).setPullLabel("加载更多");
+        mProxyListView.getLoadingLayoutProxy(false, true).setReleaseLabel("释放立即加载");
+        mProxyListView.getLoadingLayoutProxy(false, true).setRefreshingLabel("正在加载 ...");
+        mProxyListView.getRefreshableView().setDivider(null);
+        mProxyListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(final PullToRefreshBase<ListView> pullToRefreshBase) {
+                // ...
+                updateProxy(false);
+                // ...
+                pullToRefreshBase.getRefreshableView().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshBase.onRefreshComplete();
+                    }
+                }, 1000);
+            }
+
+            @Override
+            public void onPullUpToRefresh(final PullToRefreshBase<ListView> pullToRefreshBase) {
+                // ...
+                updateProxy(true);
+                // ...
+                pullToRefreshBase.getRefreshableView().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshBase.onRefreshComplete();
+                    }
+                }, 1000);
+            }
+        });
+        // 设置空View
+        TextView empty_entrusts = Utils.getEmptyView(PreviewActivity.this, "还没有委托历史数据 !");
+        ((ViewGroup) mProxyListView.getRefreshableView().getParent()).addView(empty_entrusts);
+        mProxyListView.getRefreshableView().setEmptyView(empty_entrusts);
+        // 自定义适配器
+        mProxyAdapter = new SuperBaseAdapter<ProxyData>(PreviewActivity.this, mProxyDatas) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                ProxyData pd = mDatas.get(position);
+                SuperViewHolder mSuperViewHolder = SuperViewHolder.make(getApplication(), R.layout.service_preview_proxy, convertView, parent);
+                ((TextView) mSuperViewHolder.getView(R.id.service_preview_id)).setText(pd.getProxyid());
+                ((TextView) mSuperViewHolder.getView(R.id.service_preview_ptype)).setText(String.format("委托类型: %s", pd.getPtype()));
+                ((TextView) mSuperViewHolder.getView(R.id.service_preview_charge)).setText(String.format("花费金额: %s元", pd.getCharge()));
+                ((TextView) mSuperViewHolder.getView(R.id.service_preview_meter)).setText(String.format("进店里程: %skm", pd.getMeter()));
+                ((TextView) mSuperViewHolder.getView(R.id.service_preview_enterDt)).setText(String.format("接待日期: %s", pd.getEnterDt()));
+                ((TextView) mSuperViewHolder.getView(R.id.service_preview_enterAss)).setText(String.format("接待人员: %s", pd.getEnterAss()));
+                ((TextView) mSuperViewHolder.getView(R.id.service_preview_status)).setText(pd.getStatus());
+                return mSuperViewHolder.getConvertView();
+            }
+        };
+        // 设置适配器
+        mProxyListView.getRefreshableView().setAdapter(mProxyAdapter);
+        // Click 监听
+        // mProxyListView.setOnItemClickListener(this);
+        // ---- SuperPagerAdapter -----
+        service_preview_pager.setAdapter(new SuperPagerAdapter(views));
+        service_preview_pager.setOnPageChangeListener(this);
+
+>
+
