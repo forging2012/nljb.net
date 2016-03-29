@@ -255,14 +255,9 @@ tags:android
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 ProxyData pd = mDatas.get(position);
-                SuperViewHolder mSuperViewHolder = SuperViewHolder.make(getApplication(), R.layout.service_preview_proxy, convertView, parent);
-                ((TextView) mSuperViewHolder.getView(R.id.service_preview_id)).setText(pd.getProxyid());
-                ((TextView) mSuperViewHolder.getView(R.id.service_preview_ptype)).setText(String.format("委托类型: %s", pd.getPtype()));
-                ((TextView) mSuperViewHolder.getView(R.id.service_preview_charge)).setText(String.format("花费金额: %s元", pd.getCharge()));
-                ((TextView) mSuperViewHolder.getView(R.id.service_preview_meter)).setText(String.format("进店里程: %skm", pd.getMeter()));
-                ((TextView) mSuperViewHolder.getView(R.id.service_preview_enterDt)).setText(String.format("接待日期: %s", pd.getEnterDt()));
-                ((TextView) mSuperViewHolder.getView(R.id.service_preview_enterAss)).setText(String.format("接待人员: %s", pd.getEnterAss()));
-                ((TextView) mSuperViewHolder.getView(R.id.service_preview_status)).setText(pd.getStatus());
+                SuperViewHolder mSuperViewHolder = SuperViewHolder.make(getApplication(),
+												 R.layout.service_preview_proxy,
+												 convertView, parent);
                 return mSuperViewHolder.getConvertView();
             }
         };
