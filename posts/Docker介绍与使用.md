@@ -105,7 +105,7 @@ tags:docker
 
 >
 
-# Docker 删除 none 镜像
+### Docker 删除 none 镜像
 
 >
 
@@ -116,6 +116,14 @@ tags:docker
 	docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
 	// ... 通过 ID 删除 ...
 	docker images|grep none|awk '{print $3 }'|xargs docker rmi
+
+>
+
+---
+
+>
+
+### Docekr 常用命令 ...
 
 >
 
