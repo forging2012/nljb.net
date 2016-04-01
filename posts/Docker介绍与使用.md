@@ -105,24 +105,6 @@ tags:docker
 
 >
 
-### Docker 删除 none 镜像
-
->
-
-	// 删除 none 镜像
-	docker rmi $(docker images | awk '/^<none>/ { print $3 }')
-	// 删除失败, 需先停止
-	docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
-	docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
-	// ... 通过 ID 删除 ...
-	docker images|grep none|awk '{print $3 }'|xargs docker rmi
-
->
-
----
-
->
-
 ### Docekr 常用命令 ...
 
 >
@@ -204,6 +186,14 @@ tags:docker
 	
 	// 从container中拷贝文件出来
 	sudo docker cp 7bb0e258aefe:/etc/debian_version .
+	
+	// 删除 none 镜像
+	docker rmi $(docker images | awk '/^<none>/ { print $3 }')
+	// 删除失败, 需先停止
+	docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker stop
+	docker ps -a | grep "Exited" | awk '{print $1 }'|xargs docker rm
+	// ... 通过 ID 删除 ...
+	docker images|grep none|awk '{print $3 }'|xargs docker rmi
 
 >
 
