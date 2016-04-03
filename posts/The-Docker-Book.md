@@ -53,13 +53,7 @@ tags:docker
 
 >
 
-	root@f7cbdac22a02:/#
-	// 该容器为一个完整的 nljb_net 系统
-	// 按你的需求使用它即可
-	// 一旦推出容器，/bin/bash 命令也就结束了
-	// 这时容器也随之停止了运行
-	
->
+	注意：一旦退出容器，/bin/bash 命令也就结束了，这时容器也随之停止了运行
 
 	$ docker ps
 	// 只能看到正在运行的容器
@@ -370,12 +364,6 @@ tags:docker
 
 >
 
-	$ docker login
-	// 镜像保存在 Docker Hub 中 ...
-	// 这条命了将完成登陆到 Docker Hub 中 ...
-
->
-
 	$ docker images
 	$ docker images nljb_net
 	// 列出本地镜像 ...
@@ -386,9 +374,6 @@ tags:docker
 	// 拉取镜像 ...
 	// 镜像是保存在 Docker Hub 中的，可以是官方的也可以是三方的
 	
-	$ docker search nljb_net 
-	// 在 Docker Hub 中查找镜像
-	
 	$ docker tag ab035c88d533 nljb_net:11.04
 	// 修改镜像标签 ...
 	
@@ -397,9 +382,9 @@ tags:docker
 	// 删除镜像
 	// 注意：不是容器，是镜像
 	
-	注意：
-	我们虽然称之为nljb_net操作系统，但实际上它并不是完成的操作系统
-	它只是一个裁剪版，由官方制作的，安全的裁剪版本 ...
+	注意：官方提供的ubuntu操作系统，我们虽然称之为ubuntu操作系统，
+	但实际上它并不是完成的操作系统，它只是一个裁剪版，
+	但是它由ubuntu官方制作的，安全的裁剪版本 ...
 
 >
 
@@ -509,9 +494,16 @@ tags:docker
 
 >
 
-#### 推送镜像 Docker Hub
+#### Docker Hub
 
 >
+
+	$ docker login
+	// 镜像保存在 Docker Hub 中 ...
+	// 这条命了将完成登陆到 Docker Hub 中 ...
+
+	$ docker search nljb_net 
+	// 在 Docker Hub 中查找镜像
 
 	$ docker push youruser/yourimage
 	// 将镜像推送到 Docker Hub 仓库
