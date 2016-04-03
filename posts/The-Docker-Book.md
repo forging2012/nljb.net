@@ -281,10 +281,9 @@ tags:docker
 	
 >
 	
-	注意：
-	
 	// 在父容器中将(172.17.0.31 db)添加到(/etc/hosts)中 ...
 	// 这样只要(ping db)就可以知道父容器是否与(子容器)连接 ...
+
 	$ cat /ect/hosts
 	172.17.0.33 811bd6d588cb 	
 	// 容器自己的IP地址和主机名
@@ -412,8 +411,6 @@ tags:docker
 	* 使用 docker build 命令 和 Dockerfile 文件 ...
 
 >
-
-	// docker commit
 	
 	$ docker run -i -t nljb_net /bin/bash
 	// 运行一个镜像, 并且做好修改，....
