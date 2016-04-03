@@ -259,10 +259,15 @@ tags:docker
 
 >
 
+	// 预先准备
+	$ docker run -d --name redis ubuntu/redis
+
+	// 开始互连
 	$ docker run -p 4567 --name webapp --link redis:db  -it nljb_net /bin/bash
 	// --link 标志创建了两个容器间的父子连接 ...
 	// --link 参数：一个是要连接的容器名字，另一个是连接后的容器别名
 	// 这个例子中：redis 是容器名字 db 是容器别名 ...
+	// 则 nljb_net 是要运行的镜像名称 ...
 	
 	// 注意到启动 redis 时没有使用 -p 标志公开 redis 端口
 	// 因为不需要这么做，通过把容器连接到一起，可以让父容器直接访问任意子容器的公开端口
