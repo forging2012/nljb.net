@@ -81,7 +81,7 @@ tags:docker
 
 >
 
-	$ docker run --name MyName -i -t nljb_net /bin/bash
+	$ docker run --name ContainerName -i -t nljb_net /bin/bash
 	// 通过 --name 为容器指定一个名称 [a-zA-Z0-9_.-]
 	
 >
@@ -92,7 +92,7 @@ tags:docker
 
 	注意：docker run 每次运行都会创建一个全新的容器
 	
-	$ docker start MyName 
+	$ docker start ContainerName 
 	$ docker start f7cbdac22a02
 	// 除了容器名称，还可以使用容器ID来指定容器
 	
@@ -101,13 +101,13 @@ tags:docker
 	
 	// 重新启动的容器会沿用 docker run 命令时指定的参数来运行
 	
-	$ docker stop MyName
+	$ docker stop ContainerName
 	// 停止容器的运行 ...
 	
-	$ docker kill MyName
+	$ docker kill ContainerName
 	// 强制停止容器的运行 ...
 	
-	$ docker rm MyName
+	$ docker rm ContainerName
 	// 删除一个已经停止的容器
 	
 	$ docker rm `docker ps -a -q`
@@ -119,11 +119,11 @@ tags:docker
 
 >
 	
-	$ docker attach MyName
+	$ docker attach ContainerName
 	// 重新附着到容器上 ...
 	// 可能需要按下回车键才能呢个进入该会话
 	
-	$ docker exec -t -i MyName /bin/bash
+	$ docker exec -t -i ContainerName /bin/bash
 	// 可以通过运行一个模拟终端的交互任务来附着容器
 	
 >
@@ -132,7 +132,7 @@ tags:docker
 
 >
 
-	$ docker run --name MyName -d nljb_net /bin/sh -c 
+	$ docker run --name ContainerName -d nljb_net /bin/sh -c 
 		"while echo hello; sleep 1; done"
 	// 该循环会一直运行下去，直到容器或其进程停止运行 ...
 	
@@ -142,20 +142,20 @@ tags:docker
 
 >
 
-	$ docker logs MyName 
+	$ docker logs ContainerName 
 	// Docker 会输出最后几条日期项并返回
 	
-	$ docker logs -f MyName
+	$ docker logs -f ContainerName
 	// 跟踪守护式容器的日志
 	// Ctrl + C 退出跟踪
 	
-	$ docker logs -ft MyName
+	$ docker logs -ft ContainerName
 	// -t 为每条日志项加上时间戳
 	
-	$ docker top MyName
+	$ docker top ContainerName
 	// 查看容器内的进程
 	
-	$ docker wait MyName
+	$ docker wait ContainerName
 	// 等待程序退出，得到返回代码
 	
 >
@@ -169,10 +169,10 @@ tags:docker
 	后台任务在容器内运行且没有交互需求
 	而交互任务则保持在前台运行 ...
 
-	$ docker exec -d MyName touch /etc/new_config_file
+	$ docker exec -d ContainerName touch /etc/new_config_file
 	// 后台任务 ... 在容器内部额外启动新进程（后台任务） ...
 	
-	$ docker exec -t -i MyName /bin/bash
+	$ docker exec -t -i ContainerName /bin/bash
 	// 交互任务 ... 在容器内部启动一个交互任务 ...
 	// -t 模拟终端也是个交互程序 ...
 	
@@ -231,11 +231,11 @@ tags:docker
 
 >
 
-	$ docker pause MyName
+	$ docker pause ContainerName
 	// 暂停容器的所有进程
 	// docker ps 中 STATUS 会变成 (Paused)
 	
-	$ docker unpause MyName
+	$ docker unpause ContainerName
 	// 恢复容器的所有进程
 	
 >
@@ -244,13 +244,13 @@ tags:docker
 
 >
 
-	$ docker inspect MyName
+	$ docker inspect ContainerName
 	// 来获取更多容器的信息
 	
-	$ docker inspect MyNmae --format='{{ .State.Running }}' MyNmae
+	$ docker inspect --format='{{ .State.Running }}' ContainerName
 	// 通过 --format 来查询容器的运行状态 ...
 	
-	$ docker inspect MyNmae --format='{{ .NetworkSettings.IPAddress }}' MyNmae
+	$ docker inspect --format='{{ .NetworkSettings.IPAddress }}' ContainerName
 	// 通过 --format 来查询容器的 IP 地址
 	
 >
@@ -424,7 +424,7 @@ tags:docker
 	// 讲容器生成一个新的镜像 ...
 	// :webserver 为该镜像增加一个标签 ...
 	
-	$ docker commi -m="A new custom image" --author="nljb" f7cbdac22a02 nljb/webserver
+	$ docker commit -m="A new custom image" --author="nljb" f7cbdac22a02 nljb/webserver
 	// -m 指定镜像的提交信息 ...
 	// --author 用来指定镜像的作者信息 ...
 	
