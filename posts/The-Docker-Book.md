@@ -39,6 +39,10 @@ tags:docker
 	// 因为没有程序在容器中运行 ...
 	// -t 也是个程序，所以容器不会停止 ...
 	
+	$ docker run -i -t -h nljb ubuntu /bin/bash 
+	// -h 标志来为容器设定主机名
+	// --hostname 标志来为容器设定主机名
+	
 >
 
 #### 使用容器
@@ -61,7 +65,7 @@ tags:docker
 	
 >
 
-***有三中方式可以指代唯一容器：***
+	有三中方式可以指代唯一容器:
 
 	* 短UUID（如：f7cbdac22a02)
 	* 长UUID（如：f7cbdac22a02f7cbdac22a02f7cbdac22a02f7cbdac22a02）
@@ -82,7 +86,7 @@ tags:docker
 
 >
 
-	// 注意：docker run 每次运行都会创建一个全新的容器
+	注意：docker run 每次运行都会创建一个全新的容器
 	
 	$ docker start MyName 
 	$ docker start f7cbdac22a02
@@ -153,10 +157,10 @@ tags:docker
 
 >
 	
-	// 注意：
-	// 在容器内运行的进程有两种类型，后台任务和交互任务
-	// 后台任务在容器内运行且没有交互需求
-	// 而交互任务则保持在前台运行 ...
+	注意：
+	在容器内运行的进程有两种类型，后台任务和交互任务
+	后台任务在容器内运行且没有交互需求
+	而交互任务则保持在前台运行 ...
 
 	$ docker exec -d MyName touch /etc/new_config_file
 	// 后台任务 ... 在容器内部额外启动新进程（后台任务） ...
@@ -179,7 +183,7 @@ tags:docker
 	
 >
 
-#### 互传文件
+#### 宿主容器互传文件
 
 >
 
@@ -197,6 +201,25 @@ tags:docker
 
 >
 
+#### 宿主目录挂在到容器
+
+>
+
+	$ docker run -it -v /ubuntu_mnt:/ubuntu_mnt ubuntu
+	// 将宿主机的目录作为卷，挂在到容器里 ...
+	
+	$ docker run -it -v /ubuntu_mnt:/ubuntu_mnt:ro ubuntu
+	// 这将使"容器"的ubuntu_mnt目录变成只读状态
+	// 也就是说"宿主"可以修改内容，而容器不可以修改 ...
+	
+	* 希望同时对代码做开发和测试
+	* 代码改动很频繁，不想在开发过程中重构镜像
+	* 希望在多个容器间共享代码 ...
+	
+	注意：卷可以在容期间共享，即使容器停止，卷里的内容依然存在 ...
+
+>
+
 #### 深入容器
 
 >
@@ -210,6 +233,75 @@ tags:docker
 	$ docker inspect MyNmae --format='{{ .NetworkSettings.IPAddress }}' MyNmae
 	// 通过 --format 来查询容器的 IP 地址
 	
+>
+
+#### 容器互连
+
+>
+
+	$ docker run -p 4567 --name webapp --link redis:db  -it ubuntu /bin/bash
+	// --link 标志创建了两个容器间的父子连接 ...
+	// --link 参数：一个是要连接的容器名字，另一个是连接后的容器别名
+	// 这个例子中：redis 是容器名字 db 是容器别名 ...
+	
+	// 注意到启动 redis 时没有使用 -p 标志公开 redis 端口
+	// 因为不需要这么做，通过把容器连接到一起，可以让父容器直接访问任意子容器的公开端口
+	// 更妙的是，容器端口不需要公开，只有 --link 标志连接到这个容器才能连接到这个端口
+	// 所以：端口不需要对本地宿主公开，现在我们已经拥有一个非常安全的模型 ...
+	
+	$ docker run -p 4567 --name webapp2 --link redis:db ...
+	$ docker run -p 4568 --name webapp3 --link redis:db ...
+	...
+	// 也可以把多个容器连接在一起 ... 比如多个Web应用容器连接到同一个 redis 服务 ...
+	
+>
+	
+	注意：
+	
+	// 在父容器中将(172.17.0.31 db)添加到(/etc/hosts)中 ...
+	// 这样只要(ping db)就可以知道父容器是否与(子容器)连接 ...
+	$ cat /ect/hosts
+	172.17.0.33 811bd6d588cb 	
+	// 容器自己的IP地址和主机名
+	172.17.0.31 db				
+	// redis 容器的IP地址和从该连接的别名衍生的主机名 db
+	
+	注意：还记得之前提到过，重启容器时，容器的IP地址会发生变化的事情吗 ...
+	如果被连接的容器重启了，/etc/hosts文件中的IP地址会被新的IP地址更新 ...
+	
+>
+
+#### 用于连接的环境变量
+
+>
+
+	$ root@811bd6d588cb:/ # env
+	HOSTNAME=811bd6d588cb
+	DB_NAME=/webapp/db
+	DB_PORT_6379_TCP_PORT=6379
+	DB_PORT=tcp://172.17.0.31:6379
+	DB_PORT_6379_TCP=tcp://172.17.0.31:6379
+	DB_ENV_REFRESHED_AT=2014-06-01
+	DB_PORT_6379_TCP_ADDR=172.17.0.31
+	DB_PORT_6379_TCP_PORTO=tcp
+	...
+	// 以 DB 开头是因为 DB 是创建连接时使用的别名
+	
+	这些自动创建的环境变量包含以下信息:
+	* 子容器名称
+	* 容器里运行的服务所使用的协议、IP和端口号
+	* 容器里运行的不同服务所指定的协议、IP和端口号
+	* 容器里由 Docker 设置的环境变量值 ...
+
+>
+
+#### 通过环境变量建立连接
+
+>
+
+	port = ENV['DB_PORT'] ...
+	// 知道以上的环境变量信息，就可以在程序内通过环境变量获取DB端口号等
+
 >
 
 ---
@@ -244,9 +336,9 @@ tags:docker
 	// 删除镜像
 	// 注意：不是容器，是镜像
 	
-	// 注意：
-	// 我们虽然称之为ubuntu操作系统，但实际上它并不是完成的操作系统
-	// 它只是一个裁剪版，由官方制作的，安全的裁剪版本 ...
+	注意：
+	我们虽然称之为ubuntu操作系统，但实际上它并不是完成的操作系统
+	它只是一个裁剪版，由官方制作的，安全的裁剪版本 ...
 
 >
 
@@ -276,6 +368,15 @@ tags:docker
 	$ docker commi -m="A new custom image" --author="nljb" f7cbdac22a02 nljb/webserver
 	// -m 指定镜像的提交信息 ...
 	// --author 用来指定镜像的作者信息 ...
+	
+>
+	
+#### 构建历史
+
+>
+
+	$ docker history ubuntu:nljb
+	// 展示镜像的构建历史 ...
 	
 >
 
