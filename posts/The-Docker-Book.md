@@ -29,21 +29,21 @@ tags:docker
 
 >
 
-	$ docker run -i -t nljb.net /bin/bash
-	// 运行 nljb.net 创建新容器
+	$ docker run -i -t nljb_net /bin/bash
+	// 运行 nljb_net 创建新容器
 	// -i 保证容器中STDIN是开启的
 	// -t 为创建的容器分配一个伪终端
 	// root@f7cbdac22a02:/#
 	
-	$ docker run -i -t -d nljb.net /bin/bash
+	$ docker run -i -t -d nljb_net /bin/bash
 	// -d 代表 Docker 容器将在后台运行 ...
 	
-	$ docker run -d nljb.net /bin/bash 
+	$ docker run -d nljb_net /bin/bash 
 	// 如果这样运行，则容器会立即停止
 	// 因为没有程序在容器中运行 ...
 	// -t 也是个程序，所以容器不会停止 ...
 	
-	$ docker run -i -t -h nljb nljb.net /bin/bash 
+	$ docker run -i -t -h nljb nljb_net /bin/bash 
 	// -h 标志来为容器设定主机名
 	// --hostname 标志来为容器设定主机名
 	
@@ -54,7 +54,7 @@ tags:docker
 >
 
 	root@f7cbdac22a02:/#
-	// 该容器为一个完整的 nljb.net 系统
+	// 该容器为一个完整的 nljb_net 系统
 	// 按你的需求使用它即可
 	// 一旦推出容器，/bin/bash 命令也就结束了
 	// 这时容器也随之停止了运行
@@ -81,7 +81,7 @@ tags:docker
 
 >
 
-	$ docker run --name MyName -i -t nljb.net /bin/bash
+	$ docker run --name MyName -i -t nljb_net /bin/bash
 	// 通过 --name 为容器指定一个名称 [a-zA-Z0-9_.-]
 	
 >
@@ -132,7 +132,7 @@ tags:docker
 
 >
 
-	$ docker run --name MyName -d nljb.net /bin/sh -c 
+	$ docker run --name MyName -d nljb_net /bin/sh -c 
 		"while echo hello; sleep 1; done"
 	// 该循环会一直运行下去，直到容器或其进程停止运行 ...
 	
@@ -183,7 +183,7 @@ tags:docker
 
 >
 
-	$ docker run --restart=always -d nljb.net ...
+	$ docker run --restart=always -d nljb_net ...
 	// always 无论容器的退出代码是什么，都会自动重启该容器
 	// on-failure 只有当容器的退出代码非0时，才会重启容器
 	// --restart=on-failure:5，最多重启次数 ...
@@ -212,11 +212,11 @@ tags:docker
 
 >
 
-	$ docker run -it -v /nljb.net_mnt:/nljb.net_mnt nljb.net
+	$ docker run -it -v /nljb_net_mnt:/nljb_net_mnt nljb_net
 	// 将宿主机的目录作为卷，挂在到容器里 ...
 	
-	$ docker run -it -v /nljb.net_mnt:/nljb.net_mnt:ro nljb.net
-	// 这将使"容器"的nljb.net_mnt目录变成只读状态
+	$ docker run -it -v /nljb_net_mnt:/nljb_net_mnt:ro nljb_net
+	// 这将使"容器"的nljb_net_mnt目录变成只读状态
 	// 也就是说"宿主"可以修改内容，而容器不可以修改 ...
 	
 	* 希望同时对代码做开发和测试
@@ -259,7 +259,7 @@ tags:docker
 
 >
 
-	$ docker run -p 4567 --name webapp --link redis:db  -it nljb.net /bin/bash
+	$ docker run -p 4567 --name webapp --link redis:db  -it nljb_net /bin/bash
 	// --link 标志创建了两个容器间的父子连接 ...
 	// --link 参数：一个是要连接的容器名字，另一个是连接后的容器别名
 	// 这个例子中：redis 是容器名字 db 是容器别名 ...
@@ -350,10 +350,10 @@ tags:docker
 	$ docker ps -a
 	// 获取要导出的容器ID（7691a814370e）
 	
-	$ docker export 7691a814370e > nljb.net.tar
-	// 从容器中导出快照 nljb.net.tar
+	$ docker export 7691a814370e > nljb_net.tar
+	// 从容器中导出快照 nljb_net.tar
 	
-	$ cat nljb.net.tar | sudo docker import - nljb:new
+	$ cat nljb_net.tar | sudo docker import - nljb:new
 	// 将快照生成镜像 ... nljb:new 是一个新的镜像命名 ...
 
 >
@@ -373,28 +373,28 @@ tags:docker
 >
 
 	$ docker images
-	$ docker images nljb.net
+	$ docker images nljb_net
 	// 列出本地镜像 ...
 	// 本地镜像保存在/var/lib/docker目录下
 	
-	$ docker pull nljb.net 
-	$ docker pull nljb.net:11.04
+	$ docker pull nljb_net 
+	$ docker pull nljb_net:11.04
 	// 拉取镜像 ...
 	// 镜像是保存在 Docker Hub 中的，可以是官方的也可以是三方的
 	
-	$ docker search nljb.net 
+	$ docker search nljb_net 
 	// 在 Docker Hub 中查找镜像
 	
-	$ docker tag ab035c88d533 nljb.net:11.04
+	$ docker tag ab035c88d533 nljb_net:11.04
 	// 修改镜像标签 ...
 	
-	$ docker rmi nljb.net
+	$ docker rmi nljb_net
 	$ docker rmi `docker images -a -q	`
 	// 删除镜像
 	// 注意：不是容器，是镜像
 	
 	注意：
-	我们虽然称之为nljb.net操作系统，但实际上它并不是完成的操作系统
+	我们虽然称之为nljb_net操作系统，但实际上它并不是完成的操作系统
 	它只是一个裁剪版，由官方制作的，安全的裁剪版本 ...
 
 >
@@ -410,7 +410,7 @@ tags:docker
 
 	// docker commit
 	
-	$ docker run -i -t nljb.net /bin/bash
+	$ docker run -i -t nljb_net /bin/bash
 	// 运行一个镜像, 并且做好修改，....
 	// 然后退出镜像
 	
@@ -432,11 +432,11 @@ tags:docker
 
 >
 
-	$ docker save nljb:new > nljb.net.tar
+	$ docker save nljb:new > nljb_net.tar
 	// 导出镜像到文件 ...
 	
-	$ docker load < nljb.net.tar
-	$ docker load --input nljb.net.tar
+	$ docker load < nljb_net.tar
+	$ docker load --input nljb_net.tar
 	// 导入文件到镜像 ...
 	
 	注意：这样导出的镜像会非常大，因为包含所有镜像的增量备份 ...
@@ -447,7 +447,7 @@ tags:docker
 
 >
 
-	$ docker history nljb.net:nljb
+	$ docker history nljb_net:nljb
 	// 展示镜像的构建历史 ...
 	
 >
@@ -462,20 +462,20 @@ tags:docker
 
 #### 镜像其它
 
-	$ docker run -d -p 80 nljb.net /bin/bash
+	$ docker run -d -p 80 nljb_net /bin/bash
 	* 可以在宿主机器上随机选择49153～65535的端口号来映射到容器的80端口
 	* 可以在宿主机器上指定一个具体的端口号来映射到容器的80端口上 ...
 
-	$ docker run -d -p 8080(宿主):80(容器) nljb.net /bin/bash
+	$ docker run -d -p 8080(宿主):80(容器) nljb_net /bin/bash
 	// 将“容器的80端口”绑定到“宿主机的8080端口”上 ...
 	
-	$ docker run -d -p 127.0.0.1:80(宿主):80(容器) nljb.net /bin/bash
+	$ docker run -d -p 127.0.0.1:80(宿主):80(容器) nljb_net /bin/bash
 	// 将容器的80端口绑定到宿主机的127.0.0.1这个IP的80端口上 ...
 
-	$ docker run -d -p 127.0.0.1(宿主)::80(容器) nljb.net /bin/bash
+	$ docker run -d -p 127.0.0.1(宿主)::80(容器) nljb_net /bin/bash
 	// 只指定宿主机的IP地址，没有端口号，则 docker 会随机指派端口号 ...
 	
-	$ docker run -d -P nljb.net /bin/bash
+	$ docker run -d -P nljb_net /bin/bash
 	// -P 该命令会将容器80端口对本地宿主机公开，并且绑定到宿主机的一个随机端口上
 	// 有了这个端口号，就可以在宿主机中通过127.0.0.1连接到运行的容器查看Web了
 
@@ -491,7 +491,7 @@ tags:docker
 
 >
 
-	$ docker run -it -w /var/log nljb.net pwd
+	$ docker run -it -w /var/log nljb_net pwd
 	// 该命令会更改容器内的工作目录 ...
 	// 输出：/var/log
 	
@@ -501,7 +501,7 @@ tags:docker
 
 >
 	
-	$ docker run -it -e "GOPATH=/root/src" nljb.net env
+	$ docker run -it -e "GOPATH=/root/src" nljb_net env
 	// -e 标志来传递环境变量, 这些变量只在运行时有效 ...
 	// 输出：GOPATH=/root/src
 
