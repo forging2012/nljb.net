@@ -19,6 +19,10 @@ tags:docker
 	// Docker 使用的执行驱动和存储驱动
 	// 以及 Docker 的基本配置
 	
+	$ docker version
+	// Docker的版本号，API版本号
+	// Git commit， Docker客户端和后台进程的Go版本号
+	
 >
 
 #### 运行容器
@@ -151,6 +155,9 @@ tags:docker
 	$ docker top MyName
 	// 查看容器内的进程
 	
+	$ docker wait MyName
+	// 等待程序退出，得到返回代码
+	
 >
 
 #### 在容器内部运行进程
@@ -218,6 +225,19 @@ tags:docker
 	
 	注意：卷可以在容期间共享，即使容器停止，卷里的内容依然存在 ...
 
+>
+
+#### 暂停与恢复容器
+
+>
+
+	$ docker pause MyName
+	// 暂停容器的所有进程
+	// docker ps 中 STATUS 会变成 (Paused)
+	
+	$ docker unpause MyName
+	// 恢复容器的所有进程
+	
 >
 
 #### 深入容器
@@ -304,6 +324,40 @@ tags:docker
 
 >
 
+#### 容器内文件状态变化
+
+>
+
+	$ sudo docker diff 7bb0e258aefe
+	C /dev
+	A /dev/kmsg
+	C /etc
+	A /etc/mtab
+	A /go
+	A /go/src
+	A /go/src/github.com
+	A /go/src/github.com/dotcloud
+	
+	// diff 会列出容器内文件状态变化
+	// A - Add, D - Delete, C - Change 
+
+>
+
+#### 导出和导入容器快照
+
+>
+
+	$ docker ps -a
+	// 获取要导出的容器ID（7691a814370e）
+	
+	$ docker export 7691a814370e > ubuntu.tar
+	// 从容器中导出快照 ubuntu.tar
+	
+	$ cat ubuntu.tar | sudo docker import - nljb:new
+	// 将快照生成镜像 ... nljb:new 是一个新的镜像命名 ...
+
+>
+
 ---
 
 >
@@ -330,6 +384,9 @@ tags:docker
 	
 	$ docker search ubuntu 
 	// 在 Docker Hub 中查找镜像
+	
+	$ docker tag ab035c88d533 ubuntu:11.04
+	// 修改镜像标签 ...
 	
 	$ docker rmi ubuntu
 	$ docker rmi `docker images -a -q	`
@@ -370,6 +427,21 @@ tags:docker
 	// --author 用来指定镜像的作者信息 ...
 	
 >
+
+#### 导出和导入镜像 ...
+
+>
+
+	$ docker save nljb:new > ubuntu.tar
+	// 导出镜像到文件 ...
+	
+	$ docker load < ubuntu.tar
+	$ docker load --input ubuntu.tar
+	// 导入文件到镜像 ...
+	
+	注意：这样导出的镜像会非常大，因为包含所有镜像的增量备份 ...
+
+>
 	
 #### 构建历史
 
@@ -378,6 +450,14 @@ tags:docker
 	$ docker history ubuntu:nljb
 	// 展示镜像的构建历史 ...
 	
+>
+
+#### 历史记录
+
+	$ docker images –tree
+	// Docker的文件系统AUFS，一种“增量文件系统”
+	// 用户所做修改以增量的方式保存，所以才能看到这些历史的增量。
+
 >
 
 #### 镜像其它
