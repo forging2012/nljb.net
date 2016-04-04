@@ -25,6 +25,16 @@ tags:docker
 	
 >
 
+### 创建容器
+
+>
+
+	$ docker create -i -t nljb_net /bin/bash
+	// 创建一个新的容器 ...
+	// 似 docker run 如容器不存在则创建 ...
+
+>
+
 #### 运行容器
 
 >
