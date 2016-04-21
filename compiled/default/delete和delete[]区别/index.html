@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>delete和delete[]区别</title>
+  
+    <meta name="author" content="nljb">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/twitter/stylesheets/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/twitter/stylesheets/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/assets/twitter/widgets/google_prettify/stylesheets/twitter-bootstrap.css" type="text/css" rel="stylesheet" media="all">
+ 
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">NLJB - 别问我为啥叫加贝(哥名里有贺)</a>
+          <ul class="nav">
+            
+              
+
+
+  <li><a href="/archive">存档</a></li>
+
+
+            
+              
+
+
+  <li><a href="/tags">标签</a></li>
+
+
+            
+              
+
+
+  <li><a href="/categories">分类</a></li>
+
+
+            
+              
+
+
+  <li><a href="/pages">页面</a></li>
+
+
+            
+              
+
+
+  <li><a href="/about">关于我</a></li>
+
+
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+  <h1>delete和delete[]区别 </h1>
+</div>
+
+<div class="row">
+  <div class="span10">
+    <p>一个简单的使用原则就是：new 和 delete、new[] 和 delete[] 对应使用。</p>
+
+<blockquote>
+</blockquote>
+
+<p>C++告诉我们在</p>
+
+<blockquote>
+</blockquote>
+
+<p>回收用 new 分配的单个对象的内存空间的时候用 delete</p>
+
+<p>回收用 new[] 分配的一组对象的内存空间的时候用 delete[]。</p>
+
+<blockquote>
+</blockquote>
+
+<p>关于 new[] 和 delete[]，其中又分为两种情况：</p>
+
+<p>(1) 为基本数据类型分配和回收空间；</p>
+
+<p>(2) 为自定义类型分配和回收空间。</p>
+
+<blockquote>
+</blockquote>
+
+<p>请看下面的程序。</p>
+
+<pre><code>#include &lt;iostream&gt;;
+using namespace std;
+
+class T {
+public:
+  T() { cout &lt;&lt; &quot;constructor&quot; &lt;&lt; endl; }
+  ~T() { cout &lt;&lt; &quot;destructor&quot; &lt;&lt; endl; }
+};
+
+int main()
+{
+  const int NUM = 3;
+
+  T* p1 = new T[NUM];
+  cout &lt;&lt; hex &lt;&lt; p1 &lt;&lt; endl;
+  //  delete[] p1;
+  delete p1;
+
+  T* p2 = new T[NUM];
+  cout &lt;&lt; p2 &lt;&lt; endl;
+  delete[] p2;
+}
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+<p>大家可以自己运行这个程序，看一看 delete p1 和 delete[] p1 的不同结果，我就不在这里贴运行结果了。</p>
+
+<p>从运行结果中我们可以看出，delete p1 在回收空间的过程中，只有 p1[0] 这个对象调用了析构函数，</p>
+
+<p>其它对象如 p1[1]、p1[2] 等都没有调用自身的析构函数，这就是问题的症结所在。</p>
+
+<p>如果用 delete[]，则在回收空间之前所有对象都会首先调用自己的析构函数。</p>
+
+<blockquote>
+</blockquote>
+
+<p>基本类型的对象没有析构函数，所以回收基本类型组成的数组空间用 delete 和 delete[] 都是应该可以的；</p>
+
+<p>但是对于类对象数组，只能用 delete[]。对于 new 的单个对象，只能用 delete 不能用 delete[] 回收空间。</p>
+
+<p>所以一个简单的使用原则就是：new 和 delete、new[] 和 delete[] 对应使用。</p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+        <ul>
+          
+            <li class="prev"><a href="/default/CME-ERROR/" title="CME-ERROR">&larr; Previous</a></li>
+          
+          
+
+            <li><a href="/archive">Archive</a></li>
+
+          
+            <li class="next"><a href="/default/libev-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="libev-学习笔记">Next &rarr;</a></li>
+          
+          
+        </ul>
+      </ul>
+    </div>
+    <hr>
+   <!-- 
+<div id="disqus_thread"></div>
+<script>
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+ -->
+	<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="delete和delete[]区别" data-title="delete和delete[]区别" data-url="/default/delete%E5%92%8Cdelete%5B%5D%E5%8C%BA%E5%88%AB/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"nljb"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+  </div>
+  
+  <div class="span2">
+    <h4>Published</h4>
+    <div class="date"><span>2014-07-25</span></div>
+    <br>
+    <h4>Categories</h4>
+    <ul class="tag_box">
+    
+      <li>
+  <a href="/categories/#default-ref">default <span>303</span></a>
+</li>
+    
+    </ul>
+    <br>
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+      <li>
+  <a href="/tags/#c%2B%2B-ref">c++ <span>27</span></a>
+</li>
+    
+    </ul>
+  </div>
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy; nljb 2015
+          with help from <a href="http://github.com/wendal/gor" target="_blank" title="Gor -- Fast Blog">Gor</a>
+	  and Idea from <a href="http://ruhoh.com" target="_blank" title="The Definitive Technical Blogging Framework">ruhoh</a>
+	  <script src="http://count.2881.com/count/count.asp?id=53520&sx=2&ys=47" language="JavaScript" charset="gb2312"></script>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+<script src="//cdnjscn.b0.upaiyun.com/libs/prettify/r298/prettify.min.js"></script>
+<script>
+  var pres = document.getElementsByTagName("pre");
+  for (var i=0; i < pres.length; ++i) {
+    pres[i].className = "prettyprint linenums";
+  }
+  prettyPrint();
+</script>
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-123-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  </body>
+</html>
