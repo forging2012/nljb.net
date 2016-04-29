@@ -2,7 +2,17 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>23 Apr 16 09:50 CST</pubDate>
+<<<<<<< HEAD
+    <pubDate>29 Apr 16 18:22 CST</pubDate>
+    <item>
+      <title>Golang之程道传递浅拷贝所出现的问题</title>
+      <link>http://www.nljb.net/default/Golang%E4%B9%8B%E7%A8%8B%E9%81%93%E4%BC%A0%E9%80%92%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%89%80%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>2016-04-29 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h5&gt;程道传递浅拷贝&lt;/h5&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;*&lt;strong&gt;&lt;em&gt;下面这个例子看来没有什么问题，但是当发送数据时问题就出现了&lt;/em&gt;&lt;/strong&gt;*&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 解释一下：&#xA;当发送的[]byte通过buf[0:n]方式获取的浅拷贝只是个原buf的指针&#xA;当发送到程道内后被接收到的也是个指针，而且该指针指向的数据已经被&#xA;下一次读取的数据所覆盖，所以问题就出现了&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;简单的来说就是，在有指针的情况下，浅拷贝只是增加了一个指针指向已经存在的内存&#xA;而深拷贝就是增加一个指针并且申请一个新的内存，使这个增加的指针指向这个新的内存&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 创建一个程道&#xA;c = make(chan []byte)&#xA;&#xA;buf := make([]byte, 100)&#xA;for {&#xA;&#xA;    // 读取数据&#xA;    n, _ := socket.Read(buf)&#xA;&#xA;    // 发送到程道&#xA;    c &amp;lt;- buf[0:n]&#xA;&#xA;}&#xA;&#xA;// 接收程道数据&#xA;x := &amp;lt;- c&#xA;fmt.Printf(x)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;如何解决：&#xA;该如何解决这个问题呢，有人会这样做string(buf[0:n])转换后再发送，这样其实跟深层拷贝类似，转换成一个新的对象&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 或者可以这样来:(深拷贝数据后发送)&#xA;x := make([]byte, nr)&#xA;copy(x, buf[0:nr])&#xA;c &amp;lt;- x&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
+=======
+    <pubDate>27 Apr 16 12:08 CST</pubDate>
+>>>>>>> 10d6efd1aaad82515e9ae92995dc92706f7bbcd4
     <item>
       <title>Android之获取视频缩略图</title>
       <link>http://www.nljb.net/default/Android%E4%B9%8B%E8%8E%B7%E5%8F%96%E8%A7%86%E9%A2%91%E7%BC%A9%E7%95%A5%E5%9B%BE/</link>
