@@ -4,7 +4,7 @@ date: '2015-10-28'
 description:
 categories:
 
-tags:photoshop
+tags:other
 
 ---
 
