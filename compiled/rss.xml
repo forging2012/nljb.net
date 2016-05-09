@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>07 May 16 21:41 CST</pubDate>
+    <pubDate>09 May 16 16:00 CST</pubDate>
+    <item>
+      <title>Golang之获取上传文件大小</title>
+      <link>http://www.nljb.net/default/Golang%E4%B9%8B%E8%8E%B7%E5%8F%96%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F/</link>
+      <pubDate>2016-05-09 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h4&gt;获取上传文件大小&lt;/h4&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;package main&#xA;&#xA;import (&#xA;    &amp;quot;fmt&amp;quot;&#xA;    &amp;quot;io&amp;quot;&#xA;    &amp;quot;net/http&amp;quot;&#xA;    &amp;quot;log&amp;quot;&#xA;    &amp;quot;os&amp;quot;&#xA;)&#xA;&#xA;// 获取文件大小的接口&#xA;type Size interface {&#xA;    Size() int64&#xA;}&#xA;&#xA;// 获取文件信息的接口&#xA;type Stat interface {&#xA;    Stat() (os.FileInfo, error)&#xA;}&#xA;&#xA;// hello world, the web server&#xA;func HelloServer(w http.ResponseWriter, r *http.Request) {&#xA;    if &amp;quot;POST&amp;quot; == r.Method {&#xA;        file, _, err := r.FormFile(&amp;quot;userfile&amp;quot;)&#xA;        if err != nil {&#xA;            http.Error(w, err.Error(), 500)&#xA;            return&#xA;        }&#xA;&#xA;        if statInterface, ok := file.(Stat); ok {&#xA;            fileInfo, _ := statInterface.Stat()&#xA;            fmt.Fprintf(w, &amp;quot;上传文件的大小为: %d&amp;quot;, fileInfo.Size())&#xA;        }&#xA;        if sizeInterface, ok := file.(Size); ok {&#xA;            fmt.Fprintf(w, &amp;quot;上传文件的大小为: %d&amp;quot;, sizeInterface.Size())&#xA;        }&#xA;&#xA;        return&#xA;    }&#xA;&#xA;    // 上传页面&#xA;    w.Header().Add(&amp;quot;Content-Type&amp;quot;, &amp;quot;text/html&amp;quot;)&#xA;    w.WriteHeader(200)&#xA;    html := `&#xA;&amp;lt;form enctype=&amp;quot;multipart/form-data&amp;quot; action=&amp;quot;/hello&amp;quot; method=&amp;quot;POST&amp;quot;&amp;gt;&#xA;    Send this file: &amp;lt;input name=&amp;quot;userfile&amp;quot; type=&amp;quot;file&amp;quot; /&amp;gt;&#xA;    &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Send File&amp;quot; /&amp;gt;&#xA;&amp;lt;/form&amp;gt;&#xA;`&#xA;    io.WriteString(w, html)&#xA;}&#xA;&#xA;func main() {&#xA;    http.HandleFunc(&amp;quot;/hello&amp;quot;, HelloServer)&#xA;    err := http.ListenAndServe(&amp;quot;:12345&amp;quot;, nil)&#xA;    if err != nil {&#xA;        log.Fatal(&amp;quot;ListenAndServe: &amp;quot;, err)&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>bootstrap</title>
       <link>http://www.nljb.net/default/bootstrap/</link>
