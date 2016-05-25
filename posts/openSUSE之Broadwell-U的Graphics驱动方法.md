@@ -36,7 +36,7 @@ VGA -> Intel Corporation Broadwell-U Integrated Graphics (https://01.org/zh/linu
 
 >
 
-安装 libva -> Libva - 1.4.0 升级到 Libva - 1.5.1
+安装 libva -> Libva - 1.4.0 升级到 Libva - 1.5.1 (./configure --prefix=/usr)
 
 >
 
