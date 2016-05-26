@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>25 May 16 10:46 CST</pubDate>
+    <pubDate>26 May 16 19:07 CST</pubDate>
+    <item>
+      <title>Linux之X11VNC通过VNC来连接服务器桌面</title>
+      <link>http://www.nljb.net/default/Linux%E4%B9%8BX11VNC%E9%80%9A%E8%BF%87VNC%E6%9D%A5%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A1%8C%E9%9D%A2/</link>
+      <pubDate>2016-05-26 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Linux之X11VNC通过VNC来连接服务器桌面&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;x11vnc是一个可以让管理员直接通过VNC Viewer来连接服务器的桌面工具&#xA;&#xA;需要安装：x11vnc&#xA;&#xA; | Name            | Summary                                 | Type&#xA; --+-----------------+-----------------------------------------+------------&#xA;   | X11VNC          | Connect to remote X display through VNC | application&#xA;   | X11VNC Server   | Share this desktop via VNC              | application&#xA; i | x11vnc          | VNC Server for Real X Displays          | package&#xA;   | x11vnc-frontend | Simple GUI Frontend to x11vnc           | package&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;hr /&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 启动脚本&#xA;&#xA;#!/bin/sh&#xA;&#xA;while true;&#xA;do&#xA;    AUTH_ID=`ps -ef | grep auth | grep -v grep | grep -v xinitrc | awk &#39;{print $11;}&#39;`&#xA;&#xA;    if [ &amp;quot;$AUTH_ID&amp;quot; = &amp;quot;&amp;quot; ]; then&#xA;        echo &amp;quot;Waiting for ready, retry 10s later...&amp;quot;&#xA;    else&#xA;        x11vnc -auth $AUTH_ID -display :0 -xdamage -xdamage -ncache_cr&#xA;    fi&#xA;&#xA;    sleep 10&#xA;done&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;hr /&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 执行脚本后，在任意电脑安装VNC Viewer即可登录, 端口号一般从5900开始 ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Golang之模版的基本使用</title>
       <link>http://www.nljb.net/default/Golang%E4%B9%8B%E6%A8%A1%E7%89%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
