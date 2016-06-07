@@ -8,6 +8,10 @@ tags:system
 
 ---
 
+	mkinitrd：建立要载入ramdisk的映像文件
+
+---
+
 	mknod -m 0660 /dev/loop0 b 7 0
 
 ---

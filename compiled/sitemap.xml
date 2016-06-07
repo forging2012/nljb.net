@@ -4,6 +4,11 @@
 		<loc>http://www.nljb.net/</loc>
 	</url>
 	<url>
+		<loc>http://www.nljb.net/default/Golang%E4%B9%8Bvendor%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
+		<lastmod>2016-06-07</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
 		<loc>http://www.nljb.net/default/jQuery%E4%B9%8BAJAX%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
 		<lastmod>2016-05-29</lastmod>
 		<changefreq>weekly</changefreq>
