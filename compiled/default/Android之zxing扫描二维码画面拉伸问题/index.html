@@ -122,6 +122,93 @@
   }
 </code></pre>
 
+<blockquote>
+</blockquote>
+
+<hr />
+
+<blockquote>
+</blockquote>
+
+<h3>修改扫描窗口大小</h3>
+
+<blockquote>
+</blockquote>
+
+<pre><code>在CameraManager.java这个类中进行调整
+
+默认的大小是 以下这4个参数 
+//  private static final int MIN_FRAME_WIDTH = 240;
+//  private static final int MIN_FRAME_HEIGHT = 240;
+//  private static final int MAX_FRAME_WIDTH = 480;
+//  private static final int MAX_FRAME_HEIGHT = 360;
+
+参数实际在 getFramingRect() 方法中起作用
+原始：
+
+/** 
+  * Calculates the framing rect which the UI should draw to show the user where to place the 
+  * barcode. This target helps with alignment as well as forces the user to hold the device 
+  * far enough away to ensure the image will be in focus. 
+  * 
+  * @return The rectangle to draw on screen in window coordinates. 
+  */  
+ public Rect getFramingRect() {  
+   Point screenResolution = configManager.getScreenResolution();  
+   if (framingRect == null) {  
+     if (camera == null) {  
+       return null;  
+     }  
+
+     //原生  
+     int width = screenResolution.x * 3 / 4;  
+     if (width &lt; MIN_FRAME_WIDTH) {  
+       width = MIN_FRAME_WIDTH;  
+     } else if (width &gt; MAX_FRAME_WIDTH) {  
+       width = MAX_FRAME_WIDTH;  
+     }  
+     int height = screenResolution.y * 3 / 4;  
+     if (height &lt; MIN_FRAME_HEIGHT) {  
+       height = MIN_FRAME_HEIGHT;  
+     } else if (height &gt; MAX_FRAME_HEIGHT) {  
+       height = MAX_FRAME_HEIGHT;  
+     }  
+     int leftOffset = (screenResolution.x - width) / 2;  
+     int topOffset = (screenResolution.y - height) / 2;  
+     framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);  
+     Log.d(TAG, &quot;Calculated framing rect: &quot; + framingRect);  
+   }  
+   return framingRect;  
+ }  
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+<pre><code>改为:
+
+public Rect getFramingRect() {  
+  Point screenResolution = configManager.getScreenResolution();  
+  if (framingRect == null) {  
+    if (camera == null) {  
+      return null;  
+    }  
+
+  //修改之后    
+  int width = screenResolution.x * 7 / 10;  
+  int height = screenResolution.y * 7 / 10;  
+
+  int leftOffset = (screenResolution.x - width) / 2;  
+  int topOffset = (screenResolution.y - height) / 3;  
+  framingRect = new Rect(leftOffset, topOffset, leftOffset + width, topOffset + height);  
+
+
+    Log.d(TAG, &quot;Calculated framing rect: &quot; + framingRect);  
+  }  
+  return framingRect;  
+}  
+</code></pre>
+
     <hr>
     <div class="pagination">
       <ul>
@@ -182,7 +269,7 @@
     <ul class="tag_box">
     
       <li>
-  <a href="/categories/#default-ref">default <span>302</span></a>
+  <a href="/categories/#default-ref">default <span>303</span></a>
 </li>
     
     </ul>
