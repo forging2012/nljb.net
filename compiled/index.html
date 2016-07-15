@@ -87,6 +87,44 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/ReactNative%E4%B9%8B%E5%88%9D%E8%AF%86Navigator/">ReactNative之初识Navigator</a> <span class="date">2016-07-15</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<p>使用导航器可以让你在应用的不同场景（页面）间进行切换。</p>
+
+<p>导航器通过路由对象来分辨不同的场景。利用renderScene方法，导航栏可以根据指定的路由来渲染场景。</p>
+
+<p>可以通过configureScene属性获取指定路由对象的配置信息，从而改变场景的动画或者手势。</p>
+
+<p>查看Navigator.SceneConfigs来获取默认的动画和更多的场景配置选项。</p>
+
+<blockquote>
+</blockquote>
+
+<pre><code>getCurrentRoutes() - 获取当前栈里的路由，也就是push进来，没有pop掉的那些。
+jumpBack() - 跳回之前的路由，当然前提是保留现在的，还可以再跳回来，会给你保留原样。
+jumpForward() - 上一个方法不是调到之前的路由了么，用这个跳回来就好了。
+jumpTo(route) - 跳转到已有的场景并且不卸载。
+push(route) - 跳转到新的场景，并且将场景入栈，你可以稍后跳转过去
+pop() - 跳转回去并且卸载掉当前场景
+replace(route) - 用一个新的路由替换掉当前场景
+replaceAtIndex(route, index) - 替换掉指定序列的路由场景
+replacePrevious(route) - 替换掉之前的场景
+resetTo(route) - 跳转到新的场景，并且重置整个路由栈
+immediatelyResetRouteStack(routeStack) - 用新的路由数组来重置路由栈
+popToRoute(route) - pop到路由指定的场景，在整个路由栈中，处于指定场景之后的场景将会被卸载。
+popToTop() - pop到栈中的第一个场景，卸载掉所有的其他场景。
+</code></pre>
+
+
+  <div class="more">
+    <a href="/default/ReactNative%E4%B9%8B%E5%88%9D%E8%AF%86Navigator/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/JavaScript%E4%B8%8EjQuery%E4%BA%A4%E4%BA%92%E5%BC%8FWeb%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">JavaScript与jQuery交互式Web前端开发</a> <span class="date">2016-06-14</span></h3>
 
   <blockquote>
@@ -408,39 +446,6 @@ public Bitmap getVideoThumbnailByExternal(String app, String fdir, String fname)
 
   <div class="more">
     <a href="/default/Android%E4%B9%8B%E8%8E%B7%E5%8F%96%E8%A7%86%E9%A2%91%E7%BC%A9%E7%95%A5%E5%9B%BE/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/Win10%E4%B9%8B%E5%8D%B8%E8%BD%BD%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%86%85%E7%BD%AE%E5%BA%94%E7%94%A8/">Win10之卸载不需要的内置应用</a> <span class="date">2016-04-15</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h3>Win10之卸载不需要的内置应用</h3>
-
-<blockquote>
-</blockquote>
-
-<p><strong>对于通过Windows商店安装的应用，可以直接在开始菜单的磁贴上右键选择“卸载”命令来移除</strong></p>
-
-<p><strong>但这个方法对照片、音乐、OneNote、相机等Win10预装应用无效，因为你找不到“卸载”这个选项</strong></p>
-
-<p><strong>不过微软并未真正封堵卸载的途径，用户仍可以通过PowerShell这个系统工具以命令行方式卸载预装应用</strong></p>
-
-<blockquote>
-</blockquote>
-
-<hr />
-
-<blockquote>
-</blockquote>
-
-<p><strong><em>细步骤如下</em></strong></p>
-
-
-  <div class="more">
-    <a href="/default/Win10%E4%B9%8B%E5%8D%B8%E8%BD%BD%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%86%85%E7%BD%AE%E5%BA%94%E7%94%A8/" class="btn">read more..</a>
   </div>
 </div>
 
