@@ -10,6 +10,10 @@ tags:react native
 
 >
 
+	注意：请将文中 {[ 替换为 {X2 , ]} 替换为 }X2
+
+>
+
 使用导航器可以让你在应用的不同场景（页面）间进行切换。
 
 导航器通过路由对象来分辨不同的场景。利用renderScene方法，导航栏可以根据指定的路由来渲染场景。
@@ -72,7 +76,7 @@ tags:react native
         let defaultComponent = Home;
         return (
           <Navigator
-            initialRoute={{ name: defaultName, component: defaultComponent }}
+            initialRoute=[{ name: defaultName, component: defaultComponent }]
             configureScene={(route) => {
               return Navigator.SceneConfigs.VerticalDownSwipeJump;
             } }
@@ -335,7 +339,7 @@ tags:react native
           // Navigator 导航(页面的控制器)
           <Navigator
             // 路由初始化配置信息，就是说页面加载时，第一次需要展现什么内容
-            initialRoute={{ title: '努力加贝' , id: 'main'}}
+            initialRoute=[{ title: '努力加贝' , id: 'main'}]
             // 场景转换动画配置
             configureScene={(route) => {
               return Navigator.SceneConfigs.FadeAndroid;
@@ -440,7 +444,7 @@ tags:react native
           // 导航 Navigator(页面的控制器)
           <Navigator
             // 路由初始化配置信息，就是说页面加载时，第一次需要展现什么内容
-            initialRoute={{ id: 'Home', name: 'Home', component: Home }}
+            initialRoute=[{ id: 'Home', name: 'Home', component: Home }]
             // 渲染场景，读取initialRouter传来的数据，确定显示那些内容。
             renderScene={ (route, navigator) => this._renderScene(route, navigator) }
             // 场景转换动画配置

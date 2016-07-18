@@ -10,6 +10,10 @@ tags:react-native
 
 >
 
+	注意：请将文中 {[ 替换为 {X2 , ]} 替换为 }X2
+
+>
+
 #### 通过例子来理解Props和State
 
 >
@@ -70,7 +74,7 @@ tags:react-native
         }
         return (
           <View>
-              <View style={{height:30}}
+              <View style=[{height:30}]
               // 传递参数 ...
               <Hello {...pros} />
               <HelloComponent text="React"/>
@@ -100,7 +104,7 @@ tags:react-native
         let defaultComponent = Home;
         return (
           <Navigator
-            initialRoute={{ name: defaultName, component: defaultComponent }}
+            initialRoute=[{ name: defaultName, component: defaultComponent }]
             configureScene={(route) => {
               return Navigator.SceneConfigs.VerticalDownSwipeJump;
             } }
