@@ -78,7 +78,7 @@ tags:react native
             } }
             renderScene={(route, navigator) => {
               let Component = route.component;
-              return <Component {...route.params} navigator={navigator} />
+              return <Component {...route.xxxx} navigator={navigator} />
             } } />
         );
       }
@@ -92,10 +92,11 @@ tags:react native
     // Home Class
     var Home = React.createClass({
 
+      // 初始化 State
       getInitialState: function () {
         return ({
-          user: null,
-          pwd: null,
+          user: '',
+          pwd: '',
         });
       },
 
@@ -104,6 +105,7 @@ tags:react native
           //  view 默认宽度为 100%
           <View style={ styles.container }>
             <Text style={ styles.text }>欢迎使用</Text>
+            <Text style={ styles.text }>欢迎 { this.state.user }</Text>
             <View style={ styles.container }>
               <TextInput
                 placeholder='用户名'
@@ -116,7 +118,8 @@ tags:react native
                 onChangeText={(text) => this.setState({ pwd: text }) }
                 />
             </View>
-            <TouchableHighlight onPress={ this._push } style={ styles.button }>
+            <TouchableHighlight onPress={ () => this._push() } 
+            style={ styles.button }>
               <Text>登录</Text>
             </TouchableHighlight>
             <TouchableHighlight onPress={() =>
@@ -131,7 +134,8 @@ tags:react native
       },
 
       _push: function () {
-        if (this.state.user == null || this.state.pwd == null) {
+        if (!this.state.user || !this.state.pwd) {
+          console.log("提示")
           Alert.alert(
             '提示信息',
             '用户名或密码不能为空',
@@ -140,7 +144,7 @@ tags:react native
           this.props.navigator.push({
             name: 'Login',
             component: Login,
-            params: {
+            xxxx: {
               user: this.state.user,
               pwd: this.state.pwd
             }
@@ -154,7 +158,7 @@ tags:react native
       container: {
         backgroundColor: '#FFFFFF',
         flex: 1,
-        marginTop: 60
+        marginTop: 20
       },
       button: {
         height: 50,
@@ -207,7 +211,8 @@ tags:react native
             <Text style={ styles.text }>登录成功</Text>
             <Text style={ styles.text }>用户名： { this.props.user }</Text>
             <Text style={ styles.text }>密 码: { this.props.pwd }</Text>
-            <TouchableHighlight onPress={ () => this.props.navigator.pop() } style={ styles.button }>
+            <TouchableHighlight onPress={ () => this.props.navigator.pop() }
+            style={ styles.button }>
               <Text>返回</Text>
             </TouchableHighlight>
             <TouchableHighlight onPress={ () =>
@@ -264,8 +269,8 @@ tags:react native
         render() {
             return (
                 <View style={ styles.container }>
-                    <TouchableHighlight onPress={ () =>
-                    this.props.navigator.pop() } style={ styles.button }>
+                    <TouchableHighlight onPress={ () => this.props.navigator.pop() }
+                    style={ styles.button }>
                         <Text>返回</Text>
                     </TouchableHighlight>
                     <Text>关于软件</Text>
