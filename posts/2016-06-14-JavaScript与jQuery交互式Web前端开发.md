@@ -4,7 +4,7 @@ date: '2016-06-14'
 description:
 categories:
 
-tags:javascript
+tags:other
 
 ---
 
