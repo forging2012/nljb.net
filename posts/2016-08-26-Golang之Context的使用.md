@@ -149,6 +149,8 @@ tags:golang
     	select {
     	case <-ctx.Done():
     		return -1
+	default:
+		// 没有结束 ... 执行 ...
     	}
     }
     
@@ -248,6 +250,8 @@ tags:golang
     	// 结束时候做点什么 ...
     	case <-ctx.Done():
     		return -3
+	default:
+		// 没有结束 ... 执行 ...
     	}
     }
     
@@ -260,6 +264,8 @@ tags:golang
     	// 结束时候做点什么 ...
     	case <-ctx.Done():
     		return -2
+	default:
+		// 没有结束 ... 执行 ...
     	}
     }
     
@@ -271,6 +277,8 @@ tags:golang
     	// 结束时候做点什么 ...
     	case <-ctx.Done():
     		return -1
+	default:
+		// 没有结束 ... 执行 ...
     	}
     }
     
@@ -324,6 +332,7 @@ tags:golang
             case <-ctx.Done():
                 return -1
             default:
+	    	// 没有结束 ... 执行 ...
             }
         }
         for i := 0; i < b; i++ {
@@ -332,6 +341,7 @@ tags:golang
             case <-ctx.Done():
                 return -1
             default:
+	    	// 没有结束 ... 执行 ...
             }
         }
         return res
