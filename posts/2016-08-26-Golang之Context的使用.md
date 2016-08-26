@@ -147,10 +147,10 @@ tags:golang
     func A(ctx context.Context) int {
         // ... TODO
     	select {
-    	case <-ctx.Done():
-    		return -1
-	default:
-		// 没有结束 ... 执行 ...
+		case <-ctx.Done():
+				return -1
+		default:
+			// 没有结束 ... 执行 ...
     	}
     }
     
@@ -250,8 +250,8 @@ tags:golang
     	// 结束时候做点什么 ...
     	case <-ctx.Done():
     		return -3
-	default:
-		// 没有结束 ... 执行 ...
+		default:
+			// 没有结束 ... 执行 ...
     	}
     }
     
@@ -264,8 +264,8 @@ tags:golang
     	// 结束时候做点什么 ...
     	case <-ctx.Done():
     		return -2
-	default:
-		// 没有结束 ... 执行 ...
+		default:
+			// 没有结束 ... 执行 ...
     	}
     }
     
@@ -277,8 +277,8 @@ tags:golang
     	// 结束时候做点什么 ...
     	case <-ctx.Done():
     		return -1
-	default:
-		// 没有结束 ... 执行 ...
+		default:
+			// 没有结束 ... 执行 ...
     	}
     }
     
