@@ -87,6 +87,36 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/Golang%E4%B9%8BContext%E7%9A%84%E4%BD%BF%E7%94%A8/">Golang之Context的使用</a> <span class="date">2016-08-26</span></h3>
+
+  <h4>简介</h4>
+
+<blockquote>
+</blockquote>
+
+<pre><code>在golang中的创建一个新的线程并不会返回像c语言类似的pid
+所有我们不能从外部杀死某个线程，所有我就得让它自己结束
+之前我们用channel＋select的方式，来解决这个问题
+但是有些场景实现起来比较麻烦，例如由一个请求衍生出多个线程
+并且之间需要满足一定的约束关系，以实现一些诸如：
+有效期，中止线程树，传递请求全局变量之类的功能。
+于是google 就为我们提供一个解决方案，开源了context包。
+使用context包来实现上下文功能 .....
+约定：需要在你的方法的传入参数的第一个参数是context.Context的变量。
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+<hr />
+
+
+  <div class="more">
+    <a href="/default/Golang%E4%B9%8BContext%E7%9A%84%E4%BD%BF%E7%94%A8/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/ReactNative%E4%B9%8B%E8%AE%A4%E8%AF%86Props%E5%92%8CState/">ReactNative之认识Props和State</a> <span class="date">2016-07-16</span></h3>
 
   <blockquote>
@@ -410,41 +440,6 @@ type Size interface {
 
   <div class="more">
     <a href="/default/bootstrap/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/Golang%E4%B9%8B%E7%A8%8B%E9%81%93%E4%BC%A0%E9%80%92%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%89%80%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/">Golang之程道传递浅拷贝所出现的问题</a> <span class="date">2016-04-29</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h5>程道传递浅拷贝</h5>
-
-<blockquote>
-</blockquote>
-
-<p>*<strong><em>下面这个例子看来没有什么问题，但是当发送数据时问题就出现了</em></strong>*</p>
-
-<blockquote>
-</blockquote>
-
-<pre><code>// 解释一下：
-当发送的[]byte通过buf[0:n]方式获取的浅拷贝只是个原buf的指针
-当发送到程道内后被接收到的也是个指针，而且该指针指向的数据已经被
-下一次读取的数据所覆盖，所以问题就出现了
-</code></pre>
-
-<blockquote>
-</blockquote>
-
-<pre><code>简单的来说就是，在有指针的情况下，浅拷贝只是增加了一个指针指向已经存在的内存
-而深拷贝就是增加一个指针并且申请一个新的内存，使这个增加的指针指向这个新的内存
-</code></pre>
-
-
-  <div class="more">
-    <a href="/default/Golang%E4%B9%8B%E7%A8%8B%E9%81%93%E4%BC%A0%E9%80%92%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%89%80%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="btn">read more..</a>
   </div>
 </div>
 
