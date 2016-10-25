@@ -177,7 +177,7 @@ tags:qt
 
 >
 
-#### QImage
+### QImage
 
 	// 就不多介绍了 ... 
 	QImage image = frame.toImage();
