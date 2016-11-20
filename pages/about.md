@@ -5,7 +5,7 @@ description:
 
 <a href="https://github.com/nulijiabei">Github - github.com/nulijiabei</a> 
 
-<a href="mailto:he.liu@danoonetworks.com">Email - he.liu@danoonetworks.com</a>
+<a href="mailto:a@nljb.net">Email - a@nljb.net</a>
 
 <a href="https://objects.dreamhost.com/goo/index.html">Google</a>
 
@@ -22,6 +22,10 @@ description:
 <img src="{{urls.media}}/qrcode.png" alt="" width="300">
 
 ---
+
+Me 宝宝
+
+<img src="{{urls.media}}/3.jpg" alt="" width="600">
 
 Me 夫人
 
