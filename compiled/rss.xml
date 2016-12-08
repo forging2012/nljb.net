@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>06 Dec 16 12:11 CST</pubDate>
+    <pubDate>08 Dec 16 15:17 CST</pubDate>
+    <item>
+      <title>解决Win10由于INF文件失效导致安卓MTP驱动安装失败</title>
+      <link>http://www.nljb.net/default/%E8%A7%A3%E5%86%B3Win10%E7%94%B1%E4%BA%8EINF%E6%96%87%E4%BB%B6%E5%A4%B1%E6%95%88%E5%AF%BC%E8%87%B4%E5%AE%89%E5%8D%93MTP%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>2016-12-08 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h4&gt;解决Win10由于INF文件失效导致安卓MTP驱动安装失败&lt;/h4&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;右键桌面“此电脑”—“属性”—左栏“设备管理器”—找到MTP设备中打着三角感叹号的设备—右键点击—选择”升级驱动“&#xA;&#xA;选择”手动选择驱动路径“—填”C:\Windows\WinSxS\”后确定—一路向下有任何提示警告无视之—最后驱动成功安装&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Golang新特性之动态插件包-plugin</title>
       <link>http://www.nljb.net/default/Golang%E6%96%B0%E7%89%B9%E6%80%A7%E4%B9%8B%E5%8A%A8%E6%80%81%E6%8F%92%E4%BB%B6%E5%8C%85-plugin/</link>
