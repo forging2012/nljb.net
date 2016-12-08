@@ -19,6 +19,42 @@ description:
 
 ---
 
+>
+
+***思想最重要***
+
+https://github.com/nulijiabei/cgoqt - Go语言与Qt混合编译使用方案
+
+https://github.com/nulijiabei/freehttp - 基于Go语言实现将一个结构及所属函数封装为HTTP-API ...
+
+>
+
+***实用才关键***
+
+https://github.com/nulijiabei/gcpool - 基于Go语言实现的连接池(ws)及针对连接的实时推送数据
+
+https://github.com/nulijiabei/socketgo - Go语言中Socket的封装(还有C++的Socket封装)
+
+https://github.com/nulijiabei/Boost-INIConfig - 基于Boost封装的INI格式文件读写
+
+https://github.com/nulijiabei/godw - 基于Go语言的小巧文件下载服务
+
+>
+
+***参与***
+
+https://github.com/nutzam/zgo - Go语言帮助方法
+
+>
+
+***更多***
+
+https://github.com/nulijiabei - 更多请关注
+
+>
+
+---
+
 <img src="{{urls.media}}/qrcode.png" alt="" width="300">
 
 ---
