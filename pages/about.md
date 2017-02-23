@@ -55,6 +55,20 @@ https://github.com/nulijiabei - 更多请关注
 
 ---
 
+>
+
+***分享***
+
+Chrome 国内下载 
+
+https://api.shuax.com/tools/getchrome
+
+https://www.shuax.com/archives/ChromeUpdater.html
+
+>
+
+---
+
 <img src="{{urls.media}}/qrcode.png" alt="" width="300">
 
 ---
