@@ -87,6 +87,71 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/Qt%E4%B9%8B%E5%9C%A8%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1Close%E6%97%B6%E8%87%AA%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/">Qt之在窗口对象Close时自动释放内存</a> <span class="date">2017-03-20</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h4>Qt之在窗口对象Close时自动释放内存</h4>
+
+<blockquote>
+</blockquote>
+
+<pre><code>QT中调用窗口对象close时，默认情况下是不会释放new的内存的
+
+只是干掉了界面，但内存中还有，这个时候有点类似hide函数的功能。
+
+
+virtual void setVisible(bool visible);
+inline void setHidden(bool hidden) { setVisible(!hidden); }
+inline void show() { setVisible(true); }
+inline void hide() { setVisible(false); }
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+
+  <div class="more">
+    <a href="/default/Qt%E4%B9%8B%E5%9C%A8%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1Close%E6%97%B6%E8%87%AA%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
+	<h3 class="title"><a href="/default/Qt%E4%B9%8BQDialog%E4%B8%8EQWidget%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%80%81%E5%8F%8A%E9%9D%9E%E6%A8%A1%E6%80%81/">Qt之QDialog与QWidget实现模态及非模态</a> <span class="date">2017-03-20</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h4>Qt之QDialog与QWidget实现模态及非模态</h4>
+
+<blockquote>
+</blockquote>
+
+<p><strong><em>模态与非模态</em></strong></p>
+
+<blockquote>
+</blockquote>
+
+<pre><code>模态对话框工作状态：当它获得焦点时，将垄断用户的输入，在完成本对话框之前，用户无法对本程序的其他部分进行操作  
+非模态对话框类似于WORD里的查找替换，就在应用程序打开非模态对话框的同时还可以切换到其他窗口进行操作
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+<hr />
+
+<blockquote>
+</blockquote>
+
+
+  <div class="more">
+    <a href="/default/Qt%E4%B9%8BQDialog%E4%B8%8EQWidget%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%80%81%E5%8F%8A%E9%9D%9E%E6%A8%A1%E6%80%81/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/Golang%E4%B9%8BHTTP%E8%AF%B7%E6%B1%82%E7%AC%94%E8%AE%B0/">Golang之HTTP请求笔记</a> <span class="date">2017-02-07</span></h3>
 
   <blockquote>
@@ -355,71 +420,6 @@ Compatiblity: QtAV can be built with both Qt4 and Qt5, FFmpeg(&gt;=1.0) and Liba
 
   <div class="more">
     <a href="/default/Qt%E4%B9%8B%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93QtAV%E7%9A%84%E7%BC%96%E8%AF%91/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/QtAV%E4%B9%8BVideoDecoder%E7%9A%84%E4%BD%BF%E7%94%A8/">QtAV之VideoDecoder的使用</a> <span class="date">2016-10-23</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h3>VideoDecoder是QtAV的解码器</h3>
-
-<blockquote>
-</blockquote>
-
-<p><strong><em>本文主要目的是介绍，如何独立使用 VideoDecoder 解码 &hellip; 自定义绘制输出 ..</em></strong></p>
-
-<blockquote>
-</blockquote>
-
-<pre><code>VideoDecoder 支持 &quot;FFmpeg&quot;, &quot;CUDA&quot;, &quot;VDA&quot;, &quot;VAAPI&quot;, &quot;DXVA&quot;, &quot;Cedarv&quot; 解码方式
-</code></pre>
-
-<blockquote>
-</blockquote>
-
-<hr />
-
-<blockquote>
-</blockquote>
-
-<h3>VideoDecoder解码（官方案例）</h3>
-
-
-  <div class="more">
-    <a href="/default/QtAV%E4%B9%8BVideoDecoder%E7%9A%84%E4%BD%BF%E7%94%A8/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/Golang%E4%B9%8BContext%E7%9A%84%E4%BD%BF%E7%94%A8/">Golang之Context的使用</a> <span class="date">2016-08-26</span></h3>
-
-  <h4>简介</h4>
-
-<blockquote>
-</blockquote>
-
-<pre><code>在golang中的创建一个新的线程并不会返回像c语言类似的pid
-所有我们不能从外部杀死某个线程，所有我就得让它自己结束
-之前我们用channel＋select的方式，来解决这个问题
-但是有些场景实现起来比较麻烦，例如由一个请求衍生出多个线程
-并且之间需要满足一定的约束关系，以实现一些诸如：
-有效期，中止线程树，传递请求全局变量之类的功能。
-于是google 就为我们提供一个解决方案，开源了context包。
-使用context包来实现上下文功能 .....
-约定：需要在你的方法的传入参数的第一个参数是context.Context的变量。
-</code></pre>
-
-<blockquote>
-</blockquote>
-
-<p><strong><em>其实本身非常简单，在导入这个包之后，初始化Context对象，在每个资源访问方法中都调用它，然后在使用时检查Context对象是否已经被Cancel，如果是就释放绑定的资源</em></strong></p>
-
-
-  <div class="more">
-    <a href="/default/Golang%E4%B9%8BContext%E7%9A%84%E4%BD%BF%E7%94%A8/" class="btn">read more..</a>
   </div>
 </div>
 
