@@ -87,6 +87,43 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/Golang%E4%B9%8BHMAC%E7%9A%84SHA1%E5%8A%A0%E5%AF%86/">Golang之HMAC的SHA1加密</a> <span class="date">2017-04-27</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h4>Golang之HMAC的SHA1加密</h4>
+
+<blockquote>
+</blockquote>
+
+<pre><code>HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentication Code）
+HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生成一个消息摘要作为输出
+// 也就是说HMAC通过将哈希算法(SHA1, MD5)与密钥进行计算生成摘要...可解密...
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// 在 PHP 中是 hash_hmac('sha1',$string,$key);
+
+package main
+
+import (
+    &quot;crypto/hmac&quot;
+    &quot;crypto/sha1&quot;
+    &quot;fmt&quot;
+    &quot;io&quot;
+)
+</code></pre>
+
+
+  <div class="more">
+    <a href="/default/Golang%E4%B9%8BHMAC%E7%9A%84SHA1%E5%8A%A0%E5%AF%86/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/Qt%E4%B9%8B%E5%9C%A8%E7%AA%97%E5%8F%A3%E5%AF%B9%E8%B1%A1Close%E6%97%B6%E8%87%AA%E5%8A%A8%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98/">Qt之在窗口对象Close时自动释放内存</a> <span class="date">2017-03-20</span></h3>
 
   <blockquote>
@@ -377,49 +414,6 @@ https://mp.weixin.qq.com/debug/wxadoc/dev/?t=20161122
 
   <div class="more">
     <a href="/default/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/Qt%E4%B9%8B%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93QtAV%E7%9A%84%E7%BC%96%E8%AF%91/">Qt之第三方库QtAV的编译</a> <span class="date">2016-10-23</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h3>QtAV是基于Qt和FFmpeg多媒体播放库</h3>
-
-<blockquote>
-</blockquote>
-
-<p><strong><em>官方网站: <a href="http://qtav.org">http://qtav.org</a></em></strong></p>
-
-<p><strong><em>项目地址：<a href="https://github.com/wang-bin/QtAV">https://github.com/wang-bin/QtAV</a></em></strong></p>
-
-<blockquote>
-</blockquote>
-
-<pre><code>Hardware decoding suppprt: DXVA2, VAAPI, VDA/VideoToolbox, CedarX, CUDA(the 1st player support CUDA on linux?)
-OpenGL and ES2 support for almost all formats including Hi10P videos (The 1st player/library support 10bit in ES2? VLC, XBMC, mplayer does not support now)
-Real time preview
-Video capture in rgb and yuv format
-OSD and custom filters
-Filters in libavfilter, for example stero3d, blur
-Subtitle track select. Dynamic change FFmpeg and libass engine
-Play frame by frame
-Playback speed control
-Variant streams: locale file, http, rtsp etc. and your custom streams
-Audio channel, tracks and external audio tracks
-Dynamically change render engine when playing.
-Dynamically change video decoder
-Multiple video outputs for 1 player
-Video eq(software and OpenGL): brightness, contrast, saturation, hue
-QML support. Most playback APIs are compatible with QtMultimedia module
-Compatiblity: QtAV can be built with both Qt4 and Qt5, FFmpeg(&gt;=1.0) and Libav (&gt;=9.0). Latest FFmpeg release is recommended.
-</code></pre>
-
-
-  <div class="more">
-    <a href="/default/Qt%E4%B9%8B%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93QtAV%E7%9A%84%E7%BC%96%E8%AF%91/" class="btn">read more..</a>
   </div>
 </div>
 
