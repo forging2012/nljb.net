@@ -138,3 +138,18 @@ tags:system
     // 最后重申：只要编译过了 ... 运行段错误，一定是.bin文件路径配置错误造成的 ...
 
 >
+
+---
+
+>
+
+    // OpenCV 默认只支持 avi 格式视频读取 ... 如果需要兼容 mp4、mov、等格式 ... 需要 ffmepg
+
+    sudo add-apt-repository ppa:kirillshkrogalev/ffmpeg-next 
+    sudo apt-get update 
+    sudo apt-get install ffmpeg
+
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_TIFF=ON -D CMAKE_CXX_FLAGS=-D__STDC_CONSTANT_MACROS ..
+
+>
+
