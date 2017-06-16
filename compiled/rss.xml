@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>06 Jun 17 22:24 CST</pubDate>
+    <pubDate>16 Jun 17 10:36 CST</pubDate>
+    <item>
+      <title>Bash小数比较</title>
+      <link>http://www.nljb.net/default/Bash%E5%B0%8F%E6%95%B0%E6%AF%94%E8%BE%83/</link>
+      <pubDate>2017-06-16 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Bash里本身不支持小数的比较，它只支持整数或者是字符串比较。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;echo &amp;quot;input f1&amp;quot;  &#xA;read f1  &#xA;echo &amp;quot;input f2&amp;quot;  &#xA;read f2  &#xA;&#xA;state=`echo &amp;quot;$f1&amp;lt;$f2&amp;quot;|bc`  &#xA;if [ $state -eq 1 ];then  &#xA;    echo &amp;quot;f1($f1)&amp;lt;f2($f2) is true&amp;quot;  &#xA;else  &#xA;    echo &amp;quot;f1($f1)&amp;lt;f2($f2) is false&amp;quot;  &#xA;fi  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>在Ubuntu中Build人脸识别引擎SeetaFace</title>
       <link>http://www.nljb.net/default/%E5%9C%A8Ubuntu%E4%B8%ADBuild%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E5%BC%95%E6%93%8ESeetaFace/</link>
