@@ -30,6 +30,22 @@ tags:golang
 
 >
 
+	// Golang 的字符串转为 C 字符串
+	// C 的字符串是使用 malloc 分配的，因此，此函数的调用者
+	// 需要调用 C.free 来释放内存
+	func C.CString(string) *C.char
+	 
+	// 转换 C 字符串到 Golang 字符串
+	func C.GoString(*C.char) string
+	 
+	// 转换一定长度的 C 字符串到 Golang 字符串
+	func C.GoStringN(*C.char, C.int) string
+	 
+	// 转换一块 C 内存区域到 Golang 的字节数组中去
+	func C.GoBytes(unsafe.Pointer, C.int) []byte
+
+>
+
 ---
 
 >
