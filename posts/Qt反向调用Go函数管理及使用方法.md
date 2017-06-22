@@ -12,13 +12,35 @@ tags:golang
 
 ---
 
-### 简单说一下
+>
+
+* C.char
+* C.schar（signed char）
+* C.uchar（unsigned char）
+* C.short
+* C.ushort（unsigned short）
+* C.int
+* C.uint（unsigned int）
+* C.long
+* C.ulong（unsigned long）
+* C.longlong（long long）
+* C.ulonglong（unsigned long long）
+* C.float
+* C.double
+
+>
+
+---
+
+>
+
+## 简单说一下
 
 >
 
 在Go中将Go->C函数通过函数指针(void*)传入Qt中进行使用
 
----
+>
 
 ### Go->C传入Qt
 
