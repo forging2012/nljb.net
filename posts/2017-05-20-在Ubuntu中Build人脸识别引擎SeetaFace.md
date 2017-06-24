@@ -153,3 +153,16 @@ tags:system
 
 >
 
+	apt-get install zlib1g-dev
+	apt-get install libjpeg8-dev
+	apt-get install libpng12-dev
+	apt-get install libx264-dev
+	apt-get install libxvidcore-dev
+	apt-get install libtiff-dev
+	apt-get install ffmpeg
+	apt-get install libv4l-dev
+	apt-get install libgtk2.0-dev
+	apt-get install build-essential libavcodec-dev libavformat-dev libswscale-dev libjasper-dev cmake  cmake-curses-gui cmake-qt-gui
+
+>
+
