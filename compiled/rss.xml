@@ -2,7 +2,7 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>24 Jun 17 11:58 CST</pubDate>
+    <pubDate>03 Jul 17 21:28 CST</pubDate>
     <item>
       <title>Bash小数比较</title>
       <link>http://www.nljb.net/default/Bash%E5%B0%8F%E6%95%B0%E6%AF%94%E8%BE%83/</link>
@@ -718,8 +718,8 @@
       <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Logcat&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;华为手机默认Logcat是关闭的，当需要真机调试的时候，可以通过工程模式开启&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;在拨打电话界面，录入&lt;em&gt;#&lt;/em&gt;#2846579#&lt;em&gt;#&lt;/em&gt; 即可进入工程模式&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;/assets/media/Android之华为手机Logcat开启方式/1.jpeg&#34; alt=&#34;&#34; width=&#34;600&#34; height=&#34;1000&#34;&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;/assets/media/Android之华为手机Logcat开启方式/2.jpeg&#34; alt=&#34;&#34; width=&#34;600&#34; height=&#34;1000&#34;&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;/assets/media/Android之华为手机Logcat开启方式/3.jpeg&#34; alt=&#34;&#34; width=&#34;600&#34; height=&#34;1000&#34;&gt;&lt;/p&gt;&#xA;</description>
     </item>
     <item>
-      <title>Android之Interface接口使用</title>
-      <link>http://www.nljb.net/default/Android%E4%B9%8BInterface%E6%8E%A5%E5%8F%A3%E4%BD%BF%E7%94%A8/</link>
+      <title>Golang之Interface接口使用</title>
+      <link>http://www.nljb.net/default/Golang%E4%B9%8BInterface%E6%8E%A5%E5%8F%A3%E4%BD%BF%E7%94%A8/</link>
       <pubDate>2015-04-17 12:00:00 +0800</pubDate>
       <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Interface&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;package main&#xA;&#xA;import (&#xA;    &amp;quot;fmt&amp;quot;&#xA;)&#xA;&#xA;func main() {&#xA;&#xA;    // 创建一个Struct对象并赋值给Interface生成接口对象&#xA;    // 只有Struct与Interface存在共性函数才可以生成对象&#xA;    // 而该接口对象只保留Struct与Interface的共性函数&#xA;    // 多个接口对象来一不同Struct但赋值给同一Interface&#xA;    // 它们相互间Interface相同，只是接口相同，实现不同&#xA;    var a Interface = new(A)&#xA;    var b Interface = new(B)&#xA;    Print(a)&#xA;    Print(b)&#xA;&#xA;}&#xA;&#xA;// Interface&#xA;type Interface interface {&#xA;    Close()&#xA;}&#xA;&#xA;// A&#xA;type A struct {&#xA;}&#xA;&#xA;// A Function&#xA;func (this *A) Open() {&#xA;&#xA;}&#xA;&#xA;// A Function&#xA;func (this *A) Close() {&#xA;    fmt.Println(&amp;quot;Close is A&amp;quot;)&#xA;}&#xA;&#xA;// B&#xA;type B struct {&#xA;}&#xA;&#xA;// B Function&#xA;func (this *B) Close() {&#xA;    fmt.Println(&amp;quot;Close is B&amp;quot;)&#xA;}&#xA;&#xA;// Print&#xA;func Print(i Interface) {&#xA;    i.Close()&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;</description>
     </item>

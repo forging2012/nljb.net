@@ -1,5 +1,5 @@
 ---
-title: Android之Interface接口使用
+title: Golang之Interface接口使用
 date: '2015-04-17'
 description:
 categories:
