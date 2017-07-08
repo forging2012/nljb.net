@@ -90,12 +90,6 @@
 	<h3 class="title"><a href="/default/QmlBook/">QmlBook</a> <span class="date">2017-07-08</span></h3>
 
   <blockquote>
-<p>Qt 发布了 Qt Quick 的一个全新模块：Qt Quick Controls 这个模块提供了大量类似 Qt Widgets 模块那样可重用的组件</p>
-</blockquote>
-
-<hr />
-
-<blockquote>
 <p><a href="https://cwc1987.gitbooks.io/qmlbook-in-chinese/">https://cwc1987.gitbooks.io/qmlbook-in-chinese/</a></p>
 </blockquote>
 
@@ -110,6 +104,12 @@ import QtQuick.Window 2.2
 
 // 窗口
 Window {
+
+    visible: true // 显示/隐藏
+    id: root // 根元素ID推荐使用root
+    width: 640
+    height: 480
+    title: qsTr(&quot;Hello World&quot;)
 </code></pre>
 
 
