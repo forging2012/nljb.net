@@ -4,6 +4,11 @@
 		<loc>http://www.nljb.net/</loc>
 	</url>
 	<url>
+		<loc>http://www.nljb.net/default/QmlBook/</loc>
+		<lastmod>2017-07-08</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
 		<loc>http://www.nljb.net/default/Bash%E5%B0%8F%E6%95%B0%E6%AF%94%E8%BE%83/</loc>
 		<lastmod>2017-06-16</lastmod>
 		<changefreq>weekly</changefreq>
