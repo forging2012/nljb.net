@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>10 Jul 17 10:14 CST</pubDate>
+    <pubDate>10 Jul 17 11:29 CST</pubDate>
+    <item>
+      <title>使用CMake配置Qt项目时使用OpenMP</title>
+      <link>http://www.nljb.net/default/%E4%BD%BF%E7%94%A8CMake%E9%85%8D%E7%BD%AEQt%E9%A1%B9%E7%9B%AE%E6%97%B6%E4%BD%BF%E7%94%A8OpenMP/</link>
+      <pubDate>2017-07-10 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;OpenMP&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// CMakeLists.txt&#xA;FIND_PACKAGE( OpenMP REQUIRED)&#xA;if(OPENMP_FOUND)&#xA;    message(&amp;quot;OPENMP FOUND&amp;quot;)&#xA;    set(CMAKE_C_FLAGS &amp;quot;${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}&amp;quot;)&#xA;    set(CMAKE_CXX_FLAGS &amp;quot;${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}&amp;quot;)&#xA;    set(CMAKE_EXE_LINKER_FLAGS &amp;quot;${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}&amp;quot;)&#xA;endif()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 测试&#xA;#include &amp;lt;omp.h&amp;gt;&#xA;#pragma omp parallel&#xA;    {&#xA;    printf(&amp;quot;hello world! ThreadID = %d\n&amp;quot;, omp_get_thread_num());&#xA;    }&#xA;    cout &amp;lt;&amp;lt; endl;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>QmlBook</title>
       <link>http://www.nljb.net/default/QmlBook/</link>

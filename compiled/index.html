@@ -87,6 +87,45 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/%E4%BD%BF%E7%94%A8CMake%E9%85%8D%E7%BD%AEQt%E9%A1%B9%E7%9B%AE%E6%97%B6%E4%BD%BF%E7%94%A8OpenMP/">使用CMake配置Qt项目时使用OpenMP</a> <span class="date">2017-07-10</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h3>OpenMP</h3>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// CMakeLists.txt
+FIND_PACKAGE( OpenMP REQUIRED)
+if(OPENMP_FOUND)
+    message(&quot;OPENMP FOUND&quot;)
+    set(CMAKE_C_FLAGS &quot;${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}&quot;)
+    set(CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}&quot;)
+    set(CMAKE_EXE_LINKER_FLAGS &quot;${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}&quot;)
+endif()
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// 测试
+#include &lt;omp.h&gt;
+#pragma omp parallel
+    {
+    printf(&quot;hello world! ThreadID = %d\n&quot;, omp_get_thread_num());
+    }
+    cout &lt;&lt; endl;
+</code></pre>
+
+
+  <div class="more">
+    <a href="/default/%E4%BD%BF%E7%94%A8CMake%E9%85%8D%E7%BD%AEQt%E9%A1%B9%E7%9B%AE%E6%97%B6%E4%BD%BF%E7%94%A8OpenMP/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/QmlBook/">QmlBook</a> <span class="date">2017-07-08</span></h3>
 
   <blockquote>
@@ -386,37 +425,6 @@ inline void hide() { setVisible(false); }
 
   <div class="more">
     <a href="/default/Qt%E4%B9%8BQDialog%E4%B8%8EQWidget%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%80%81%E5%8F%8A%E9%9D%9E%E6%A8%A1%E6%80%81/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/Golang%E4%B9%8BHTTP%E8%AF%B7%E6%B1%82%E7%AC%94%E8%AE%B0/">Golang之HTTP请求笔记</a> <span class="date">2017-02-07</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h3>HTTP 请求笔记</h3>
-
-<blockquote>
-</blockquote>
-
-<pre><code>package main
-
-import (
-    &quot;bytes&quot;
-    &quot;io&quot;
-    &quot;io/ioutil&quot;
-    &quot;mime/multipart&quot;
-    &quot;net/http&quot;
-    &quot;net/url&quot;
-    &quot;os&quot;
-    &quot;path/filepath&quot;
-)
-</code></pre>
-
-
-  <div class="more">
-    <a href="/default/Golang%E4%B9%8BHTTP%E8%AF%B7%E6%B1%82%E7%AC%94%E8%AE%B0/" class="btn">read more..</a>
   </div>
 </div>
 
