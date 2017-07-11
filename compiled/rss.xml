@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>10 Jul 17 13:04 CST</pubDate>
+    <pubDate>11 Jul 17 16:22 CST</pubDate>
+    <item>
+      <title>OpenCV之图片相关方法使用</title>
+      <link>http://www.nljb.net/default/OpenCV%E4%B9%8B%E5%9B%BE%E7%89%87%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>2017-07-11 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;旋转图片&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 中心点&#xA;Point center = Point(src.cols/2, src.rows/2);&#xA;double angle = 90.0; // 角度&#xA;double scale = 1; // 缩放&#xA;Mat matrix(2, 3, CV_32FC1);&#xA;matrix = getRotationMatrix2D(center, angle, scale);&#xA;Mat dst = Mat::zeros(src.rows, src.cols, src.type());&#xA;warpAffine(src, dst, matrix, dst.size());&#xA;cv::imwrite(&amp;quot;a.jpg&amp;quot;, src);&#xA;cv::imwrite(&amp;quot;b.jpg&amp;quot;, dst);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;hr /&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;图片切割&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;cv::Rect rect;&#xA;rect.x = 0;&#xA;rect.y = 0;&#xA;rect.width = 960;&#xA;rect.height = 1080;&#xA;&#xA;Mat dst;&#xA;src(rect).copyTo(dst);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;hr /&gt;&#xA;</description>
+    </item>
     <item>
       <title>使用CMake配置Qt项目时使用OpenMP</title>
       <link>http://www.nljb.net/default/%E4%BD%BF%E7%94%A8CMake%E9%85%8D%E7%BD%AEQt%E9%A1%B9%E7%9B%AE%E6%97%B6%E4%BD%BF%E7%94%A8OpenMP/</link>
