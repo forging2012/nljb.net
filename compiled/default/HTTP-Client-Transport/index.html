@@ -83,7 +83,17 @@
 
 <div class="row">
   <div class="span12">
-    <pre><code>// 为什么[Client]结构定义了[RoundTripper]却使用[&amp;http.Transport]赋值
+    <blockquote>
+</blockquote>
+
+<p><em>RoundTripper接口中包含RoundTrip方法，Transport结构中同样包含RoundTrip方法</em></p>
+
+<p><em>这样一来，接口声明的对象可以接受所有包含RoundTrip方法的接口 &hellip; 仅开放共有方法 &hellip;</em></p>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// 为什么[Client]结构定义了[RoundTripper]却使用[&amp;http.Transport]赋值
 http.Client{
     Transport: &amp;http.Transport{
 ...
@@ -96,6 +106,11 @@ type Client struct {
     Transport RoundTripper
 ...
 
+// type Transport
+//   func (t *Transport) CancelRequest(req *Request)
+//   func (t *Transport) CloseIdleConnections()
+//   func (t *Transport) RegisterProtocol(scheme string, rt RoundTripper)
+//   func (t *Transport) RoundTrip(req *Request) (*Response, error)
 // Transport 结构
 type Transport struct {
 ...
@@ -125,6 +140,61 @@ func (t *Transport) RoundTrip(req *Request) (resp *Response, err error)
 </code></pre>
 
 <p>所以&hellip;.</p>
+
+<blockquote>
+</blockquote>
+
+<pre><code>package main
+
+import (
+    &quot;log&quot;
+)
+
+// 比如说你定义了一个接口
+type Start interface {
+    // 包含了一个Run方法
+    Run()
+}
+
+// 不同结构包含相同方法
+// A
+type A struct {
+}
+
+func (this *A) Run() {
+    log.Println(&quot;A&quot;)
+}
+
+// B
+type B struct {
+}
+
+func (this *B) Run() {
+    log.Println(&quot;B&quot;)
+}
+
+// C
+type C struct {
+}
+
+func (this *C) Run() {
+    log.Println(&quot;C&quot;)
+}
+
+// 使用 ...
+func MainStart(this Start) {
+    this.Run()
+}
+
+func main() {
+    MainStart(new(A))
+    MainStart(new(B))
+    MainStart(new(C))
+}
+</code></pre>
+
+<blockquote>
+</blockquote>
 
     <hr>
     <div class="pagination">
