@@ -87,6 +87,38 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/Ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8Hostapd%E6%90%AD%E5%BB%BA%E7%83%AD%E7%82%B9/">Ubuntu下使用Hostapd搭建热点</a> <span class="date">2017-07-17</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h3>Ubuntu下使用Hostapd搭建热点</h3>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// 二选一(1)：准备工作: 安装 hostap 
+wget http://hostap.epitest.fi/releases/hostapd-2.2.tar.gz
+tar -zxf hostapd-2.2.tar.gz
+cd hostapd-2.2
+cd hostapd
+make
+
+// 二选一(2)：安装 hostap
+apt-get install hostapd
+
+// 打补丁
+git clone https://github.com/OpenSecurityResearch/hostapd-wpe
+patch -p1 &lt; ../hostapd-wpe/hostapd-wpe.patch
+</code></pre>
+
+
+  <div class="more">
+    <a href="/default/Ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8Hostapd%E6%90%AD%E5%BB%BA%E7%83%AD%E7%82%B9/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/%E5%9C%A8Linux%E4%B8%AD%E4%BD%BF%E7%94%A8lsusb%E6%9F%A5%E7%9C%8BUSB%E8%AE%BE%E5%A4%87/">在Linux中使用lsusb查看USB设备</a> <span class="date">2017-07-16</span></h3>
 
   <blockquote>
@@ -388,42 +420,6 @@ hv_netvsc
 
   <div class="more">
     <a href="/default/Linux-Integration-Services/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/%E5%9C%A8Ubuntu%E4%B8%AD%E4%BD%BF%E7%94%A8Overlayroot%E6%9D%A5%E5%8F%AA%E8%AF%BB%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">在Ubuntu中使用Overlayroot来只读根文件系统</a> <span class="date">2017-05-12</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<p><strong><em>了解一下 overlayroot 和 overlayfs &hellip; 后续有时间深入研究一下 &hellip; 转发了往上找到的一篇文章</em></strong></p>
-
-<p><strong><em><a href="http://www.tuicool.com/articles/NNJbq2V">http://www.tuicool.com/articles/NNJbq2V</a> (原文更加清晰明了)</em></strong></p>
-
-<blockquote>
-</blockquote>
-
-<pre><code>In certain situations, it is desirable to have a read-only root filesystem . This prevents any changes from occurring on the root filesystem that may alter system behavior, and it allows a simple reboot to restore a system to its pristine state. Examples of such applications include kiosks and embedded devices. Using overlayroot on Ubuntu makes creating a read-only root filesystem quick and easy.
-</code></pre>
-
-<blockquote>
-</blockquote>
-
-<h4>Motivation</h4>
-
-<blockquote>
-</blockquote>
-
-<pre><code>Let us imagine that we have an embedded Linux device that needs to run a particular program. The program does not need to store any data (except perhaps some logs), and we want to protect the system against any changes. If the program or any system processes make filesystem modifications, we want to toss them out and return to the original state. We want a robust system that will run our program, but be restored to it’s ‘factory’ state with a power-cycle.
-</code></pre>
-
-<blockquote>
-</blockquote>
-
-
-  <div class="more">
-    <a href="/default/%E5%9C%A8Ubuntu%E4%B8%AD%E4%BD%BF%E7%94%A8Overlayroot%E6%9D%A5%E5%8F%AA%E8%AF%BB%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="btn">read more..</a>
   </div>
 </div>
 
