@@ -2,7 +2,7 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>17 Jul 17 22:41 CST</pubDate>
+    <pubDate>18 Jul 17 12:39 CST</pubDate>
     <item>
       <title>Ubuntu下使用Hostapd搭建热点</title>
       <link>http://www.nljb.net/default/Ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8Hostapd%E6%90%AD%E5%BB%BA%E7%83%AD%E7%82%B9/</link>
@@ -19,7 +19,7 @@
       <title>Golang之在Ubuntu系统上安装部署</title>
       <link>http://www.nljb.net/default/Golang%E4%B9%8B%E5%9C%A8Ubuntu%E7%B3%BB%E7%BB%9F%E4%B8%8A%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
       <pubDate>2017-07-13 12:00:00 +0800</pubDate>
-      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Golang之在Ubuntu系统上安装部署&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;旧版本的安装&lt;/em&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get install golang-go&#xA;&#xA;export GOROOT=$HOME/go&#xA;export PATH=$GOROOT/bin:$PATHU&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;从1.4版本以后go需要编译安装, 不想编译又想使用新版本的go怎么办&lt;/em&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 下载地址：http://www.golangtc.com/download&#xA;go1.8.linux-amd64.tar.gz&#xA;&#xA;// 把安装包解压到/usr/local目录下&#xA;tar -C /usr/local -xzf go1.8.linux-amd64.tar.gz&#xA;&#xA;// 注意 GOARCH=amd64 或者 386&#xA;vim ~/.bashrc&#xA;export GOPATH=/opt/go&#xA;export GOROOT=/usr/local/go&#xA;export GOARCH=amd64 &#xA;export GOOS=linux&#xA;export GOBIN=$GOROOT/bin/&#xA;export GOTOOLS=$GOROOT/pkg/tool/&#xA;export PATH=$PATH:$GOBIN:$GOTOOLS&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Golang之在Ubuntu系统上安装部署&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;旧版本的安装&lt;/em&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get install golang-go&#xA;&#xA;export GOROOT=$HOME/go&#xA;export PATH=$GOROOT/bin:$PATH&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;从1.4版本以后go需要编译安装, 不想编译又想使用新版本的go怎么办&lt;/em&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 下载地址：http://www.golangtc.com/download&#xA;go1.8.linux-amd64.tar.gz&#xA;&#xA;// 把安装包解压到/usr/local目录下&#xA;tar -C /usr/local -xzf go1.8.linux-amd64.tar.gz&#xA;&#xA;// 注意 GOARCH=amd64 或者 386&#xA;vim ~/.bashrc&#xA;export GOPATH=/opt/go&#xA;export GOROOT=/usr/local/go&#xA;export GOARCH=amd64 &#xA;export GOOS=linux&#xA;export GOBIN=$GOROOT/bin/&#xA;export GOTOOLS=$GOROOT/pkg/tool/&#xA;export PATH=$PATH:$GOBIN:$GOTOOLS&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
     </item>
     <item>
       <title>OpenCV之图片相关方法使用</title>

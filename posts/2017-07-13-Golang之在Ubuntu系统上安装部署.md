@@ -21,7 +21,7 @@ tags:golang
 	sudo apt-get install golang-go
 
 	export GOROOT=$HOME/go
-	export PATH=$GOROOT/bin:$PATHU
+	export PATH=$GOROOT/bin:$PATH
 
 >
 
