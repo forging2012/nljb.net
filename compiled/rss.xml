@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>18 Jul 17 12:39 CST</pubDate>
+    <pubDate>20 Jul 17 21:44 CST</pubDate>
+    <item>
+      <title>Ubuntu之 portmapper is not running 解决方案</title>
+      <link>http://www.nljb.net/default/Ubuntu%E4%B9%8B-portmapper-is-not-running-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>2017-07-20 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Not starting: portmapper is not running&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;以前叫portmap现在叫rpcbind, portmap的主要功能是把RPC程序号转化为Internet的端口号&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Stopping NFS kernel daemon                              [ OK ]&lt;/li&gt;&#xA;&lt;li&gt;Unexporting directories for NFS kernel daemon&amp;hellip;        [ OK ]&lt;/li&gt;&#xA;&lt;li&gt;Exporting directories for NFS kernel daemon&amp;hellip;          [ OK ]&lt;/li&gt;&#xA;&lt;li&gt;Starting NFS kernel daemon&lt;br /&gt;&lt;/li&gt;&#xA;&lt;li&gt;Not starting: portmapper is not running&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get purge rpcbind  &#xA;$ sudo apt-get install nfs-kernel-server  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/exports  &#xA;/(your_share_name) *(rw,sync,no_subtree_check,no_root_squash)   &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo service rpcbind start  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo /etc/init.d/nfs-kernel-server restart  &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Ubuntu下使用Hostapd搭建热点</title>
       <link>http://www.nljb.net/default/Ubuntu%E4%B8%8B%E4%BD%BF%E7%94%A8Hostapd%E6%90%AD%E5%BB%BA%E7%83%AD%E7%82%B9/</link>
