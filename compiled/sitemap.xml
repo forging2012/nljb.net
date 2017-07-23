@@ -4,6 +4,11 @@
 		<loc>http://www.nljb.net/</loc>
 	</url>
 	<url>
+		<loc>http://www.nljb.net/default/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</loc>
+		<lastmod>2017-07-23</lastmod>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
 		<loc>http://www.nljb.net/default/Ubuntu%E4%B9%8B-portmapper-is-not-running-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
 		<lastmod>2017-07-20</lastmod>
 		<changefreq>weekly</changefreq>

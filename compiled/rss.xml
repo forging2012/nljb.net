@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>20 Jul 17 21:44 CST</pubDate>
+    <pubDate>23 Jul 17 21:43 CST</pubDate>
+    <item>
+      <title>Nginx反向代理之端口转发</title>
+      <link>http://www.nljb.net/default/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</link>
+      <pubDate>2017-07-23 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Nginx反向代理之端口转发&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器&lt;/strong&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 格式检查 /etc/nginx/nginx.conf &#xA;nginx -t -c /etc/nginx/nginx.conf&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;# /etc/nginx/nginx.conf &#xA;&#xA;http {&#xA;    // 当通过 face.danoolive.com:80 端口访问这个服务器时&#xA;    // 该请求会被转发到 127.0.0.1:9992&#xA;    server {&#xA;        listen 80; &#xA;        server_name face.danoolive.com; &#xA;        // 通过访问的路径来处理转发 ...&#xA;        location / { &#xA;            // 也不一定是内网 127.0.0.1 ，也可以是另外一个服务器的某个端口等 ...&#xA;            proxy_pass http://127.0.0.1:9992;&#xA;        }&#xA;    }&#xA;&#xA;    // 当通过 res.danoolive.com:80 端口访问这个服务器时&#xA;    // 该请求会被转发到 127.0.0.1:9991&#xA;    server {&#xA;        listen 80; &#xA;        server_name res.danoolive.com; &#xA;        location / { &#xA;            proxy_pass http://127.0.0.1:9991;&#xA;        }&#xA;    }&#xA;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;hr /&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 网上案例&#xA;server {&#xA;    listen       80;&#xA;    server_name  www.aaa.com aaa.com;&#xA;    location / {&#xA;       　　proxy_pass   http://www.aaa.com:8087/proj1/;&#xA;    }&#xA;　　　　location /proj1/ {&#xA;       　　proxy_pass   http://www.aaa.com:8087/proj1/;&#xA;　　　　}&#xA;}&#xA;&#xA;server {&#xA;　　listen 80; &#xA;　　server_name www.bbb.com bbb.com; &#xA;　　location / { &#xA;　　　　proxy_pass http://www.aaa.con:8087/proj2/;&#xA;　　}&#xA;　　location /proj2/ {&#xA;　　　　proxy_pass http://www.aaa.con:8087/proj2/;&#xA;　　}&#xA; }&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Ubuntu之 portmapper is not running 解决方案</title>
       <link>http://www.nljb.net/default/Ubuntu%E4%B9%8B-portmapper-is-not-running-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
