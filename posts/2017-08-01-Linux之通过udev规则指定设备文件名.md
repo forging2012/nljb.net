@@ -36,7 +36,7 @@ tags:system
 		A rule to match, can be composed by the attributes of the device
 		and the attributes from one single parent device.
 
-		looking at device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:03:01.0/                                                                                                                                  0000:04:00.0/video4linux/video0':
+		looking at device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:03:01.0/0000:04:00.0/video4linux/video0':
 		    KERNEL=="video0"
 		    SUBSYSTEM=="video4linux"
 		    DRIVER==""
@@ -44,7 +44,7 @@ tags:system
 		    ATTR{index}=="0"
 		    ATTR{name}=="PL330B:RAW 00.00 a0011af2"
 
-		looking at parent device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:0                                                                                                                                  3:01.0/0000:04:00.0':
+		looking at parent device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:03:01.0/0000:04:00.0':
 		    KERNELS=="0000:04:00.0"
 		    SUBSYSTEMS=="pci"
 		    DRIVERS=="LINUXV4L2330b"
@@ -66,7 +66,7 @@ tags:system
 		    ATTRS{subsystem_vendor}=="0x1af2"
 		    ATTRS{vendor}=="0x1af2"
 
-		  looking at parent device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:0                                                                                                                                  3:01.0':
+		  looking at parent device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:03:01.0':
 		    KERNELS=="0000:03:01.0"
 		    SUBSYSTEMS=="pci"
 		    DRIVERS=="pcieport"
@@ -448,15 +448,22 @@ tags:system
 	// 在 /etc/udev/rules.d 下新建udev规则文件 81-uvccam.rules
 
 	// video0 为 PCI 设备，通过 vendor 和 device 与 KERNELS 来指定 NAME 和 SYMLINK 名称
-	// video0 的 device -> ../../../0000:04:00.0/ 同时用 0000:03:01.0 也可以 ... 只要包含 vendor 和 device 即可
-	KERNEL=="video*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x1af2", ATTRS{device}=="0xa001", KERNELS=="0000:04:00.0",NAME="video0", SYMLINK+="x"
-	# KERNEL=="video*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x12d8", ATTRS{device}=="0x2304", KERNELS=="0000:03:01.0",NAME="video0", SYMLINK+="x"
+	// video0 的 device -> ../../../0000:04:00.0/ 同时用 0000:03:01.0 也可以 ... 
+	// 只要包含 vendor 和 device 即可
+	KERNEL=="video*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x1af2", ATTRS{device}=="0xa001", KERNELS=="0000:04:00.0",
+		NAME="video0", SYMLINK+="x"
+	# KERNEL=="video*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x12d8", ATTRS{device}=="0x2304", KERNELS=="0000:03:01.0",
+		NAME="video0", SYMLINK+="x"
 	// video1 为 USB 设备，通过 idVendor 和 idProduct 与 KERNELS 来指定 NAME 和 SYMLINK 名称
-	// video1 的 device -> ../../../1-5:1.0/ 此时 KERNELS="1-5:1.0" 并不包含 idVendor 和 idProduct 但是 KERNELS="1-5" 包含同样可以使用 ...
-	KERNEL=="video*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="05a3", ATTRS{idProduct}=="9230", KERNELS=="1-5",NAME="video1", SYMLINK+="res"
+	// video1 的 device -> ../../../1-5:1.0/ 此时 KERNELS="1-5:1.0" 并不包含 idVendor 和 idProduct 
+	// 但是 KERNELS="1-5" 包含同样可以使用 ...
+	KERNEL=="video*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="05a3", ATTRS{idProduct}=="9230", KERNELS=="1-5",
+		NAME="video1", SYMLINK+="res"
 	// video2 为 USB 设备，通过 idVendor 和 idProduct 与 KERNELS 来指定 NAME 和 SYMLINK 名称
-	// video1 的 device -> ../../../1-6:1.0/ 此时 KERNELS="1-5:1.0" 并不包含 idVendor 和 idProduct 但是 KERNELS="1-6" 包含同样可以使用 ...
-	KERNEL=="video*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="05a3", ATTRS{idProduct}=="9230", KERNELS=="1-6",NAME="video2", SYMLINK+="face"
+	// video1 的 device -> ../../../1-6:1.0/ 此时 KERNELS="1-5:1.0" 并不包含 idVendor 和 idProduct 
+	// 但是 KERNELS="1-6" 包含同样可以使用 ...
+	KERNEL=="video*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="05a3", ATTRS{idProduct}=="9230", KERNELS=="1-6",
+		NAME="video2", SYMLINK+="face"
 
 >
 
