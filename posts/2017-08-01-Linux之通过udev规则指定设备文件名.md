@@ -401,14 +401,61 @@ tags:system
 		
 >
 
+---
+
+>
+
+	// 查看设备对应的 KERNELS ...
+	root@danoo-System-Product-Name:~# ll /sys/class/video4linux/video0/
+	total 0
+	drwxr-xr-x 3 root root    0 8月   1 22:16 ./
+	drwxr-xr-x 3 root root    0 8月   1 13:58 ../
+	-r--r--r-- 1 root root 4096 8月   1 13:58 dev
+	-rw-r--r-- 1 root root 4096 8月   1 22:00 dev_debug
+	lrwxrwxrwx 1 root root    0 8月   1 13:58 device -> ../../../0000:04:00.0/
+	-r--r--r-- 1 root root 4096 8月   1 13:58 index
+	-r--r--r-- 1 root root 4096 8月   1 22:00 name
+	drwxr-xr-x 2 root root    0 8月   1 22:16 power/
+	lrwxrwxrwx 1 root root    0 8月   1 13:58 subsystem -> ../../../../../../../../class/video4linux/
+	-rw-r--r-- 1 root root 4096 8月   1 13:58 uevent
+	root@danoo-System-Product-Name:~# ll /sys/class/video4linux/video1/
+	total 0
+	drwxr-xr-x 3 root root    0 8月   1 22:16 ./
+	drwxr-xr-x 3 root root    0 8月   1 13:58 ../
+	-r--r--r-- 1 root root 4096 8月   1 13:58 dev
+	-rw-r--r-- 1 root root 4096 8月   1 22:02 dev_debug
+	lrwxrwxrwx 1 root root    0 8月   1 13:58 device -> ../../../1-5:1.0/
+	-r--r--r-- 1 root root 4096 8月   1 13:58 index
+	-r--r--r-- 1 root root 4096 8月   1 22:02 name
+	drwxr-xr-x 2 root root    0 8月   1 22:16 power/
+	lrwxrwxrwx 1 root root    0 8月   1 13:58 subsystem -> ../../../../../../../../class/video4linux/
+	-rw-r--r-- 1 root root 4096 8月   1 13:58 uevent
+	root@danoo-System-Product-Name:~# ll /sys/class/video4linux/video2/
+	total 0
+	drwxr-xr-x 3 root root    0 8月   1 22:17 ./
+	drwxr-xr-x 3 root root    0 8月   1 13:58 ../
+	-r--r--r-- 1 root root 4096 8月   1 13:58 dev
+	-rw-r--r-- 1 root root 4096 8月   1 22:03 dev_debug
+	lrwxrwxrwx 1 root root    0 8月   1 13:58 device -> ../../../1-6:1.0/
+	-r--r--r-- 1 root root 4096 8月   1 13:58 index
+	-r--r--r-- 1 root root 4096 8月   1 22:03 name
+	drwxr-xr-x 2 root root    0 8月   1 22:17 power/
+	lrwxrwxrwx 1 root root    0 8月   1 13:58 subsystem -> ../../../../../../../../class/video4linux/
+	-rw-r--r-- 1 root root 4096 8月   1 13:58 uevent
+
+>
+
 	// 在 /etc/udev/rules.d 下新建udev规则文件 81-uvccam.rules
 
 	// video0 为 PCI 设备，通过 vendor 和 device 与 KERNELS 来指定 NAME 和 SYMLINK 名称
-	// 找到同时包含 vendor 和 device 的 looking at parent device 即可，填写即可
-	KERNEL=="video*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x12d8", ATTRS{device}=="0x2304", KERNELS=="0000:03:01.0",NAME="video0", SYMLINK+="x"
-	// video1-2 为 USB 设备，通过 idVendor 和 idProduct 与 KERNELS 来指定 NAME 和 SYMLINK 名称
-	// 找到同时包含 idVendor 和 idProduct 的 looking at parent device 即可，填写即可
+	// video0 的 device -> ../../../0000:04:00.0/ 同时用 0000:03:01.0 也可以 ... 只要包含 vendor 和 device 即可
+	KERNEL=="video*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x1af2", ATTRS{device}=="0xa001", KERNELS=="0000:04:00.0",NAME="video0", SYMLINK+="x"
+	# KERNEL=="video*", SUBSYSTEMS=="pci", ATTRS{vendor}=="0x12d8", ATTRS{device}=="0x2304", KERNELS=="0000:03:01.0",NAME="video0", SYMLINK+="x"
+	// video1 为 USB 设备，通过 idVendor 和 idProduct 与 KERNELS 来指定 NAME 和 SYMLINK 名称
+	// video1 的 device -> ../../../1-5:1.0/ 此时 KERNELS="1-5:1.0" 并不包含 idVendor 和 idProduct 但是 KERNELS="1-5" 包含同样可以使用 ...
 	KERNEL=="video*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="05a3", ATTRS{idProduct}=="9230", KERNELS=="1-5",NAME="video1", SYMLINK+="res"
+	// video2 为 USB 设备，通过 idVendor 和 idProduct 与 KERNELS 来指定 NAME 和 SYMLINK 名称
+	// video1 的 device -> ../../../1-6:1.0/ 此时 KERNELS="1-5:1.0" 并不包含 idVendor 和 idProduct 但是 KERNELS="1-6" 包含同样可以使用 ...
 	KERNEL=="video*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="05a3", ATTRS{idProduct}=="9230", KERNELS=="1-6",NAME="video2", SYMLINK+="face"
 
 >
