@@ -36,7 +36,7 @@ tags:system
 		A rule to match, can be composed by the attributes of the device
 		and the attributes from one single parent device.
 
-		  looking at device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:03:01.0/                                                                                                                                  0000:04:00.0/video4linux/video0':
+		looking at device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:03:01.0/                                                                                                                                  0000:04:00.0/video4linux/video0':
 		    KERNEL=="video0"
 		    SUBSYSTEM=="video4linux"
 		    DRIVER==""
@@ -44,7 +44,7 @@ tags:system
 		    ATTR{index}=="0"
 		    ATTR{name}=="PL330B:RAW 00.00 a0011af2"
 
-		  looking at parent device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:0                                                                                                                                  3:01.0/0000:04:00.0':
+		looking at parent device '/devices/pci0000:00/0000:00:1c.5/0000:02:00.0/0000:0                                                                                                                                  3:01.0/0000:04:00.0':
 		    KERNELS=="0000:04:00.0"
 		    SUBSYSTEMS=="pci"
 		    DRIVERS=="LINUXV4L2330b"
