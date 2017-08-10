@@ -436,6 +436,39 @@ requestkey 1            # key (7) for accessing server variables
 # controlkey 15         # key (6) for accessing server variables
 </code></pre>
 
+<blockquote>
+</blockquote>
+
+<hr />
+
+<blockquote>
+</blockquote>
+
+<h4>TinyCore Linux 进行PXE-ROM的启动</h4>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// 官方 - http://www.tinycorelinux.net
+Core(11 MB) 
+TinyCore(16 MB) 
+CorePlus(106 MB)
+
+// 下载镜像文件后解压会获取 
+[BOOT] 
+boot - 获取 vmlinuz、core.gz 启动必须文件
+cde 
+
+// 修改配置文件 pxelinux.cfg/default 即可
+...
+label linux
+kernel img/vmlinuz
+append ip=dhcp initrd=img/core.gz loglevel=3 base
+</code></pre>
+
+<blockquote>
+</blockquote>
+
     <hr>
     <div class="pagination">
       <ul>

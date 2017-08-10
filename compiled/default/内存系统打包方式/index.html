@@ -83,13 +83,16 @@
 
 <div class="row">
   <div class="span12">
-    <pre><code>一、解压方法：
+    <blockquote>
+</blockquote>
+
+<pre><code>解压方法：
 
 ###################################################
 
 cp initrd-2.6.24.img /home/kernel/initrd.gz　
 cd /home/kernel/
-gunzip -dc initrd | cpio –idmv
+gunzip -dc initrd | cpio -idmv
 
 ###################################################
 
@@ -129,186 +132,10 @@ cpio备份命令
 cpio常与find 配合使用
 
 ###############################################################################
-
-二、文件目录结构树：
-.
-|-- bin
-| |-- insmod 加载内核驱动
-| |-- lvm
-| |-- modprobe -&gt; /sbin/nash 加载内核驱动
-| `-- nash 用于处理根目录下的/init脚本
-|-- dev 设备文件
-| |-- console
-| |-- mapper
-| |-- null
-| |-- ptmx
-| |-- ram -&gt; ram1
-| |-- ram0
-| |-- ram1
-| |-- rtc
-| |-- systty
-| |-- tty
-| |-- tty0
-| |-- tty1
-| |-- tty10
-| |-- tty11
-| |-- tty12
-| |-- tty2
-| |-- tty3
-| |-- tty4
-| |-- tty5
-| |-- tty6
-| |-- tty7
-| |-- tty8
-| |-- tty9
-| |-- ttyS0
-| |-- ttyS1
-| |-- ttyS2
-| |-- ttyS3
-| `-- zero
-|-- etc
-| `-- lvm
-| `-- lvm.conf
-|-- init nash的启动脚本文件,整个系统初始化入口
-|-- initrd-2.6.18-8.el5xen.img gunzip解压后的cpio文件
-|-- lib
-| |-- cciss.ko
-| |-- dm-mirror.ko
-| |-- dm-mod.ko
-| |-- dm-snapshot.ko
-| |-- dm-zero.ko
-| |-- ehci-hcd.ko
-| |-- ext3.ko
-| |-- jbd.ko
-| |-- ohci-hcd.ko
-| |-- scsi_mod.ko
-| |-- sd_mod.ko
-| `-- uhci-hcd.ko
-|-- proc
-|-- sbin -&gt; bin
-|-- sys
-`-- sysroot
-三、init文件内容：
-
-#!/bin/nash
-#挂接进程文件系统
-mount -t proc /proc /proc
-# 不输出nash调试信息，由/proc/cmdline决定,cat /proc/cmdline我的启动参数 
-# 输出ro root=/dev/hda3 vga=791 splash=silent，如果该命令行中带了quiet参 
-# 数，则不输出nash提示信息。 
-setquiet
-#这里的提示位置好像不对，应该放在前面挂接之前
-echo Mounting proc filesystem
-#挂接sys文件系统 
-echo Mounting sysfs filesystem
-mount -t sysfs /sys /sys
-
-#创建/dev临时目录 
-echo Creating /dev
-# 
-mount -o mode=0755 -t tmpfs /dev /dev
-#新建伪终端目录
-mkdir /dev/pts
-mount -t devpts -o gid=5,mode=620 /dev/pts /dev/pts
-# 新建共享内存目录
-mkdir /dev/shm
-mkdir /dev/mapper
-# 创建设备文件（这些设备文件在切换到硬盘后，由/etc/rc.sysinit中start_udev 
-# 重新创建）
-echo Creating initial device nodes
-mknod /dev/null c 1 3
-mknod /dev/zero c 1 5
-mknod /dev/systty c 4 0
-mknod /dev/tty c 5 0
-mknod /dev/console c 5 1
-mknod /dev/ptmx c 5 2
-mknod /dev/rtc c 10 135
-mknod /dev/tty0 c 4 0
-mknod /dev/tty1 c 4 1
-mknod /dev/tty2 c 4 2
-mknod /dev/tty3 c 4 3
-mknod /dev/tty4 c 4 4
-mknod /dev/tty5 c 4 5
-mknod /dev/tty6 c 4 6
-mknod /dev/tty7 c 4 7
-mknod /dev/tty8 c 4 8
-mknod /dev/tty9 c 4 9
-mknod /dev/tty10 c 4 10
-mknod /dev/tty11 c 4 11
-mknod /dev/tty12 c 4 12
-mknod /dev/ttyS0 c 4 64
-mknod /dev/ttyS1 c 4 65
-mknod /dev/ttyS2 c 4 66
-mknod /dev/ttyS3 c 4 67
-
-#设置热插拔
-echo Setting up hotplug.
-hotplug
-
-#创建块设备
-echo Creating block device nodes.
-mkblkdevs
-
-#Load 模块
-echo &quot;Loading uhci-hcd.ko module&quot;
-insmod /lib/uhci-hcd.ko 
-echo &quot;Loading ohci-hcd.ko module&quot;
-insmod /lib/ohci-hcd.ko 
-echo &quot;Loading ehci-hcd.ko module&quot;
-insmod /lib/ehci-hcd.ko 
-mount -t usbfs /proc/bus/usb /proc/bus/usb
-echo &quot;Loading jbd.ko module&quot;
-insmod /lib/jbd.ko 
-echo &quot;Loading ext3.ko module&quot;
-insmod /lib/ext3.ko 
-echo &quot;Loading scsi_mod.ko module&quot;
-insmod /lib/scsi_mod.ko 
-echo &quot;Loading sd_mod.ko module&quot;
-insmod /lib/sd_mod.ko 
-echo &quot;Loading cciss.ko module&quot;
-insmod /lib/cciss.ko 
-echo &quot;Loading dm-mod.ko module&quot;
-insmod /lib/dm-mod.ko 
-echo &quot;Loading dm-mirror.ko module&quot;
-insmod /lib/dm-mirror.ko 
-echo &quot;Loading dm-zero.ko module&quot;
-insmod /lib/dm-zero.ko 
-echo &quot;Loading dm-snapshot.ko module&quot;
-insmod /lib/dm-snapshot.ko 
-echo Waiting for driver initialization.
-stabilized --hash --interval 250 /proc/scsi/scsi
-#Creates a device inode for the device
-# mapper control inode #as /dev/mapper/control.
-#If it already exists with the correct major/minor, 
-#it will not be recreated.
-echo Making device-mapper control node
-mkdmnod
-mkblkdevs
-
-#检测逻辑卷
-echo Scanning logical volumes
-lvm vgscan --ignorelockingfailure
-#激活逻辑卷
-echo Activating logical volumes
-lvm vgchange -ay --ignorelockingfailure VolGroup00
-resume /dev/VolGroup00/LogVol01
-
-#创建根设备
-echo Creating root device.
-mkrootdev -t ext3 -o defaults,ro /dev/VolGroup00/LogVol00
-#挂接根设备
-echo Mounting root filesystem.
-mount /sysroot
-echo Setting up other filesystems.
-setuproot
-
-#切换根目录到设备/dev/root目录，
-#运行完该命令根目录&quot;/&quot;-&gt;&quot;/dev/VolGroup00/LogVol00&quot; 
-echo Switching to new root and running init.
-switchroot
-
-###########################################################################
 </code></pre>
+
+<blockquote>
+</blockquote>
 
     <hr>
     <div class="pagination">
