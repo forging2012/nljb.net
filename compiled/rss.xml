@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>10 Aug 17 15:41 CST</pubDate>
+    <pubDate>22 Aug 17 16:42 CST</pubDate>
+    <item>
+      <title>Ubuntu之Firefox开机自启及全屏</title>
+      <link>http://www.nljb.net/default/Ubuntu%E4%B9%8BFirefox%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8F%8A%E5%85%A8%E5%B1%8F/</link>
+      <pubDate>2017-08-22 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Ubuntu之Firefox开机自启及全屏&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;# 安装全屏插件 Firefox FullScreen&#xA;https://addons.mozilla.org/zh-CN/firefox/addon/mwfullscreen/?src=search&#xA;&#xA;# 方法一：设置开机自动启动&#xA;# vi ~/.config/upstart/firefox.conf&#xA;start on desktop-start  &#xA;stop on desktop-end  &#xA;exec /usr/bin/firefox&#xA;&#xA;# 方法二：设置开机自动启动&#xA;mkdir -p ~/.config/autostart&#xA;cp /usr/share/applications/firefox.desktop ~/.config/autostart/firefox.desktop&#xA;chmod +x ~/.config/autostart/firefox.desktop&#xA;&#xA;# 方法三：Startup Applications 添加&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;# Chrome&#xA;--kiosk 即可全屏&#xA;--app=&amp;lt;URL&amp;gt; 自动打开指定的URL&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Linux之通过udev规则指定设备文件名</title>
       <link>http://www.nljb.net/default/Linux%E4%B9%8B%E9%80%9A%E8%BF%87udev%E8%A7%84%E5%88%99%E6%8C%87%E5%AE%9A%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%90%8D/</link>
