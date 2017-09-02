@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>25 Aug 17 16:29 CST</pubDate>
+    <pubDate>02 Sep 17 21:37 CST</pubDate>
+    <item>
+      <title>Qt之QMultiMap一键多值</title>
+      <link>http://www.nljb.net/default/Qt%E4%B9%8BQMultiMap%E4%B8%80%E9%94%AE%E5%A4%9A%E5%80%BC/</link>
+      <pubDate>2017-09-02 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h3&gt;Qt之QMultiMap一键多值&lt;/h3&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;在QT中常用的键值对QMap，当遇到一键多值需要存储时往往QMap&lt;T, vector&lt;T&gt;&amp;gt;这样存储, 但是QT提供了QMultiMap来解决这个问题&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;http://doc.qt.io/qt-4.8/qmultimap.html&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;QMultiMap&amp;lt;QString, int&amp;gt; map1, map2, map3;&#xA;&#xA;map1.insert(&amp;quot;plenty&amp;quot;, 100);&#xA;map1.insert(&amp;quot;plenty&amp;quot;, 2000);&#xA;// map1.size() == 2&#xA;&#xA;map2.insert(&amp;quot;plenty&amp;quot;, 5000);&#xA;// map2.size() == 1&#xA;&#xA;map3 = map1 + map2;&#xA;// map3.size() == 3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;QList&amp;lt;int&amp;gt; values = map.values(&amp;quot;plenty&amp;quot;);&#xA;for (int i = 0; i &amp;lt; values.size(); ++i)&#xA;    cout &amp;lt;&amp;lt; values.at(i) &amp;lt;&amp;lt; endl;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;QMultiMap&amp;lt;QString, int&amp;gt;::iterator i = map.find(&amp;quot;plenty&amp;quot;);&#xA;while (i != map.end() &amp;amp;&amp;amp; i.key() == &amp;quot;plenty&amp;quot;) {&#xA;    cout &amp;lt;&amp;lt; i.value() &amp;lt;&amp;lt; endl;&#xA;    ++i;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Qt之线程与数据传递的使用</title>
       <link>http://www.nljb.net/default/Qt%E4%B9%8B%E7%BA%BF%E7%A8%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%9A%84%E4%BD%BF%E7%94%A8/</link>

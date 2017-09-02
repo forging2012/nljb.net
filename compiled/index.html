@@ -87,6 +87,41 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/Qt%E4%B9%8BQMultiMap%E4%B8%80%E9%94%AE%E5%A4%9A%E5%80%BC/">Qt之QMultiMap一键多值</a> <span class="date">2017-09-02</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h3>Qt之QMultiMap一键多值</h3>
+
+<blockquote>
+</blockquote>
+
+<p><strong><em>在QT中常用的键值对QMap，当遇到一键多值需要存储时往往QMap<T, vector<T>&gt;这样存储, 但是QT提供了QMultiMap来解决这个问题</em></strong></p>
+
+<blockquote>
+</blockquote>
+
+<pre><code>http://doc.qt.io/qt-4.8/qmultimap.html
+</code></pre>
+
+<blockquote>
+</blockquote>
+
+<pre><code>QMultiMap&lt;QString, int&gt; map1, map2, map3;
+
+map1.insert(&quot;plenty&quot;, 100);
+map1.insert(&quot;plenty&quot;, 2000);
+// map1.size() == 2
+</code></pre>
+
+
+  <div class="more">
+    <a href="/default/Qt%E4%B9%8BQMultiMap%E4%B8%80%E9%94%AE%E5%A4%9A%E5%80%BC/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/Qt%E4%B9%8B%E7%BA%BF%E7%A8%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%9A%84%E4%BD%BF%E7%94%A8/">Qt之线程与数据传递的使用</a> <span class="date">2017-08-25</span></h3>
 
   <blockquote>
@@ -389,45 +424,6 @@ cv::imwrite(&quot;b.jpg&quot;, dst);
 
   <div class="more">
     <a href="/default/OpenCV%E4%B9%8B%E5%9B%BE%E7%89%87%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/%E4%BD%BF%E7%94%A8CMake%E9%85%8D%E7%BD%AEQt%E9%A1%B9%E7%9B%AE%E6%97%B6%E4%BD%BF%E7%94%A8OpenMP/">使用CMake配置Qt项目时使用OpenMP</a> <span class="date">2017-07-10</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h3>OpenMP</h3>
-
-<blockquote>
-</blockquote>
-
-<pre><code>// CMakeLists.txt
-FIND_PACKAGE( OpenMP REQUIRED)
-if(OPENMP_FOUND)
-    message(&quot;OPENMP FOUND&quot;)
-    set(CMAKE_C_FLAGS &quot;${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}&quot;)
-    set(CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}&quot;)
-    set(CMAKE_EXE_LINKER_FLAGS &quot;${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}&quot;)
-endif()
-</code></pre>
-
-<blockquote>
-</blockquote>
-
-<pre><code>// 测试
-#include &lt;omp.h&gt;
-#pragma omp parallel
-    {
-    printf(&quot;hello world! ThreadID = %d\n&quot;, omp_get_thread_num());
-    }
-    cout &lt;&lt; endl;
-</code></pre>
-
-
-  <div class="more">
-    <a href="/default/%E4%BD%BF%E7%94%A8CMake%E9%85%8D%E7%BD%AEQt%E9%A1%B9%E7%9B%AE%E6%97%B6%E4%BD%BF%E7%94%A8OpenMP/" class="btn">read more..</a>
   </div>
 </div>
 
