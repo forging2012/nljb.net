@@ -14,7 +14,7 @@ tags:qt
 
 >
 
-***在QT中常用的键值对QMap，当遇到一键多值需要存储时往往QMap<T, vector<T>>这样存储, 但是QT提供了QMultiMap来解决这个问题*** 
+***在QT中常用的键值对QMap，当遇到一键多值需要存储时往往QMap中vector这样存储, 但是QT提供了QMultiMap来解决这个问题*** 
 
 >
 
