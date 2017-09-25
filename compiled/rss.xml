@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>25 Sep 17 14:47 CST</pubDate>
+    <pubDate>25 Sep 17 15:02 CST</pubDate>
+    <item>
+      <title>Linux之制作镜像文件</title>
+      <link>http://www.nljb.net/default/Linux%E4%B9%8B%E5%88%B6%E4%BD%9C%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6/</link>
+      <pubDate>2017-09-25 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h4&gt;制作ISO镜像的方法&lt;/h4&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 把/dev/cdrom目录制作为镜像&#xA;dd if=/dev/cdrom of=/root/myiso.iso&#xA;mkisofs -r -o myiso.iso /dev/cdrom&#xA;cp -r /home/user myiso.iso&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Linux之Huawei设备不能正常识别ttyUSB解决办法</title>
       <link>http://www.nljb.net/default/Linux%E4%B9%8BHuawei%E8%AE%BE%E5%A4%87%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%AF%86%E5%88%ABttyUSB%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
