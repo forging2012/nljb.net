@@ -38,3 +38,27 @@ tags:linux
 	usb_modeswitch -c /etc/usb_modeswitch.d/12d1:1446
 
 >
+
+---
+
+>
+
+#### 解决 12d1:1f01 -> 12d1:14dc
+
+>
+
+	# /lib/udev/rules.d/40-usb_modeswitch.rules
+	ATTR{idVendor}=="12d1", ATTR{idProduct}=="1f01", RUN+="usb_modeswitch '%b/%k'"
+	ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1f01", RUN+="usb_modeswitch '%b/%k'"
+
+>
+
+	# /etc/usb_modeswitch.d/12d1\:1f01
+	DefaultVendor=0x12d1
+	DefaultProduct=0x1f01
+	TargetVendor=0x12d1
+	TargetProductList="14db,14dc"
+	HuaweiNewMode=1
+	NoDriverLoading=1
+
+>
