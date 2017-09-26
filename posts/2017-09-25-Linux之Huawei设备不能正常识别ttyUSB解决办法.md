@@ -62,3 +62,8 @@ tags:linux
 	NoDriverLoading=1
 
 >
+
+	# 测试
+	usb_modeswitch -W -c /etc/12d1:1f01
+
+>
