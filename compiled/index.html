@@ -87,6 +87,41 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/Golang%E4%B9%8Bv1.9%E4%B8%AD%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84sync.Map/">Golang之v1.9中线程安全的sync.Map</a> <span class="date">2017-10-18</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h3>Golang 1.9 sync.Map 使用</h3>
+
+<blockquote>
+</blockquote>
+
+<ul>
+<li>Store</li>
+<li>LoadOrStore</li>
+<li>Load</li>
+<li>Delete</li>
+<li>Range</li>
+</ul>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// 说明： 存储一个设置的键值。
+Store(key, value interface{})
+
+// 说明： 返回键的现有值(如果存在)，否则存储并返回给定的值，如果是读取则返回true，如果是存储返回false。
+LoadOrStore(key, value interface{}) (actual interface{}, loaded bool)
+</code></pre>
+
+
+  <div class="more">
+    <a href="/default/Golang%E4%B9%8Bv1.9%E4%B8%AD%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84sync.Map/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/OpenCV%E4%B9%8B%E5%9F%BA%E4%BA%8E%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8BGMM%E7%9A%84%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">OpenCV之基于混合高斯模型GMM的运动目标检测</a> <span class="date">2017-10-17</span></h3>
 
   <blockquote>
@@ -369,51 +404,6 @@ chmod +x ~/.config/autostart/firefox.desktop
 
   <div class="more">
     <a href="/default/Linux%E4%B9%8B%E9%80%9A%E8%BF%87udev%E8%A7%84%E5%88%99%E6%8C%87%E5%AE%9A%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%90%8D/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">Nginx反向代理之端口转发</a> <span class="date">2017-07-23</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h3>Nginx反向代理之端口转发</h3>
-
-<blockquote>
-</blockquote>
-
-<p><strong>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</strong></p>
-
-<blockquote>
-</blockquote>
-
-<pre><code>// 格式检查 /etc/nginx/nginx.conf 
-nginx -t -c /etc/nginx/nginx.conf
-</code></pre>
-
-<blockquote>
-</blockquote>
-
-<pre><code># /etc/nginx/nginx.conf 
-
-http {
-    // 当通过 face.danoolive.com:80 端口访问这个服务器时
-    // 该请求会被转发到 127.0.0.1:9992
-    server {
-        listen 80; 
-        server_name face.danoolive.com; 
-        // 通过访问的路径来处理转发 ...
-        location / { 
-            // 也不一定是内网 127.0.0.1 ，也可以是另外一个服务器的某个端口等 ...
-            proxy_pass http://127.0.0.1:9992;
-        }
-    }
-</code></pre>
-
-
-  <div class="more">
-    <a href="/default/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B9%8B%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="btn">read more..</a>
   </div>
 </div>
 
