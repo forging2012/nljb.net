@@ -87,6 +87,43 @@
     
 
 <div class="post">
+	<h3 class="title"><a href="/default/%E9%80%9A%E8%BF%87Screen%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/">通过Screen进行远程会话管理</a> <span class="date">2017-11-10</span></h3>
+
+  <blockquote>
+</blockquote>
+
+<h4>Screen是Linux下的一款远程会话管理工具</h4>
+
+<blockquote>
+</blockquote>
+
+<p>通常情况下我们都是为每一个这样的任务开一个远程终端窗口，因为他们执行的时间太长了。必须等待它执行完毕，在此期间可不能关掉窗口或者断开连接，否则这个任务就会被杀掉，一切半途而废了。</p>
+
+<blockquote>
+</blockquote>
+
+<p>为什么关掉窗口/断开连接会使得正在运行的程序死掉, 挂断信号（SIGHUP）默认的动作是终止程序</p>
+
+<blockquote>
+</blockquote>
+
+<p>Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p>
+
+<blockquote>
+</blockquote>
+
+<pre><code>// 创建一个新的窗口:
+[root@nljb ~]# screen
+[root@nljb ~]# screen vi nljb.c
+</code></pre>
+
+
+  <div class="more">
+    <a href="/default/%E9%80%9A%E8%BF%87Screen%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/" class="btn">read more..</a>
+  </div>
+</div>
+
+<div class="post">
 	<h3 class="title"><a href="/default/Golang%E4%B9%8Bv1.9%E4%B8%AD%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84sync.Map/">Golang之v1.9中线程安全的sync.Map</a> <span class="date">2017-10-18</span></h3>
 
   <blockquote>
@@ -375,35 +412,6 @@ chmod +x ~/.config/autostart/firefox.desktop
 
   <div class="more">
     <a href="/default/Ubuntu%E4%B9%8BFirefox%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8F%8A%E5%85%A8%E5%B1%8F/" class="btn">read more..</a>
-  </div>
-</div>
-
-<div class="post">
-	<h3 class="title"><a href="/default/Linux%E4%B9%8B%E9%80%9A%E8%BF%87udev%E8%A7%84%E5%88%99%E6%8C%87%E5%AE%9A%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%90%8D/">Linux之通过udev规则指定设备文件名</a> <span class="date">2017-08-01</span></h3>
-
-  <blockquote>
-</blockquote>
-
-<h3>Linux之通过udev规则指定设备文件名</h3>
-
-<blockquote>
-</blockquote>
-
-<hr />
-
-<blockquote>
-<p>需求：有三个/dev/video0-3设备，但是每次重启设备的文件名称会改变, 想固定这个设备文件名</p>
-
-<p>当前 /dev/video0 是 PCI 采集卡，1-2是USB摄像头 &hellip;</p>
-</blockquote>
-
-<pre><code>// 通过 udevinfo (ubuntu：udevadm) 查看设备信息
-// udevadm (udev管理工具)
-</code></pre>
-
-
-  <div class="more">
-    <a href="/default/Linux%E4%B9%8B%E9%80%9A%E8%BF%87udev%E8%A7%84%E5%88%99%E6%8C%87%E5%AE%9A%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%90%8D/" class="btn">read more..</a>
   </div>
 </div>
 

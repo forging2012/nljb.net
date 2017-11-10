@@ -2,7 +2,13 @@
 <rss version="2.0">  <channel>
     <title>NLJB - 别问我为啥叫加贝(哥名里有贺)</title>
     <link>http://www.nljb.net</link>
-    <pubDate>18 Oct 17 21:48 CST</pubDate>
+    <pubDate>10 Nov 17 11:51 CST</pubDate>
+    <item>
+      <title>通过Screen进行远程会话管理</title>
+      <link>http://www.nljb.net/default/%E9%80%9A%E8%BF%87Screen%E8%BF%9B%E8%A1%8C%E8%BF%9C%E7%A8%8B%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86/</link>
+      <pubDate>2017-11-10 12:00:00 +0800</pubDate>
+      <description>&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;h4&gt;Screen是Linux下的一款远程会话管理工具&lt;/h4&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;通常情况下我们都是为每一个这样的任务开一个远程终端窗口，因为他们执行的时间太长了。必须等待它执行完毕，在此期间可不能关掉窗口或者断开连接，否则这个任务就会被杀掉，一切半途而废了。&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;为什么关掉窗口/断开连接会使得正在运行的程序死掉, 挂断信号（SIGHUP）默认的动作是终止程序&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;p&gt;Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。&lt;/p&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;// 创建一个新的窗口:&#xA;[root@nljb ~]# screen&#xA;[root@nljb ~]# screen vi nljb.c&#xA;&#xA;// 键入C-a d，Screen会给出detached提示&#xA;... 分离会话, 再也不用担心我们关掉terminal程序就不运行了&#xA;&#xA;// 查看会话&#xA;[root@nljb ~]# screen -ls&#xA;There is a screen on:&#xA;    6582.pts-1.tivf06      (Detached)&#xA;1 Socket in /tmp/screens/S-root.&#xA;&#xA;// 重新连接会话：&#xA;[root@nljb ~]# screen -r 6582&#xA;&#xA;// 清除死去的窗口&#xA;[root@nljb ~]# screen -wipe &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;C-a ?   显示所有键绑定信息&#xA;C-a w   显示所有窗口列表&#xA;C-a C-a 切换到之前显示的窗口&#xA;C-a c   创建一个新的运行shell的窗口并切换到该窗口&#xA;C-a n   切换到下一个窗口&#xA;C-a p   切换到前一个窗口(与C-a n相对)&#xA;C-a 0..9切换到窗口0..9&#xA;C-a a   发送 C-a到当前窗口&#xA;C-a d   暂时断开screen会话&#xA;C-a k   杀掉当前窗口与程序&#xA;C-a [   进入拷贝/回滚模式&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;/blockquote&gt;&#xA;</description>
+    </item>
     <item>
       <title>Golang之v1.9中线程安全的sync.Map</title>
       <link>http://www.nljb.net/default/Golang%E4%B9%8Bv1.9%E4%B8%AD%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84sync.Map/</link>
